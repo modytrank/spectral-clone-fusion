@@ -56,16 +56,25 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-50" id="services">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24 bg-gray-50 relative overflow-hidden" id="services">
+      {/* Modern decorative elements */}
+      <div className="pattern-waves absolute inset-0"></div>
+      <div className="decorative-blob w-72 h-72 -top-36 -right-36"></div>
+      <div className="liquid-element w-full h-28 top-1/3 left-0"></div>
+      <div className="floating-particle top-24 left-1/6"></div>
+      <div className="floating-particle bottom-40 right-1/4" style={{ animationDelay: "1.8s" }}></div>
+      <div className="crystalline-element top-20 right-1/5"></div>
+      <div className="crystalline-element bottom-28 left-1/4" style={{ animationDelay: "2.5s" }}></div>
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20 opacity-0 animate-slide-up">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white text-gray-600 text-sm font-medium mb-6 shadow-sm">
-            <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3"></span>
+            <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3 animate-gentle-float"></span>
             Professional Services
           </div>
           <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight">
             Expert services for<br />
-            <span className="font-medium">successful implementation</span>
+            <span className="font-medium animate-gradient-flow bg-clip-text text-transparent">successful implementation</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Our certified professionals ensure your ERP implementation is delivered on time, within budget, and exceeds expectations
@@ -79,15 +88,19 @@ const Services = () => {
               className="group opacity-0 animate-slide-up"
               style={{ animationDelay: `${0.05 * index}s` }}
             >
-              <div className="bg-white rounded-3xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-500 hover:shadow-xl h-full">
-                <div className="flex items-start mb-6">
-                  <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mr-4 group-hover:bg-pulse-50 transition-all duration-500">
+              <div className="bg-white rounded-3xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-500 hover:shadow-xl h-full interactive-card overflow-hidden">
+                {/* Modern floating elements */}
+                <div className="geometric-shape w-6 h-6 top-6 right-6"></div>
+                <div className="crystalline-element top-12 right-12" style={{ animationDelay: "0.7s" }}></div>
+                
+                <div className="flex items-start mb-6 relative z-10">
+                  <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mr-4 group-hover:bg-pulse-50 transition-all duration-500 animate-crystalline">
                     <service.icon className="w-7 h-7 text-gray-600 group-hover:text-pulse-500 transition-all duration-500" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="text-xl font-medium text-gray-900">{service.title}</h3>
-                      <span className="text-xs text-pulse-500 font-medium bg-pulse-50 px-3 py-1 rounded-full">
+                      <span className="text-xs text-pulse-500 font-medium bg-pulse-50 px-3 py-1 rounded-full animate-gentle-float">
                         {service.timeline}
                       </span>
                     </div>
@@ -95,22 +108,22 @@ const Services = () => {
                   </div>
                 </div>
                 
-                <div className="mb-6">
+                <div className="mb-6 relative z-10">
                   <h4 className="text-sm font-medium text-gray-900 mb-3 flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 animate-gentle-float" />
                     Key Capabilities
                   </h4>
                   <div className="grid grid-cols-2 gap-2">
                     {service.capabilities.map((capability, capIndex) => (
                       <div key={capIndex} className="flex items-center text-xs text-gray-600">
-                        <div className="w-1.5 h-1.5 bg-pulse-500 rounded-full mr-2"></div>
+                        <div className="w-1.5 h-1.5 bg-pulse-500 rounded-full mr-2 animate-gentle-float" style={{ animationDelay: `${capIndex * 0.2}s` }}></div>
                         {capability}
                       </div>
                     ))}
                   </div>
                 </div>
                 
-                <div className="flex items-center text-pulse-500 font-medium text-sm group-hover:text-pulse-600 transition-colors duration-300 cursor-pointer">
+                <div className="flex items-center text-pulse-500 font-medium text-sm group-hover:text-pulse-600 transition-colors duration-300 cursor-pointer relative z-10">
                   Learn more about this service
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
@@ -121,18 +134,19 @@ const Services = () => {
 
         {/* Service Process */}
         <div className="opacity-0 animate-fade-scale" style={{ animationDelay: "0.4s" }}>
-          <div className="bg-white rounded-3xl p-12 border border-gray-200 shadow-sm">
-            <div className="text-center mb-12">
+          <div className="bg-white rounded-3xl p-12 border border-gray-200 shadow-sm relative overflow-hidden">
+            <div className="liquid-element w-full h-16 top-0 left-0"></div>
+            <div className="text-center mb-12 relative z-10">
               <h3 className="text-2xl font-light text-gray-900 mb-4">Our Service Methodology</h3>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 A structured approach that ensures quality delivery and client satisfaction at every stage
               </p>
             </div>
             
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-4 relative">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-4 relative z-10">
               {serviceProcess.map((process, index) => (
                 <div key={index} className="flex flex-col items-center text-center relative flex-1">
-                  <div className="w-12 h-12 bg-pulse-500 rounded-full flex items-center justify-center text-white font-medium mb-4 text-sm relative z-10">
+                  <div className="w-12 h-12 bg-pulse-500 rounded-full flex items-center justify-center text-white font-medium mb-4 text-sm relative z-10 animate-crystalline" style={{ animationDelay: `${index * 0.3}s` }}>
                     {index + 1}
                   </div>
                   <h4 className="font-medium text-gray-900 mb-2">{process.step}</h4>
@@ -149,18 +163,21 @@ const Services = () => {
         {/* Professional Credentials */}
         <div className="mt-20 opacity-0 animate-slide-up" style={{ animationDelay: "0.6s" }}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center bg-white rounded-3xl p-8 border border-gray-200">
-              <div className="text-3xl font-light text-pulse-500 mb-2">50+</div>
+            <div className="text-center bg-white rounded-3xl p-8 border border-gray-200 relative overflow-hidden">
+              <div className="crystalline-element top-4 right-4"></div>
+              <div className="text-3xl font-light text-pulse-500 mb-2 animate-gentle-float">50+</div>
               <div className="font-medium text-gray-900 mb-1">Certified Professionals</div>
               <div className="text-sm text-gray-600">Expert consultants and developers</div>
             </div>
-            <div className="text-center bg-white rounded-3xl p-8 border border-gray-200">
-              <div className="text-3xl font-light text-pulse-500 mb-2">500+</div>
+            <div className="text-center bg-white rounded-3xl p-8 border border-gray-200 relative overflow-hidden">
+              <div className="crystalline-element top-4 right-4" style={{ animationDelay: "0.5s" }}></div>
+              <div className="text-3xl font-light text-pulse-500 mb-2 animate-gentle-float" style={{ animationDelay: "0.3s" }}>500+</div>
               <div className="font-medium text-gray-900 mb-1">Successful Projects</div>
               <div className="text-sm text-gray-600">Across various industries</div>
             </div>
-            <div className="text-center bg-white rounded-3xl p-8 border border-gray-200">
-              <div className="text-3xl font-light text-pulse-500 mb-2">99%</div>
+            <div className="text-center bg-white rounded-3xl p-8 border border-gray-200 relative overflow-hidden">
+              <div className="crystalline-element top-4 right-4" style={{ animationDelay: "1s" }}></div>
+              <div className="text-3xl font-light text-pulse-500 mb-2 animate-gentle-float" style={{ animationDelay: "0.6s" }}>99%</div>
               <div className="font-medium text-gray-900 mb-1">Client Satisfaction</div>
               <div className="text-sm text-gray-600">Based on project completion surveys</div>
             </div>
@@ -170,8 +187,8 @@ const Services = () => {
         {/* Professional CTA */}
         <div className="mt-20 text-center opacity-0 animate-slide-up" style={{ animationDelay: "0.8s" }}>
           <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 text-white relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full opacity-5"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-pulse-500 rounded-full opacity-10"></div>
+            <div className="decorative-blob w-32 h-32 top-0 right-0"></div>
+            <div className="liquid-element w-full h-16 bottom-0 left-0" style={{ animationDelay: "1s" }}></div>
             
             <div className="relative z-10">
               <h3 className="text-2xl font-light mb-4">Ready to work with experts?</h3>
@@ -179,10 +196,10 @@ const Services = () => {
                 Schedule a consultation with our professional services team to discuss your project requirements and timeline.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-gray-900 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-all duration-300">
+                <button className="bg-white text-gray-900 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-all duration-300 animate-gentle-float">
                   Schedule Consultation
                 </button>
-                <button className="border border-white/30 text-white px-8 py-3 rounded-full font-medium hover:bg-white/10 transition-all duration-300">
+                <button className="border border-white/30 text-white px-8 py-3 rounded-full font-medium hover:bg-white/10 transition-all duration-300 animate-gentle-float" style={{ animationDelay: "0.3s" }}>
                   View Case Studies
                 </button>
               </div>

@@ -54,16 +54,25 @@ const ImplementationProcess = () => {
   ];
 
   return (
-    <section className="py-24 bg-white" id="implementation">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24 bg-white relative overflow-hidden" id="implementation">
+      {/* Modern decorative elements */}
+      <div className="pattern-dots absolute inset-0"></div>
+      <div className="decorative-blob w-96 h-96 -bottom-48 -left-48"></div>
+      <div className="liquid-element w-full h-32 top-1/4 left-0"></div>
+      <div className="floating-particle top-32 right-1/5"></div>
+      <div className="floating-particle bottom-24 left-1/3" style={{ animationDelay: "2.2s" }}></div>
+      <div className="crystalline-element top-24 left-1/6"></div>
+      <div className="crystalline-element bottom-32 right-1/4" style={{ animationDelay: "1.8s" }}></div>
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20 opacity-0 animate-slide-up">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3"></span>
+            <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3 animate-gentle-float"></span>
             Implementation Process
           </div>
           <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight">
             From concept to<br />
-            <span className="font-medium">go-live in 11 weeks</span>
+            <span className="font-medium animate-gradient-flow bg-clip-text text-transparent">go-live in 11 weeks</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Our proven methodology ensures successful implementation with minimal disruption to your business
@@ -72,12 +81,13 @@ const ImplementationProcess = () => {
 
         {/* Timeline Overview */}
         <div className="mb-20 opacity-0 animate-fade-scale" style={{ animationDelay: "0.2s" }}>
-          <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100">
-            <h3 className="text-xl font-medium text-gray-900 mb-8 text-center">Implementation Timeline</h3>
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100 relative overflow-hidden">
+            <div className="liquid-element w-full h-8 top-0 left-0"></div>
+            <h3 className="text-xl font-medium text-gray-900 mb-8 text-center relative z-10">Implementation Timeline</h3>
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 relative z-10">
               {timeline.map((item, index) => (
                 <div key={index} className="flex flex-col items-center text-center relative">
-                  <div className="w-12 h-12 bg-pulse-500 rounded-full flex items-center justify-center text-white font-medium mb-3">
+                  <div className="w-12 h-12 bg-pulse-500 rounded-full flex items-center justify-center text-white font-medium mb-3 animate-crystalline" style={{ animationDelay: `${index * 0.2}s` }}>
                     <Clock className="w-5 h-5" />
                   </div>
                   <div className="text-sm font-medium text-gray-900">Week {item.week}</div>
@@ -99,18 +109,21 @@ const ImplementationProcess = () => {
               className="opacity-0 animate-slide-up"
               style={{ animationDelay: `${0.1 * (index + 3)}s` }}
             >
-              <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-500">
-                <div className="p-8 lg:p-12">
+              <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-500 interactive-card">
+                <div className="geometric-shape w-8 h-8 top-8 right-8"></div>
+                <div className="crystalline-element top-12 right-12" style={{ animationDelay: `${index * 0.4}s` }}></div>
+                
+                <div className="p-8 lg:p-12 relative z-10">
                   <div className="flex flex-col lg:flex-row lg:items-center gap-8">
                     {/* Phase Info */}
                     <div className="flex-1">
                       <div className="flex items-center mb-4">
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mr-4 ${phase.color}`}>
+                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mr-4 ${phase.color} animate-crystalline`} style={{ animationDelay: `${index * 0.3}s` }}>
                           <phase.icon className="w-6 h-6" />
                         </div>
                         <div>
                           <h3 className="text-2xl font-medium text-gray-900">{phase.title}</h3>
-                          <p className="text-pulse-500 font-medium">{phase.duration}</p>
+                          <p className="text-pulse-500 font-medium animate-gentle-float">{phase.duration}</p>
                         </div>
                       </div>
                       <p className="text-gray-600 leading-relaxed mb-6">
@@ -121,13 +134,13 @@ const ImplementationProcess = () => {
                     {/* Deliverables */}
                     <div className="lg:w-80">
                       <h4 className="text-sm font-medium text-gray-900 mb-4 flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                        <CheckCircle className="w-4 h-4 text-green-500 mr-2 animate-gentle-float" />
                         Key Deliverables
                       </h4>
                       <div className="space-y-3">
                         {phase.deliverables.map((deliverable, deliverableIndex) => (
                           <div key={deliverableIndex} className="flex items-center text-sm text-gray-600">
-                            <div className="w-2 h-2 bg-pulse-500 rounded-full mr-3"></div>
+                            <div className="w-2 h-2 bg-pulse-500 rounded-full mr-3 animate-gentle-float" style={{ animationDelay: `${deliverableIndex * 0.2}s` }}></div>
                             {deliverable}
                           </div>
                         ))}
@@ -156,10 +169,11 @@ const ImplementationProcess = () => {
             ].map((stat, index) => (
               <div 
                 key={index} 
-                className="text-center bg-gray-50 rounded-3xl p-6 border border-gray-100 opacity-0 animate-fade-scale hover:animate-gentle-float" 
+                className="text-center bg-gray-50 rounded-3xl p-6 border border-gray-100 opacity-0 animate-fade-scale hover:animate-gentle-float relative overflow-hidden" 
                 style={{ animationDelay: `${0.9 + 0.1 * index}s` }}
               >
-                <div className="text-3xl font-light text-pulse-500 mb-2">{stat.metric}</div>
+                <div className="crystalline-element top-2 right-2" style={{ animationDelay: `${index * 0.5}s` }}></div>
+                <div className="text-3xl font-light text-pulse-500 mb-2 animate-gentle-float" style={{ animationDelay: `${index * 0.3}s` }}>{stat.metric}</div>
                 <div className="font-medium text-gray-900 mb-1">{stat.label}</div>
                 <div className="text-xs text-gray-600">{stat.desc}</div>
               </div>
@@ -169,13 +183,14 @@ const ImplementationProcess = () => {
 
         {/* CTA */}
         <div className="mt-20 text-center opacity-0 animate-slide-up" style={{ animationDelay: "1.3s" }}>
-          <div className="bg-gray-50 rounded-3xl p-12 border border-gray-100">
-            <Users className="w-12 h-12 text-pulse-500 mx-auto mb-6" />
+          <div className="bg-gray-50 rounded-3xl p-12 border border-gray-100 relative overflow-hidden">
+            <div className="liquid-element w-full h-12 top-0 left-0"></div>
+            <Users className="w-12 h-12 text-pulse-500 mx-auto mb-6 animate-crystalline" />
             <h3 className="text-2xl font-light text-gray-900 mb-4">Ready to get started?</h3>
             <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
               Schedule a consultation with our implementation experts to discuss your project timeline and requirements.
             </p>
-            <button className="bg-pulse-500 text-white px-8 py-3 rounded-full font-medium hover:bg-pulse-600 transition-colors duration-300">
+            <button className="bg-pulse-500 text-white px-8 py-3 rounded-full font-medium hover:bg-pulse-600 transition-colors duration-300 animate-gentle-float">
               Schedule Consultation
             </button>
           </div>
