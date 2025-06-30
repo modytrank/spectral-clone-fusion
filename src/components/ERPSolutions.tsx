@@ -1,79 +1,140 @@
 import React from "react";
-import { Calculator, Users, ShoppingCart, Package, Factory, Wrench } from "lucide-react";
+import { Calculator, Users, ShoppingCart, Package, Factory, Wrench, ArrowRight, Zap } from "lucide-react";
 
 const ERPSolutions = () => {
   const solutions = [
     {
       icon: Calculator,
       title: "Accounting",
-      description: "Complete financial management and reporting"
+      description: "Complete financial management and reporting",
+      color: "from-blue-500 to-cyan-600",
+      features: ["Real-time reporting", "Multi-currency", "Tax compliance"]
     },
     {
       icon: Users,
       title: "Human Resources",
-      description: "Comprehensive HR management system"
+      description: "Comprehensive HR management system",
+      color: "from-green-500 to-teal-600",
+      features: ["Employee portal", "Payroll automation", "Performance tracking"]
     },
     {
       icon: ShoppingCart,
       title: "Sales & CRM",
-      description: "End-to-end sales and customer management"
+      description: "End-to-end sales and customer management",
+      color: "from-purple-500 to-pink-600",
+      features: ["Lead tracking", "Sales pipeline", "Customer insights"]
     },
     {
       icon: Package,
       title: "Inventory",
-      description: "Advanced inventory and warehouse management"
+      description: "Advanced inventory and warehouse management",
+      color: "from-orange-500 to-red-600",
+      features: ["Stock optimization", "Barcode scanning", "Automated reordering"]
     },
     {
       icon: Factory,
       title: "Manufacturing",
-      description: "Complete production management solution"
+      description: "Complete production management solution",
+      color: "from-indigo-500 to-purple-600",
+      features: ["Production planning", "Quality control", "Resource optimization"]
     },
     {
       icon: Wrench,
       title: "Asset Management",
-      description: "Comprehensive asset tracking and maintenance"
+      description: "Comprehensive asset tracking and maintenance",
+      color: "from-yellow-500 to-orange-600",
+      features: ["Maintenance scheduling", "Asset tracking", "Depreciation management"]
     }
   ];
 
   return (
-    <section className="py-24 bg-white" id="erp-solutions">
+    <section className="py-24 bg-white overflow-hidden" id="erp-solutions">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20 opacity-0 animate-slide-up">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3"></span>
+            <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3 animate-pulse"></span>
             ERP Solutions
           </div>
           <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight">
             Complete business<br />
-            <span className="font-medium">solutions</span>
+            <span className="font-medium bg-gradient-to-r from-pulse-500 to-purple-600 bg-clip-text text-transparent">solutions</span>
           </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Integrated modules that work together seamlessly
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {solutions.map((solution, index) => (
             <div 
               key={index}
-              className="group opacity-0 animate-fade-scale hover:animate-gentle-float"
+              className="group opacity-0 animate-fade-scale"
               style={{ animationDelay: `${0.05 * index}s` }}
             >
-              <div className="text-center p-8 hover:bg-gray-50 rounded-3xl transition-all duration-500">
-                <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-pulse-50 transition-all duration-500">
-                  <solution.icon className="w-8 h-8 text-gray-600 group-hover:text-pulse-500 transition-all duration-500" />
+              <div className="relative bg-white rounded-3xl p-8 border border-gray-100 hover:border-gray-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 overflow-hidden">
+                {/* Animated background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${solution.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                
+                {/* Floating particles */}
+                <div className="absolute top-4 right-4 w-2 h-2 bg-pulse-500 rounded-full opacity-20 group-hover:animate-bounce"></div>
+                <div className="absolute top-8 right-8 w-1 h-1 bg-purple-500 rounded-full opacity-30 group-hover:animate-ping" style={{ animationDelay: "0.5s" }}></div>
+                
+                <div className="relative z-10 text-center">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${solution.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
+                    <solution.icon className="w-8 h-8 text-white" />
+                  </div>
+                  
+                  <h3 className="text-lg font-medium text-gray-900 mb-3 group-hover:text-gray-800 transition-colors duration-300">{solution.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6 group-hover:text-gray-700 transition-colors duration-300">{solution.description}</p>
+                  
+                  <div className="space-y-2 mb-6">
+                    {solution.features.map((feature, featureIndex) => (
+                      <div 
+                        key={featureIndex} 
+                        className="flex items-center justify-center text-xs text-gray-500 group-hover:text-gray-600 transition-all duration-300"
+                        style={{ transitionDelay: `${featureIndex * 50}ms` }}
+                      >
+                        <Zap className="w-3 h-3 text-pulse-500 mr-2" />
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="flex items-center justify-center text-pulse-500 font-medium text-sm group-hover:text-pulse-600 transition-colors duration-300 cursor-pointer">
+                    Explore module
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
                 </div>
-                <h3 className="text-lg font-medium text-gray-900 mb-3">{solution.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{solution.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-20 text-center opacity-0 animate-slide-up" style={{ animationDelay: "0.4s" }}>
-          <div className="bg-gray-50 rounded-3xl p-12 border border-gray-100">
-            <h3 className="text-2xl font-light text-gray-900 mb-4">Ready to streamline your operations?</h3>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">Get a personalized demo of our ERP solutions tailored to your industry.</p>
-            <button className="bg-pulse-500 text-white px-8 py-3 rounded-full font-medium hover:bg-pulse-600 transition-colors duration-300">
-              Schedule Demo
-            </button>
+        {/* Integration showcase */}
+        <div className="opacity-0 animate-slide-up" style={{ animationDelay: "0.4s" }}>
+          <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-12 border border-gray-200 relative overflow-hidden">
+            {/* Animated connection lines */}
+            <div className="absolute inset-0 opacity-10">
+              <svg className="w-full h-full" viewBox="0 0 400 200">
+                <path d="M50,100 Q200,50 350,100" stroke="currentColor" strokeWidth="2" fill="none" className="text-pulse-500">
+                  <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="3s" repeatCount="indefinite" />
+                </path>
+                <path d="M50,100 Q200,150 350,100" stroke="currentColor" strokeWidth="2" fill="none" className="text-purple-500">
+                  <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="3s" begin="1s" repeatCount="indefinite" />
+                </path>
+              </svg>
+            </div>
+            
+            <div className="relative z-10 text-center">
+              <h3 className="text-2xl font-light text-gray-900 mb-4">All modules work together</h3>
+              <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+                Our integrated approach means data flows seamlessly between all modules, giving you a complete view of your business.
+              </p>
+              <button className="bg-pulse-500 text-white px-8 py-3 rounded-full font-medium hover:bg-pulse-600 transition-all duration-300 hover:scale-105 hover:shadow-lg group">
+                See Integration Demo
+                <ArrowRight className="w-4 h-4 ml-2 inline group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
