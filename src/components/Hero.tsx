@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
@@ -23,10 +22,26 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/loop-header.lottie')
-      .then(response => response.json())
-      .then(data => setLottieData(data))
-      .catch(error => console.error("Error loading Lottie animation:", error));
+    // Try to load the Lottie animation, but fall back gracefully if it fails
+    const loadLottieAnimation = async () => {
+      try {
+        // For .lottie files, we need to use a different approach
+        // Let's try loading it as a regular JSON file first
+        const response = await fetch('/loop-header.json');
+        if (response.ok) {
+          const data = await response.json();
+          setLottieData(data);
+        } else {
+          // If JSON doesn't exist, we'll skip the animation
+          console.log("Lottie JSON file not found, using fallback image");
+        }
+      } catch (error) {
+        console.log("Could not load Lottie animation, using fallback image:", error);
+        // We'll just use the fallback image instead
+      }
+    };
+
+    loadLottieAnimation();
   }, []);
 
   useEffect(() => {
@@ -177,7 +192,7 @@ const Hero = () => {
             ) : (
               <>
               <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
-              <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl">
+              <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl animate-fade-in" style={{ animationDelay: "0.9s" }}>
                 <img 
                   ref={imageRef} 
                   src="/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png" 
