@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 
 interface TestimonialProps {
@@ -21,12 +20,6 @@ const testimonials: TestimonialProps[] = [{
   role: "Director of Logistics, GlobalShip",
   gradient: "from-indigo-900 via-purple-800 to-orange-500",
   backgroundImage: "/background-section2.png"
-}, {
-  content: "Atlas adapted to our lab protocols faster than any system we've used. It's like having another researcher who never gets tired and maintains perfect precision.",
-  author: "Dr. Amara Patel",
-  role: "Lead Scientist, BioAdvance Research",
-  gradient: "from-purple-800 via-pink-700 to-red-500",
-  backgroundImage: "/background-section3.png"
 }, {
   content: "As a mid-size business, we never thought advanced robotics would be accessible to us. Atlas changed that equation entirely with its versatility and ease of deployment.",
   author: "Jason Lee",
