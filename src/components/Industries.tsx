@@ -125,24 +125,6 @@ const Industries = () => {
             </div>
           </div>
         </div>
-
-        {/* Success stories teaser */}
-        <div className="mt-16 text-center opacity-0 animate-slide-up" style={{ animationDelay: "0.8s" }}>
-          <div className="bg-gradient-to-r from-pulse-500 to-purple-600 rounded-3xl p-12 text-white relative overflow-hidden">
-            {/* Animated background elements */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full opacity-10 animate-pulse"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white rounded-full opacity-5 animate-pulse" style={{ animationDelay: "1s" }}></div>
-            
-            <div className="relative z-10">
-              <h3 className="text-2xl font-light mb-4">Ready to transform your industry?</h3>
-              <p className="text-white/90 mb-8 max-w-2xl mx-auto">Join thousands of companies already using our solutions to drive growth and efficiency.</p>
-              <button className="bg-white text-pulse-500 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-lg group">
-                Get Started Today
-                <ArrowRight className="w-4 h-4 ml-2 inline group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

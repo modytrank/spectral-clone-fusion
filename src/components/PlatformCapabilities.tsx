@@ -99,24 +99,6 @@ const PlatformCapabilities = () => {
             </div>
           ))}
         </div>
-
-        {/* Interactive demo section */}
-        <div className="mt-20 opacity-0 animate-fade-scale" style={{ animationDelay: "0.6s" }}>
-          <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-12 text-center border border-gray-200 relative overflow-hidden">
-            {/* Animated background elements */}
-            <div className="absolute top-0 left-0 w-32 h-32 bg-pulse-500 rounded-full opacity-5 animate-pulse"></div>
-            <div className="absolute bottom-0 right-0 w-24 h-24 bg-purple-500 rounded-full opacity-5 animate-pulse" style={{ animationDelay: "1s" }}></div>
-            
-            <div className="relative z-10">
-              <h3 className="text-2xl font-light text-gray-900 mb-4">See it in action</h3>
-              <p className="text-gray-600 mb-8 max-w-2xl mx-auto">Experience our platform capabilities with a personalized demo tailored to your business needs.</p>
-              <button className="bg-pulse-500 text-white px-8 py-3 rounded-full font-medium hover:bg-pulse-600 transition-all duration-300 hover:scale-105 hover:shadow-lg group">
-                Schedule Demo
-                <ArrowRight className="w-4 h-4 ml-2 inline group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
