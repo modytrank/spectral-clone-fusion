@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
@@ -47,14 +46,23 @@ const Navbar = () => {
       <div className="container flex items-center justify-between px-4 sm:px-6 lg:px-8">
         <a 
           href="#" 
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-3"
           onClick={(e) => {
             e.preventDefault();
             scrollToTop();
           }}
           aria-label="MovinWare"
         >
-          <div className="text-2xl font-bold text-pulse-500">MovinWare</div>
+          <div className="w-8 h-8 text-pulse-500">
+            <svg viewBox="0 0 494.95 492.9" fill="currentColor" className="w-full h-full">
+              <g>
+                <polygon points="297.32 0 67.34 482.87 0 341.74 162.63 0 297.32 0"/>
+                <polygon points="494.95 178.76 343.02 476.88 332.83 480.38 294.08 387.79 304.42 386.86 408.85 174.5 494.95 178.76"/>
+                <polygon points="402.47 102.46 213.4 488.21 200.41 492.9 148.94 374.77 162.18 373.37 291.99 98.66 402.47 102.46"/>
+              </g>
+            </svg>
+          </div>
+          <div className="text-2xl font-bold text-gray-900">MovinWare</div>
         </a>
 
         {/* Desktop Navigation */}
@@ -72,7 +80,7 @@ const Navbar = () => {
           <a href="#value" className="nav-link">360° Value</a>
           <a href="#platform" className="nav-link">Platform</a>
           <a href="#industries" className="nav-link">Industries</a>
-          <a href="#solutions" className="nav-link">Solutions</a>
+          <a href="#erp-solutions" className="nav-link">Solutions</a>
           <a href="#services" className="nav-link">Services</a>
           <a href="#packages" className="nav-link">Packages</a>
           <a href="#contact" className="nav-link">Contact</a>
@@ -137,7 +145,7 @@ const Navbar = () => {
             Industries
           </a>
           <a 
-            href="#solutions" 
+            href="#erp-solutions" 
             className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
             onClick={() => {
               setIsMenuOpen(false);
