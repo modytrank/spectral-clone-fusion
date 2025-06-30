@@ -57,25 +57,28 @@ const Services = () => {
 
   return (
     <section className="bg-gray-50" id="services">
-      {/* Header with Background */}
+      {/* Enhanced Header with Background */}
       <div 
-        className="relative py-24 bg-cover bg-center"
+        className="relative py-32 bg-cover bg-center"
         style={{
           backgroundImage: 'url("/Header-background.webp")',
           backgroundPosition: 'center 30%'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20"></div>
+        {/* Enhanced overlay with better contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/40 via-pink-600/30 to-red-600/40"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
+        
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-6">
-            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white text-pulse-500 mr-2 text-xs font-bold">06</span>
-            Professional Services
+          <div className="section-header-badge animate-badge-float mb-8">
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-pulse-500 text-white mr-3 text-sm font-bold">06</span>
+            <span className="font-semibold">Professional Services</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
+          <h2 className="section-header-title animate-header-glow">
             Expert services for<br />
             <span className="font-medium">successful implementation</span>
           </h2>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="section-header-subtitle">
             Our certified professionals ensure your ERP implementation is delivered on time, within budget, and exceeds expectations
           </p>
         </div>
