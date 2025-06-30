@@ -1,6 +1,5 @@
 import React from "react";
-import { GraduationCap, ShoppingCart, Factory, Truck, Users, Building, TrendingUp } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { GraduationCap, ShoppingCart, Factory, Truck, ArrowRight, Users, Building, TrendingUp } from "lucide-react";
 
 const Industries = () => {
   const industries = [
@@ -8,131 +7,141 @@ const Industries = () => {
       icon: GraduationCap,
       title: "Education",
       description: "Comprehensive solutions for educational institutions",
-      features: ["Student Management", "Academic Planning", "Parent Portal", "Fee Management"],
-      clients: "Schools, Universities, Training Centers, Online Learning"
+      clients: "Schools, Universities, Training Centers",
+      color: "from-blue-500 to-indigo-600",
+      stats: "500+ Institutions"
     },
     {
       icon: ShoppingCart,
       title: "Retail",
       description: "Complete retail management and e-commerce solutions",
-      features: ["POS Systems", "Inventory Sync", "Loyalty Programs", "Multi-channel Sales"],
-      clients: "Retail Chains, Online Stores, Fashion, Electronics"
+      clients: "Retail Chains, Online Stores, Fashion",
+      color: "from-green-500 to-emerald-600",
+      stats: "1000+ Stores"
     },
     {
       icon: Factory,
       title: "Manufacturing",
       description: "End-to-end manufacturing and production management",
-      features: ["Production Planning", "Quality Control", "Supply Chain Management", "Preventive Maintenance"],
-      clients: "Manufacturers, Assembly Lines, Food Processing, Textile"
+      clients: "Manufacturers, Assembly Lines, Processing",
+      color: "from-orange-500 to-red-600",
+      stats: "200+ Factories"
     },
     {
       icon: Truck,
       title: "Logistics",
       description: "Advanced logistics and supply chain optimization",
-      features: ["Fleet Management", "Route Optimization", "Inventory Tracking", "Customs Management"],
-      clients: "Shipping Companies, 3PL Providers, Distribution Centers, Freight Companies"
+      clients: "Shipping Companies, 3PL Providers",
+      color: "from-purple-500 to-pink-600",
+      stats: "300+ Companies"
     }
   ];
 
   const companySizes = [
-    {
-      icon: TrendingUp,
-      title: "Startups",
-      description: "Quick Implementation, Scalable, Cost-Effective",
-      color: "bg-green-100 text-green-600"
-    },
-    {
-      icon: Users,
-      title: "SMEs",
-      description: "Feature-Rich, Customizable, Easy Integration, Dedicated Support",
-      color: "bg-blue-100 text-blue-600"
-    },
-    {
-      icon: Building,
-      title: "Enterprises",
-      description: "Advanced Analytics, Multi-Location, Regulatory Compliance, 24/7 Support",
-      color: "bg-purple-100 text-purple-600"
-    }
+    { icon: TrendingUp, title: "Startups", count: "50+", color: "text-green-600" },
+    { icon: Users, title: "SMEs", count: "500+", color: "text-blue-600" },
+    { icon: Building, title: "Enterprises", count: "100+", color: "text-purple-600" }
   ];
 
   return (
-    <section className="py-20 bg-white relative" id="industries">
-      {/* Simple pattern background */}
-      <div className="pattern-grid absolute inset-0"></div>
-      
-      <div className="section-container relative z-10">
-        <div className="text-center mb-16 opacity-0 animate-on-scroll">
-          <div className="pulse-chip mx-auto mb-4">
-            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">04</span>
-            <span>Industries</span>
+    <section className="py-24 bg-gray-50 overflow-hidden" id="industries">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-20 opacity-0 animate-fade-scale">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white text-gray-600 text-sm font-medium mb-6 shadow-sm">
+            <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3 animate-pulse"></span>
+            Industries
           </div>
-          <h2 className="section-title mb-4">Tailored Solutions for Every Sector</h2>
-          <p className="section-subtitle mx-auto">
-            Specialized ERP solutions designed for each industry, from startups to enterprises.
+          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight">
+            Tailored for<br />
+            <span className="font-medium bg-gradient-to-r from-pulse-500 to-purple-600 bg-clip-text text-transparent">every sector</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Specialized solutions designed for your industry's unique challenges
           </p>
         </div>
 
-        {/* Industries Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {industries.map((industry, index) => (
-            <Card 
+            <div 
               key={index}
-              className="hover:shadow-elegant-hover transition-all duration-300 hover:translate-y-[-5px] opacity-0 animate-on-scroll border-gray-200"
+              className="group opacity-0 animate-slide-up"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <CardHeader>
-                <div className="flex items-center mb-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-xl mr-4">
-                    <industry.icon className="w-6 h-6 text-pulse-500" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-xl text-gray-900">{industry.title}</CardTitle>
-                    <CardDescription className="text-sm">{industry.description}</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="grid grid-cols-2 gap-3 mb-4">
-                  {industry.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-sm">
-                      <div className="w-2 h-2 bg-pulse-500 rounded-full mr-2"></div>
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className="relative bg-white rounded-3xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 overflow-hidden">
+                {/* Animated background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
                 
-                <div className="pt-4 border-t border-gray-100">
-                  <p className="text-xs text-gray-500 font-medium">Ideal for:</p>
-                  <p className="text-sm text-gray-700">{industry.clients}</p>
+                {/* Floating elements */}
+                <div className="absolute top-6 right-6 w-3 h-3 bg-pulse-500 rounded-full opacity-20 group-hover:animate-bounce"></div>
+                <div className="absolute top-12 right-12 w-1.5 h-1.5 bg-purple-500 rounded-full opacity-30 group-hover:animate-ping" style={{ animationDelay: "0.3s" }}></div>
+                
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center">
+                      <div className={`w-14 h-14 bg-gradient-to-br ${industry.color} rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
+                        <industry.icon className="w-7 h-7 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-medium text-gray-900">{industry.title}</h3>
+                        <div className="text-sm text-pulse-500 font-medium">{industry.stats}</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-600 mb-4 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">{industry.description}</p>
+                  
+                  <p className="text-sm text-gray-500 mb-6">
+                    <span className="font-medium">Perfect for:</span> {industry.clients}
+                  </p>
+                  
+                  <div className="flex items-center text-pulse-500 font-medium text-sm group-hover:text-pulse-600 transition-colors duration-300 cursor-pointer">
+                    View solutions
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* Company Sizes */}
-        <div className="text-center mb-8">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-2">Solutions for Every Size</h3>
-          <p className="text-gray-600">From startups to enterprises, we have the right solution for your business size.</p>
+        {/* Company sizes with animation */}
+        <div className="opacity-0 animate-fade-scale" style={{ animationDelay: "0.5s" }}>
+          <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-sm">
+            <h3 className="text-xl font-medium text-gray-900 mb-8 text-center">Trusted by companies of all sizes</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {companySizes.map((size, index) => (
+                <div 
+                  key={index} 
+                  className="text-center group hover:scale-105 transition-transform duration-300"
+                  style={{ animationDelay: `${0.6 + 0.1 * index}s` }}
+                >
+                  <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-100 transition-colors duration-300">
+                    <size.icon className={`w-8 h-8 ${size.color} group-hover:scale-110 transition-transform duration-300`} />
+                  </div>
+                  <div className="text-2xl font-light text-gray-900 mb-1">{size.count}</div>
+                  <div className="text-sm font-medium text-gray-600">{size.title}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {companySizes.map((size, index) => (
-            <Card 
-              key={index}
-              className="text-center opacity-0 animate-on-scroll bg-gray-50 border-0"
-              style={{ animationDelay: `${0.2 + 0.1 * index}s` }}
-            >
-              <CardContent className="pt-6">
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${size.color}`}>
-                  <size.icon className="w-6 h-6" />
-                </div>
-                <CardTitle className="text-lg text-gray-900 mb-2">{size.title}</CardTitle>
-                <CardDescription className="text-sm">{size.description}</CardDescription>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Success stories teaser */}
+        <div className="mt-16 text-center opacity-0 animate-slide-up" style={{ animationDelay: "0.8s" }}>
+          <div className="bg-gradient-to-r from-pulse-500 to-purple-600 rounded-3xl p-12 text-white relative overflow-hidden">
+            {/* Animated background elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full opacity-10 animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white rounded-full opacity-5 animate-pulse" style={{ animationDelay: "1s" }}></div>
+            
+            <div className="relative z-10">
+              <h3 className="text-2xl font-light mb-4">Ready to transform your industry?</h3>
+              <p className="text-white/90 mb-8 max-w-2xl mx-auto">Join thousands of companies already using our solutions to drive growth and efficiency.</p>
+              <button className="bg-white text-pulse-500 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-lg group">
+                Get Started Today
+                <ArrowRight className="w-4 h-4 ml-2 inline group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
