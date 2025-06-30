@@ -9,7 +9,8 @@ const Packages = () => {
       description: "Perfect for growing businesses",
       price: "$299",
       period: "/month",
-      features: ["Quick Implementation", "Core Modules", "Basic Support", "Cloud Hosting"],
+      originalPrice: "$399",
+      features: ["Quick Implementation", "Core Modules", "Basic Support", "Cloud Hosting", "Up to 10 Users", "Mobile Access"],
       popular: false
     },
     {
@@ -18,16 +19,18 @@ const Packages = () => {
       description: "Comprehensive solution for established companies",
       price: "$599",
       period: "/month",
-      features: ["Advanced Features", "Custom Workflows", "Priority Support", "Multi-location", "Advanced Analytics", "API Access"],
+      originalPrice: "$799",
+      features: ["Advanced Features", "Custom Workflows", "Priority Support", "Multi-location", "Advanced Analytics", "API Access", "Up to 50 Users", "Custom Reports"],
       popular: true
     },
     {
       icon: Building2,
       title: "Enterprise",
       description: "Advanced solution for large organizations",
-      price: "Custom",
-      period: "pricing",
-      features: ["White-label Options", "Dedicated Support", "Custom Development", "Compliance Tools", "Advanced Security", "SLA Guarantee"],
+      price: "$1,299",
+      period: "/month",
+      originalPrice: "$1,599",
+      features: ["White-label Options", "Dedicated Support", "Custom Development", "Compliance Tools", "Advanced Security", "SLA Guarantee", "Unlimited Users", "On-premise Option"],
       popular: false
     }
   ];
@@ -53,13 +56,25 @@ const Packages = () => {
             <span className="font-medium">perfect plan</span>
           </h2>
           <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-            Flexible packages designed to grow with your business
+            Transparent pricing with no hidden fees. Start your free trial today.
           </p>
         </div>
       </div>
 
       {/* Content Section */}
       <div className="py-20 max-w-6xl mx-auto px-6">
+        {/* Pricing Toggle */}
+        <div className="text-center mb-12 opacity-0 animate-on-scroll">
+          <div className="inline-flex items-center bg-gray-100 rounded-full p-1 mb-8">
+            <button className="px-6 py-2 rounded-full bg-white text-gray-900 font-medium shadow-sm">
+              Monthly
+            </button>
+            <button className="px-6 py-2 rounded-full text-gray-600 font-medium">
+              Annual (Save 20%)
+            </button>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {packages.map((pkg, index) => (
             <div 
@@ -91,9 +106,15 @@ const Packages = () => {
                   </div>
                   <h3 className="text-2xl font-medium text-gray-900 mb-2">{pkg.title}</h3>
                   <p className="text-gray-600 mb-6">{pkg.description}</p>
-                  <div className="flex items-baseline justify-center">
+                  
+                  {/* Pricing */}
+                  <div className="flex items-center justify-center mb-2">
                     <span className="text-4xl font-light text-gray-900">{pkg.price}</span>
                     <span className="text-gray-500 ml-1">{pkg.period}</span>
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <span className="text-sm text-gray-400 line-through mr-2">{pkg.originalPrice}</span>
+                    <span className="text-sm text-green-600 font-medium">Save 25%</span>
                   </div>
                 </div>
                 
@@ -113,8 +134,12 @@ const Packages = () => {
                     : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                   }
                 `}>
-                  {pkg.price === "Custom" ? "Contact Sales" : "Get Started"}
+                  Start Free Trial
                 </button>
+                
+                <p className="text-xs text-gray-500 text-center mt-3">
+                  14-day free trial • No credit card required
+                </p>
               </div>
             </div>
           ))}
@@ -136,23 +161,38 @@ const Packages = () => {
           </div>
         </div>
 
-        {/* Simple comparison */}
+        {/* Pricing Features Comparison */}
         <div className="mt-20 pt-16 border-t border-gray-200">
           <div className="text-center mb-12">
-            <h3 className="text-2xl font-light text-gray-900 mb-4">What's included</h3>
+            <h3 className="text-2xl font-light text-gray-900 mb-4">What's included in every plan</h3>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             {[
-              { title: "Core Features", desc: "Essential business modules for all plans" },
-              { title: "Advanced Tools", desc: "Professional and Enterprise plans" },
-              { title: "Premium Support", desc: "Enterprise plan with dedicated support" }
+              { title: "Free Setup", desc: "Professional onboarding included" },
+              { title: "Data Migration", desc: "We handle your data transfer" },
+              { title: "Training Included", desc: "Comprehensive user training" },
+              { title: "24/7 Support", desc: "Always here when you need us" }
             ].map((item, index) => (
               <div key={index} className="p-6">
+                <div className="w-12 h-12 bg-pulse-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Check className="w-6 h-6 text-pulse-500" />
+                </div>
                 <h4 className="font-medium text-gray-900 mb-2">{item.title}</h4>
                 <p className="text-sm text-gray-600">{item.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Money Back Guarantee */}
+        <div className="mt-16 text-center opacity-0 animate-on-scroll" style={{ animationDelay: "0.6s" }}>
+          <div className="bg-green-50 rounded-2xl p-8 border border-green-200">
+            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Check className="w-6 h-6 text-green-600" />
+            </div>
+            <h4 className="text-lg font-medium text-gray-900 mb-2">30-Day Money-Back Guarantee</h4>
+            <p className="text-gray-600">Not satisfied? Get a full refund within 30 days, no questions asked.</p>
           </div>
         </div>
       </div>
