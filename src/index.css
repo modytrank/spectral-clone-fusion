@@ -200,6 +200,27 @@
   }
 }
 
+/* Back to top button specific animations */
+@keyframes backToTopFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes backToTopPulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(73, 66, 228, 0.1);
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(73, 66, 228, 0.2);
+  }
+}
+
 .animate-slide-up {
   animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -228,6 +249,14 @@
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
+}
+
+.animate-back-to-top-enter {
+  animation: backToTopFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-back-to-top-pulse {
+  animation: backToTopPulse 2s ease-in-out infinite;
 }
 
 @layer components {
@@ -273,6 +302,19 @@
   
   .nav-link {
     @apply relative text-gray-800 hover:text-pulse-500 py-2 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-pulse-500 after:transition-all hover:after:w-full;
+  }
+
+  /* Back to top button styles */
+  .back-to-top-button {
+    @apply fixed bottom-8 right-8 z-50;
+    @apply w-12 h-12 rounded-full;
+    @apply bg-white/90 backdrop-blur-sm;
+    @apply border border-gray-200/50;
+    @apply shadow-lg hover:shadow-xl;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-110 hover:bg-white;
+    @apply focus:outline-none focus:ring-2 focus:ring-pulse-500/20 focus:ring-offset-2;
+    @apply active:scale-95;
   }
 }
 
@@ -363,5 +405,12 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+/* Mobile optimizations for back to top button */
+@media (max-width: 640px) {
+  .back-to-top-button {
+    @apply bottom-6 right-6 w-11 h-11;
   }
 }
