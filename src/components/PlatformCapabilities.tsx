@@ -30,22 +30,33 @@ const PlatformCapabilities = () => {
   ];
 
   return (
-    <section className="py-32 bg-gray-50" id="platform">
-      <div className="max-w-5xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-24 opacity-0 animate-slide-up">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-white text-gray-500 text-xs font-medium mb-8 tracking-wide uppercase shadow-sm">
+    <section className="bg-white" id="platform">
+      {/* Header with Background */}
+      <div 
+        className="relative py-24 bg-cover bg-center"
+        style={{
+          backgroundImage: 'url("/Header-background.webp")',
+          backgroundPosition: 'center 30%'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-pulse-500/20 to-purple-500/20"></div>
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-6">
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white text-pulse-500 mr-2 text-xs font-bold">03</span>
             Platform Capabilities
           </div>
-          <h2 className="text-5xl md:text-6xl font-extralight text-gray-900 mb-8 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
             Everything you need,<br />
-            <span className="font-light">beautifully integrated</span>
+            <span className="font-medium">beautifully integrated</span>
           </h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
             A comprehensive platform designed for modern businesses
           </p>
         </div>
+      </div>
 
+      {/* Content Section */}
+      <div className="py-20 max-w-5xl mx-auto px-6">
         {/* Capabilities Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {capabilities.map((capability, index) => (

@@ -33,22 +33,33 @@ const Packages = () => {
   ];
 
   return (
-    <section className="py-24 bg-white" id="packages">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20 opacity-0 animate-on-scroll">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3"></span>
+    <section className="bg-white" id="packages">
+      {/* Header with Background */}
+      <div 
+        className="relative py-24 bg-cover bg-center"
+        style={{
+          backgroundImage: 'url("/Header-background.webp")',
+          backgroundPosition: 'center 30%'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20"></div>
+        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-6">
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white text-pulse-500 mr-2 text-xs font-bold">08</span>
             Packages
           </div>
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
             Choose your<br />
             <span className="font-medium">perfect plan</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
             Flexible packages designed to grow with your business
           </p>
         </div>
+      </div>
 
+      {/* Content Section */}
+      <div className="py-20 max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {packages.map((pkg, index) => (
             <div 
