@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Settings, Building2, Brain, Palette, Database, Headphones } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Services = () => {
   const services = [
@@ -58,25 +59,29 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div 
+            <Card 
               key={index}
-              className="bg-white rounded-2xl p-6 shadow-elegant hover:shadow-elegant-hover transition-all duration-300 hover:translate-y-[-5px] opacity-0 animate-on-scroll"
+              className="hover:shadow-elegant-hover transition-all duration-300 hover:translate-y-[-5px] opacity-0 animate-on-scroll"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-xl mb-4">
-                <service.icon className="w-6 h-6 text-pulse-500" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">{service.title}</h3>
-              <p className="text-gray-600 mb-4 text-sm">{service.description}</p>
-              <ul className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start text-sm text-gray-700">
-                    <div className="w-1.5 h-1.5 bg-pulse-500 rounded-full mt-2 mr-2 flex-shrink-0"></div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <CardHeader className="pb-4">
+                <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-xl mb-4">
+                  <service.icon className="w-6 h-6 text-pulse-500" />
+                </div>
+                <CardTitle className="text-xl text-gray-900">{service.title}</CardTitle>
+                <CardDescription className="text-sm">{service.description}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start text-sm text-gray-700">
+                      <div className="w-1.5 h-1.5 bg-pulse-500 rounded-full mt-2 mr-2 flex-shrink-0"></div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

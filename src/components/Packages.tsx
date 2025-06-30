@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Zap, Building, Building2, MessageSquare } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Packages = () => {
   const packages = [
@@ -50,75 +51,83 @@ const Packages = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {packages.map((pkg, index) => (
-            <div 
+            <Card 
               key={index}
-              className="bg-white rounded-2xl p-6 shadow-elegant hover:shadow-elegant-hover transition-all duration-300 hover:translate-y-[-5px] opacity-0 animate-on-scroll"
+              className="hover:shadow-elegant-hover transition-all duration-300 hover:translate-y-[-5px] opacity-0 animate-on-scroll"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${pkg.color}`}>
-                <pkg.icon className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">{pkg.title}</h3>
-              <p className="text-gray-600 mb-4 text-sm">{pkg.description}</p>
-              <ul className="space-y-2">
-                {pkg.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start text-sm text-gray-700">
-                    <div className="w-1.5 h-1.5 bg-pulse-500 rounded-full mt-2 mr-2 flex-shrink-0"></div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <CardHeader className="pb-4">
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${pkg.color}`}>
+                  <pkg.icon className="w-6 h-6" />
+                </div>
+                <CardTitle className="text-xl text-gray-900">{pkg.title}</CardTitle>
+                <CardDescription className="text-sm">{pkg.description}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {pkg.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start text-sm text-gray-700">
+                      <div className="w-1.5 h-1.5 bg-pulse-500 rounded-full mt-2 mr-2 flex-shrink-0"></div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
-        <div className="bg-white rounded-2xl p-8 shadow-elegant opacity-0 animate-on-scroll" style={{ animationDelay: "0.5s" }}>
-          <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">Get Your Custom Quote</h3>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
-              <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent" />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Industry</label>
-              <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent">
-                <option>Select Industry</option>
-                <option>Education</option>
-                <option>Retail</option>
-                <option>Manufacturing</option>
-                <option>Logistics</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Company Size</label>
-              <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent">
-                <option>Select Size</option>
-                <option>Startup (1-10 employees)</option>
-                <option>SME (11-100 employees)</option>
-                <option>Enterprise (100+ employees)</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Region</label>
-              <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent">
-                <option>Select Region</option>
-                <option>UAE</option>
-                <option>Saudi Arabia</option>
-                <option>Egypt</option>
-                <option>Other MENA</option>
-              </select>
-            </div>
-            <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Custom Requirements</label>
-              <textarea rows={4} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent" placeholder="Describe your specific needs..."></textarea>
-            </div>
-            <div className="md:col-span-2 text-center">
-              <button type="submit" className="bg-pulse-500 text-white px-8 py-3 rounded-lg hover:bg-pulse-600 transition-colors duration-200">
-                Get Custom Quote
-              </button>
-            </div>
-          </form>
-        </div>
+        <Card className="opacity-0 animate-on-scroll" style={{ animationDelay: "0.5s" }}>
+          <CardHeader>
+            <CardTitle className="text-2xl text-gray-900 text-center">Get Your Custom Quote</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Industry</label>
+                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent">
+                  <option>Select Industry</option>
+                  <option>Education</option>
+                  <option>Retail</option>
+                  <option>Manufacturing</option>
+                  <option>Logistics</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Company Size</label>
+                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent">
+                  <option>Select Size</option>
+                  <option>Startup (1-10 employees)</option>
+                  <option>SME (11-100 employees)</option>
+                  <option>Enterprise (100+ employees)</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Region</label>
+                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent">
+                  <option>Select Region</option>
+                  <option>UAE</option>
+                  <option>Saudi Arabia</option>
+                  <option>Egypt</option>
+                  <option>Other MENA</option>
+                </select>
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Custom Requirements</label>
+                <textarea rows={4} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent" placeholder="Describe your specific needs..."></textarea>
+              </div>
+              <div className="md:col-span-2 text-center">
+                <button type="submit" className="bg-pulse-500 text-white px-8 py-3 rounded-lg hover:bg-pulse-600 transition-colors duration-200">
+                  Get Custom Quote
+                </button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );

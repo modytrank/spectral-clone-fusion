@@ -1,6 +1,7 @@
 
 import React from "react";
 import { GraduationCap, ShoppingCart, Factory, Truck, Users, Building, TrendingUp } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Industries = () => {
   const industries = [
@@ -72,35 +73,39 @@ const Industries = () => {
         {/* Industries Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {industries.map((industry, index) => (
-            <div 
+            <Card 
               key={index}
-              className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-elegant-hover transition-all duration-300 hover:translate-y-[-5px] opacity-0 animate-on-scroll"
+              className="hover:shadow-elegant-hover transition-all duration-300 hover:translate-y-[-5px] opacity-0 animate-on-scroll border-gray-200"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <div className="flex items-center mb-6">
-                <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-xl mr-4">
-                  <industry.icon className="w-6 h-6 text-pulse-500" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900">{industry.title}</h3>
-                  <p className="text-gray-600 text-sm">{industry.description}</p>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-3 mb-4">
-                {industry.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center text-sm">
-                    <div className="w-2 h-2 bg-pulse-500 rounded-full mr-2"></div>
-                    <span className="text-gray-700">{feature}</span>
+              <CardHeader>
+                <div className="flex items-center mb-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-xl mr-4">
+                    <industry.icon className="w-6 h-6 text-pulse-500" />
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <CardTitle className="text-xl text-gray-900">{industry.title}</CardTitle>
+                    <CardDescription className="text-sm">{industry.description}</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
               
-              <div className="pt-4 border-t border-gray-100">
-                <p className="text-xs text-gray-500 font-medium">Ideal for:</p>
-                <p className="text-sm text-gray-700">{industry.clients}</p>
-              </div>
-            </div>
+              <CardContent>
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                  {industry.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center text-sm">
+                      <div className="w-2 h-2 bg-pulse-500 rounded-full mr-2"></div>
+                      <span className="text-gray-700">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="pt-4 border-t border-gray-100">
+                  <p className="text-xs text-gray-500 font-medium">Ideal for:</p>
+                  <p className="text-sm text-gray-700">{industry.clients}</p>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
@@ -112,17 +117,19 @@ const Industries = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {companySizes.map((size, index) => (
-            <div 
+            <Card 
               key={index}
-              className="text-center p-6 bg-gray-50 rounded-2xl opacity-0 animate-on-scroll"
+              className="text-center opacity-0 animate-on-scroll bg-gray-50 border-0"
               style={{ animationDelay: `${0.2 + 0.1 * index}s` }}
             >
-              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${size.color}`}>
-                <size.icon className="w-6 h-6" />
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">{size.title}</h4>
-              <p className="text-sm text-gray-600">{size.description}</p>
-            </div>
+              <CardContent className="pt-6">
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${size.color}`}>
+                  <size.icon className="w-6 h-6" />
+                </div>
+                <CardTitle className="text-lg text-gray-900 mb-2">{size.title}</CardTitle>
+                <CardDescription className="text-sm">{size.description}</CardDescription>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
