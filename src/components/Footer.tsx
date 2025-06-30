@@ -34,7 +34,6 @@ const Footer = () => {
             {/* Brand section */}
             <div className="lg:col-span-2">
               <div className="flex items-center mb-6">
-                <img src="/logo.svg" alt="MovinWare Logo" className="h-8 w-auto mr-3 invert" />
                 <span className="text-2xl font-bold text-white">MovinWare</span>
               </div>
               <p className="text-gray-300 leading-relaxed mb-8 max-w-md">
