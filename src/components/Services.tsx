@@ -57,6 +57,33 @@ const Services = () => {
 
   return (
     <section className="bg-gray-50" id="services">
+      {/* Enhanced Header with Background */}
+      <div 
+        className="relative py-32 bg-cover bg-center"
+        style={{
+          backgroundImage: 'url("/Header-background.webp")',
+          backgroundPosition: 'center 30%'
+        }}
+      >
+        {/* Enhanced overlay with better contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/40 via-pink-600/30 to-red-600/40"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+          <div className="section-header-badge animate-badge-float mb-8">
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-pulse-500 text-white mr-3 text-sm font-bold">06</span>
+            <span className="font-semibold">Professional Services</span>
+          </div>
+          <h2 className="section-header-title animate-header-glow">
+            Expert services for<br />
+            <span className="font-medium">successful implementation</span>
+          </h2>
+          <p className="section-header-subtitle">
+            Our certified professionals ensure your ERP implementation is delivered on time, within budget, and exceeds expectations
+          </p>
+        </div>
+      </div>
+
       {/* Content Section */}
       <div className="py-20 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">

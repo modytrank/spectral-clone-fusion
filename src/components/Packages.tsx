@@ -37,6 +37,33 @@ const Packages = () => {
 
   return (
     <section className="bg-white" id="packages">
+      {/* Enhanced Header with Background */}
+      <div 
+        className="relative py-32 bg-cover bg-center"
+        style={{
+          backgroundImage: 'url("/Header-background.webp")',
+          backgroundPosition: 'center 30%'
+        }}
+      >
+        {/* Enhanced overlay with better contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/40 via-purple-600/30 to-pink-600/40"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+          <div className="section-header-badge animate-badge-float mb-8">
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-pulse-500 text-white mr-3 text-sm font-bold">08</span>
+            <span className="font-semibold">Packages</span>
+          </div>
+          <h2 className="section-header-title animate-header-glow">
+            Choose your<br />
+            <span className="font-medium">perfect plan</span>
+          </h2>
+          <p className="section-header-subtitle">
+            Transparent pricing with no hidden fees. Start your free trial today.
+          </p>
+        </div>
+      </div>
+
       {/* Content Section */}
       <div className="py-20 max-w-6xl mx-auto px-6">
         {/* Pricing Toggle */}

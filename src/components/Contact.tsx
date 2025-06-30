@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Mail, Phone, MapPin, MessageCircle, Calendar, Users } from "lucide-react";
 
@@ -44,6 +45,17 @@ const Contact = () => {
   return (
     <section className="py-20 bg-white" id="contact">
       <div className="section-container">
+        <div className="text-center mb-16 opacity-0 animate-on-scroll">
+          <div className="pulse-chip mx-auto mb-4">
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">10</span>
+            <span>Contact Us</span>
+          </div>
+          <h2 className="section-title mb-4">Get In Touch</h2>
+          <p className="section-subtitle mx-auto">
+            Ready to transform your business? Contact us today to get started.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div className="opacity-0 animate-on-scroll">
