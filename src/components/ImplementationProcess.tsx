@@ -1,150 +1,112 @@
 import React from "react";
-import { Search, Palette, Code, Rocket, TrendingUp, Clock, CheckCircle, Users } from "lucide-react";
+import { Search, Palette, Code, Rocket, TrendingUp } from "lucide-react";
 
 const ImplementationProcess = () => {
   const phases = [
     {
       icon: Search,
-      title: "Discovery & Assessment",
-      duration: "Week 1-2",
-      description: "We analyze your current processes, identify pain points, and create a detailed implementation roadmap.",
-      deliverables: ["Process Analysis", "Requirements Document", "Implementation Plan"],
-      color: "bg-blue-50 text-blue-600"
+      title: "Assessment & Planning",
+      duration: "1-2 weeks",
+      activities: ["Process Mapping", "Gap Analysis", "Audit", "Requirements"],
+      deliverables: ["Reports", "Roadmap"]
     },
     {
       icon: Palette,
       title: "Design & Configuration",
-      duration: "Week 3-5",
-      description: "Custom workflows, system configuration, and user interface design tailored to your business needs.",
-      deliverables: ["System Design", "Workflow Configuration", "UI Mockups"],
-      color: "bg-purple-50 text-purple-600"
+      duration: "2-3 weeks",
+      activities: ["Workflow", "AI", "Bilingual", "Security"],
+      deliverables: ["Blueprint", "Specs", "Mockups", "Integration Plan"]
     },
     {
       icon: Code,
-      title: "Development & Integration",
-      duration: "Week 6-9",
-      description: "System development, data migration, third-party integrations, and comprehensive testing.",
-      deliverables: ["Developed System", "Data Migration", "Integration Testing"],
-      color: "bg-green-50 text-green-600"
+      title: "Development & Testing",
+      duration: "3-4 weeks",
+      activities: ["Dev", "Demos", "Migration", "QA"],
+      deliverables: ["Ready System", "Data", "Results", "Docs"]
     },
     {
       icon: Rocket,
       title: "Deployment & Training",
-      duration: "Week 10-11",
-      description: "Go-live support with comprehensive user training, system monitoring, and immediate support.",
-      deliverables: ["Live System", "Trained Users", "Support Documentation"],
-      color: "bg-orange-50 text-orange-600"
+      duration: "1-2 weeks",
+      activities: ["Training", "Go-Live", "Monitoring", "Support"],
+      deliverables: ["Trained Users", "Live System", "Support Plan"]
     },
     {
       icon: TrendingUp,
-      title: "Optimization & Support",
+      title: "Optimization & Growth",
       duration: "Ongoing",
-      description: "Continuous optimization, performance monitoring, feature enhancements, and dedicated support.",
-      deliverables: ["Performance Reports", "Feature Updates", "24/7 Support"],
-      color: "bg-pulse-50 text-pulse-600"
+      activities: ["Reviews", "Tuning", "Upgrades"],
+      deliverables: ["Reports", "Features", "Growth Plan"]
     }
   ];
 
-  const timeline = [
-    { week: "1-2", phase: "Discovery" },
-    { week: "3-5", phase: "Design" },
-    { week: "6-9", phase: "Development" },
-    { week: "10-11", phase: "Deployment" },
-    { week: "12+", phase: "Support" }
+  const proofPoints = [
+    "Faster Implementation",
+    "Zero Downtime",
+    "High Adoption within first month"
   ];
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden" id="implementation">
-      {/* Modern decorative elements */}
-      <div className="pattern-dots absolute inset-0"></div>
-      <div className="decorative-blob w-96 h-96 -bottom-48 -left-48"></div>
-      <div className="liquid-element w-full h-32 top-1/4 left-0"></div>
-      <div className="floating-particle top-32 right-1/5"></div>
-      <div className="floating-particle bottom-24 left-1/3" style={{ animationDelay: "2.2s" }}></div>
-      <div className="crystalline-element top-24 left-1/6"></div>
-      <div className="crystalline-element bottom-32 right-1/4" style={{ animationDelay: "1.8s" }}></div>
+    <section className="py-20 bg-white relative" id="implementation">
+      {/* Simple pattern background */}
+      <div className="pattern-grid absolute inset-0"></div>
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-20 opacity-0 animate-slide-up">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3 animate-gentle-float"></span>
-            Implementation Process
+      <div className="section-container relative z-10">
+        <div className="text-center mb-16 opacity-0 animate-on-scroll">
+          <div className="pulse-chip mx-auto mb-4">
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">07</span>
+            <span>Implementation Process</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight">
-            From concept to<br />
-            <span className="font-medium animate-gradient-flow bg-clip-text text-transparent">go-live in 11 weeks</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Our proven methodology ensures successful implementation with minimal disruption to your business
+          <h2 className="section-title mb-4">Proven Implementation Methodology</h2>
+          <p className="section-subtitle mx-auto">
+            Our structured approach ensures successful ERP implementation with minimal disruption.
           </p>
         </div>
 
-        {/* Timeline Overview */}
-        <div className="mb-20 opacity-0 animate-fade-scale" style={{ animationDelay: "0.2s" }}>
-          <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100 relative overflow-hidden">
-            <div className="liquid-element w-full h-8 top-0 left-0"></div>
-            <h3 className="text-xl font-medium text-gray-900 mb-8 text-center relative z-10">Implementation Timeline</h3>
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 relative z-10">
-              {timeline.map((item, index) => (
-                <div key={index} className="flex flex-col items-center text-center relative">
-                  <div className="w-12 h-12 bg-pulse-500 rounded-full flex items-center justify-center text-white font-medium mb-3 animate-crystalline" style={{ animationDelay: `${index * 0.2}s` }}>
-                    <Clock className="w-5 h-5" />
-                  </div>
-                  <div className="text-sm font-medium text-gray-900">Week {item.week}</div>
-                  <div className="text-xs text-gray-600">{item.phase}</div>
-                  {index < timeline.length - 1 && (
-                    <div className="hidden md:block absolute left-full top-6 w-full h-px bg-gray-200"></div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Detailed Phases */}
-        <div className="space-y-12">
+        <div className="space-y-8 mb-12">
           {phases.map((phase, index) => (
             <div 
               key={index}
-              className="opacity-0 animate-slide-up"
-              style={{ animationDelay: `${0.1 * (index + 3)}s` }}
+              className="bg-white border border-gray-200 rounded-2xl p-6 lg:p-8 hover:shadow-elegant-hover transition-all duration-300 opacity-0 animate-on-scroll"
+              style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-500 interactive-card">
-                <div className="geometric-shape w-8 h-8 top-8 right-8"></div>
-                <div className="crystalline-element top-12 right-12" style={{ animationDelay: `${index * 0.4}s` }}></div>
+              <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-xl">
+                    <phase.icon className="w-6 h-6 text-pulse-500" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">{phase.title}</h3>
+                    <p className="text-pulse-500 font-medium">{phase.duration}</p>
+                  </div>
+                </div>
                 
-                <div className="p-8 lg:p-12 relative z-10">
-                  <div className="flex flex-col lg:flex-row lg:items-center gap-8">
-                    {/* Phase Info */}
-                    <div className="flex-1">
-                      <div className="flex items-center mb-4">
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mr-4 ${phase.color} animate-crystalline`} style={{ animationDelay: `${index * 0.3}s` }}>
-                          <phase.icon className="w-6 h-6" />
-                        </div>
-                        <div>
-                          <h3 className="text-2xl font-medium text-gray-900">{phase.title}</h3>
-                          <p className="text-pulse-500 font-medium animate-gentle-float">{phase.duration}</p>
-                        </div>
-                      </div>
-                      <p className="text-gray-600 leading-relaxed mb-6">
-                        {phase.description}
-                      </p>
+                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <h4 className="font-medium text-gray-900 mb-2">Activities</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {phase.activities.map((activity, activityIndex) => (
+                        <span 
+                          key={activityIndex}
+                          className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                        >
+                          {activity}
+                        </span>
+                      ))}
                     </div>
-
-                    {/* Deliverables */}
-                    <div className="lg:w-80">
-                      <h4 className="text-sm font-medium text-gray-900 mb-4 flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2 animate-gentle-float" />
-                        Key Deliverables
-                      </h4>
-                      <div className="space-y-3">
-                        {phase.deliverables.map((deliverable, deliverableIndex) => (
-                          <div key={deliverableIndex} className="flex items-center text-sm text-gray-600">
-                            <div className="w-2 h-2 bg-pulse-500 rounded-full mr-3 animate-gentle-float" style={{ animationDelay: `${deliverableIndex * 0.2}s` }}></div>
-                            {deliverable}
-                          </div>
-                        ))}
-                      </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-gray-900 mb-2">Deliverables</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {phase.deliverables.map((deliverable, deliverableIndex) => (
+                        <span 
+                          key={deliverableIndex}
+                          className="px-3 py-1 bg-pulse-100 text-pulse-700 rounded-full text-sm"
+                        >
+                          {deliverable}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -153,46 +115,18 @@ const ImplementationProcess = () => {
           ))}
         </div>
 
-        {/* Success Metrics */}
-        <div className="mt-20">
-          <div className="text-center mb-12 opacity-0 animate-slide-up" style={{ animationDelay: "0.8s" }}>
-            <h3 className="text-2xl font-light text-gray-900 mb-4">Why our process works</h3>
-            <p className="text-gray-600">Proven results from our implementation methodology</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { metric: "85%", label: "Faster Implementation", desc: "Compared to traditional methods" },
-              { metric: "Zero", label: "Downtime", desc: "Seamless transition process" },
-              { metric: "98%", label: "User Adoption", desc: "Within first month" },
-              { metric: "24/7", label: "Support", desc: "Dedicated implementation team" }
-            ].map((stat, index) => (
+        <div className="text-center">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-6">Proof Points</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {proofPoints.map((point, index) => (
               <div 
-                key={index} 
-                className="text-center bg-gray-50 rounded-3xl p-6 border border-gray-100 opacity-0 animate-fade-scale hover:animate-gentle-float relative overflow-hidden" 
-                style={{ animationDelay: `${0.9 + 0.1 * index}s` }}
+                key={index}
+                className="bg-pulse-50 rounded-2xl p-6 opacity-0 animate-on-scroll"
+                style={{ animationDelay: `${0.6 + 0.1 * index}s` }}
               >
-                <div className="crystalline-element top-2 right-2" style={{ animationDelay: `${index * 0.5}s` }}></div>
-                <div className="text-3xl font-light text-pulse-500 mb-2 animate-gentle-float" style={{ animationDelay: `${index * 0.3}s` }}>{stat.metric}</div>
-                <div className="font-medium text-gray-900 mb-1">{stat.label}</div>
-                <div className="text-xs text-gray-600">{stat.desc}</div>
+                <p className="text-pulse-700 font-medium">{point}</p>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="mt-20 text-center opacity-0 animate-slide-up" style={{ animationDelay: "1.3s" }}>
-          <div className="bg-gray-50 rounded-3xl p-12 border border-gray-100 relative overflow-hidden">
-            <div className="liquid-element w-full h-12 top-0 left-0"></div>
-            <Users className="w-12 h-12 text-pulse-500 mx-auto mb-6 animate-crystalline" />
-            <h3 className="text-2xl font-light text-gray-900 mb-4">Ready to get started?</h3>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Schedule a consultation with our implementation experts to discuss your project timeline and requirements.
-            </p>
-            <button className="bg-pulse-500 text-white px-8 py-3 rounded-full font-medium hover:bg-pulse-600 transition-colors duration-300 animate-gentle-float">
-              Schedule Consultation
-            </button>
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 245 83% 58%;
+    --primary: 24 95% 53%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -42,7 +42,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 245 83% 58%;
+    --ring: 24 95% 53%;
 
     --radius: 0.5rem;
 
@@ -64,9 +64,9 @@
     --card-foreground: 210 40% 98%;
 
     --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 245 83% 58%;
+    --primary: 24 95% 53%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -128,202 +128,6 @@
   }
 }
 
-/* Modern animation effects replacing ball animations */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes gentleFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes morphingBlob {
-  0%, 100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    transform: rotate(0deg);
-  }
-  25% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-    transform: rotate(90deg);
-  }
-  50% {
-    border-radius: 50% 60% 30% 60% / 60% 40% 60% 40%;
-    transform: rotate(180deg);
-  }
-  75% {
-    border-radius: 60% 40% 60% 30% / 40% 70% 40% 50%;
-    transform: rotate(270deg);
-  }
-}
-
-@keyframes liquidWave {
-  0% {
-    transform: translateX(-100%) skewX(0deg);
-  }
-  50% {
-    transform: translateX(0%) skewX(-5deg);
-  }
-  100% {
-    transform: translateX(100%) skewX(0deg);
-  }
-}
-
-@keyframes particleFloat {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.3;
-  }
-  25% {
-    transform: translateY(-10px) rotate(90deg);
-    opacity: 0.7;
-  }
-  50% {
-    transform: translateY(-5px) rotate(180deg);
-    opacity: 1;
-  }
-  75% {
-    transform: translateY(-15px) rotate(270deg);
-    opacity: 0.5;
-  }
-}
-
-@keyframes geometricShift {
-  0% {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  }
-  25% {
-    clip-path: polygon(0% 0%, 90% 10%, 90% 90%, 10% 100%);
-  }
-  50% {
-    clip-path: polygon(10% 10%, 90% 0%, 100% 90%, 0% 90%);
-  }
-  75% {
-    clip-path: polygon(10% 0%, 100% 10%, 90% 100%, 0% 90%);
-  }
-  100% {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  }
-}
-
-@keyframes gradientFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes crystalline {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-    filter: hue-rotate(0deg);
-  }
-  33% {
-    transform: scale(1.05) rotate(120deg);
-    filter: hue-rotate(120deg);
-  }
-  66% {
-    transform: scale(0.95) rotate(240deg);
-    filter: hue-rotate(240deg);
-  }
-}
-
-/* Animation classes */
-.animate-slide-up {
-  animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-slide-left {
-  animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-slide-right {
-  animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-fade-scale {
-  animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-gentle-float {
-  animation: gentleFloat 3s ease-in-out infinite;
-}
-
-.animate-morphing-blob {
-  animation: morphingBlob 8s ease-in-out infinite;
-}
-
-.animate-liquid-wave {
-  animation: liquidWave 3s ease-in-out infinite;
-}
-
-.animate-particle-float {
-  animation: particleFloat 4s ease-in-out infinite;
-}
-
-.animate-geometric-shift {
-  animation: geometricShift 6s ease-in-out infinite;
-}
-
-.animate-gradient-flow {
-  background: linear-gradient(-45deg, #4942E4, #8B5CF6, #EC4899, #EF4444);
-  background-size: 400% 400%;
-  animation: gradientFlow 4s ease infinite;
-}
-
-.animate-crystalline {
-  animation: crystalline 5s ease-in-out infinite;
-}
-
 @layer components {
   .text-mask-image {
     background-clip: text;
@@ -369,31 +173,28 @@
     @apply relative text-gray-800 hover:text-pulse-500 py-2 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-pulse-500 after:transition-all hover:after:w-full;
   }
 
-  /* Modern decorative elements */
-  .decorative-blob {
-    @apply absolute opacity-20 animate-morphing-blob;
-    background: linear-gradient(45deg, #4942E4, #8B5CF6);
+  /* Simple background patterns only */
+  .pattern-dots {
+    background-image: radial-gradient(circle, #f97316 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.1;
   }
 
-  .liquid-element {
-    @apply absolute opacity-10 animate-liquid-wave;
-    background: linear-gradient(90deg, transparent, rgba(73, 66, 228, 0.3), transparent);
+  .pattern-grid {
+    background-image: 
+      linear-gradient(rgba(249, 115, 22, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(249, 115, 22, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
   }
 
-  .floating-particle {
-    @apply absolute w-2 h-2 rounded-full opacity-30 animate-particle-float;
-    background: radial-gradient(circle, #4942E4, #8B5CF6);
-  }
-
-  .geometric-shape {
-    @apply absolute opacity-15 animate-geometric-shift;
-    background: linear-gradient(135deg, #4942E4, #EC4899);
-  }
-
-  .crystalline-element {
-    @apply absolute w-4 h-4 opacity-25 animate-crystalline;
-    background: linear-gradient(45deg, #4942E4, #8B5CF6, #EC4899);
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  .pattern-waves {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(249, 115, 22, 0.05) 10px,
+      rgba(249, 115, 22, 0.05) 20px
+    );
   }
 }
 
@@ -442,49 +243,4 @@
 .parallax {
   transform: translateY(var(--parallax-y, 0));
   transition: transform 0.1s ease-out;
-}
-
-/* Interactive hover effects */
-.interactive-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.interactive-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s;
-}
-
-.interactive-card:hover::before {
-  left: 100%;
-}
-
-/* Advanced background patterns */
-.pattern-dots {
-  background-image: radial-gradient(circle, #4942E4 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.1;
-}
-
-.pattern-grid {
-  background-image: 
-    linear-gradient(rgba(73, 66, 228, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(73, 66, 228, 0.1) 1px, transparent 1px);
-  background-size: 30px 30px;
-}
-
-.pattern-waves {
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(73, 66, 228, 0.05) 10px,
-    rgba(73, 66, 228, 0.05) 20px
-  );
 }
