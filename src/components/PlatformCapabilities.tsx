@@ -31,32 +31,6 @@ const PlatformCapabilities = () => {
 
   return (
     <section className="bg-white" id="platform">
-      {/* Enhanced Header with Background */}
-      <div 
-        className="relative py-32 bg-cover bg-center"
-        style={{
-          backgroundImage: 'url("/Header-background.webp")',
-          backgroundPosition: 'center 30%'
-        }}
-      >
-        {/* Enhanced overlay with better contrast */}
-        <div className="absolute inset-0 bg-gradient-to-br from-pulse-600/40 via-purple-600/30 to-blue-600/40"></div>
-        <div className="absolute inset-0 bg-black/20"></div>
-        
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <div className="section-header-badge animate-badge-float mb-8">
-            <span className="font-semibold">Platform Capabilities</span>
-          </div>
-          <h2 className="section-header-title animate-header-glow">
-            Everything you need,<br />
-            <span className="font-medium">beautifully integrated</span>
-          </h2>
-          <p className="section-header-subtitle">
-            A comprehensive platform designed for modern businesses
-          </p>
-        </div>
-      </div>
-
       {/* Content Section */}
       <div className="py-20 max-w-5xl mx-auto px-6">
         {/* Capabilities Grid */}
