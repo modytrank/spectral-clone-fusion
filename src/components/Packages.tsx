@@ -56,13 +56,25 @@ const Packages = () => {
             <span className="font-medium">perfect plan</span>
           </h2>
           <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-            Flexible packages designed to meet your business needs and budget.
+            Transparent pricing with no hidden fees. Start your free trial today.
           </p>
         </div>
       </div>
 
       {/* Content Section */}
       <div className="py-20 max-w-6xl mx-auto px-6">
+        {/* Pricing Toggle */}
+        <div className="text-center mb-12 opacity-0 animate-on-scroll">
+          <div className="inline-flex items-center bg-gray-100 rounded-full p-1 mb-8">
+            <button className="px-6 py-2 rounded-full bg-white text-gray-900 font-medium shadow-sm">
+              Monthly
+            </button>
+            <button className="px-6 py-2 rounded-full text-gray-600 font-medium">
+              Annual (Save 20%)
+            </button>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {packages.map((pkg, index) => (
             <div 
@@ -95,7 +107,7 @@ const Packages = () => {
                   <h3 className="text-2xl font-medium text-gray-900 mb-2">{pkg.title}</h3>
                   <p className="text-gray-600 mb-6">{pkg.description}</p>
                   
-                  {/* Simple Pricing Display */}
+                  {/* Pricing */}
                   <div className="flex items-center justify-center mb-2">
                     <span className="text-4xl font-light text-gray-900">{pkg.price}</span>
                     <span className="text-gray-500 ml-1">{pkg.period}</span>
@@ -122,8 +134,12 @@ const Packages = () => {
                     : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                   }
                 `}>
-                  Get Started
+                  Start Free Trial
                 </button>
+                
+                <p className="text-xs text-gray-500 text-center mt-3">
+                  14-day free trial • No credit card required
+                </p>
               </div>
             </div>
           ))}
@@ -142,6 +158,41 @@ const Packages = () => {
             <button className="bg-pulse-500 text-white px-8 py-3 rounded-full font-medium hover:bg-pulse-600 transition-colors duration-300">
               Get Custom Quote
             </button>
+          </div>
+        </div>
+
+        {/* Pricing Features Comparison */}
+        <div className="mt-20 pt-16 border-t border-gray-200">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-light text-gray-900 mb-4">What's included in every plan</h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            {[
+              { title: "Free Setup", desc: "Professional onboarding included" },
+              { title: "Data Migration", desc: "We handle your data transfer" },
+              { title: "Training Included", desc: "Comprehensive user training" },
+              { title: "24/7 Support", desc: "Always here when you need us" }
+            ].map((item, index) => (
+              <div key={index} className="p-6">
+                <div className="w-12 h-12 bg-pulse-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Check className="w-6 h-6 text-pulse-500" />
+                </div>
+                <h4 className="font-medium text-gray-900 mb-2">{item.title}</h4>
+                <p className="text-sm text-gray-600">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Money Back Guarantee */}
+        <div className="mt-16 text-center opacity-0 animate-on-scroll" style={{ animationDelay: "0.6s" }}>
+          <div className="bg-green-50 rounded-2xl p-8 border border-green-200">
+            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Check className="w-6 h-6 text-green-600" />
+            </div>
+            <h4 className="text-lg font-medium text-gray-900 mb-2">30-Day Money-Back Guarantee</h4>
+            <p className="text-gray-600">Not satisfied? Get a full refund within 30 days, no questions asked.</p>
           </div>
         </div>
       </div>
