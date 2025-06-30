@@ -137,22 +137,6 @@ const Hero = () => {
             >
               AI-powered ERP system designed for your workflow. Streamline operations, boost efficiency, and future-proof your business with MovinWare's intelligent solutions.
             </p>
-
-            {/* Metrics */}
-            <div className="grid grid-cols-3 gap-4 mb-6 sm:mb-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-pulse-500">85%</div>
-                <div className="text-xs sm:text-sm text-gray-600">Faster Implementation</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-pulse-500">98%</div>
-                <div className="text-xs sm:text-sm text-gray-600">Adoption Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-pulse-500">24/7</div>
-                <div className="text-xs sm:text-sm text-gray-600">Support</div>
-              </div>
-            </div>
             
             <div 
               className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" 
