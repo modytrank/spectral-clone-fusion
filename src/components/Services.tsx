@@ -38,7 +38,7 @@ const Services = () => {
   return (
     <section className="py-24 bg-gray-50" id="services">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20 opacity-0 animate-on-scroll">
+        <div className="text-center mb-20 opacity-0 animate-slide-up">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white text-gray-600 text-sm font-medium mb-6 shadow-sm">
             <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3"></span>
             Professional Services
@@ -53,12 +53,12 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={index}
-              className="group opacity-0 animate-on-scroll"
+              className="group opacity-0 animate-slide-up hover:animate-gentle-float"
               style={{ animationDelay: `${0.05 * index}s` }}
             >
               <div className="bg-white rounded-3xl p-8 hover:shadow-lg transition-all duration-500 border border-gray-100">
-                <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-pulse-50 transition-colors duration-300">
-                  <service.icon className="w-6 h-6 text-gray-600 group-hover:text-pulse-500 transition-colors duration-300" />
+                <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-pulse-50 transition-all duration-500">
+                  <service.icon className="w-6 h-6 text-gray-600 group-hover:text-pulse-500 transition-all duration-500" />
                 </div>
                 <h3 className="text-lg font-medium text-gray-900 mb-3">{service.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
@@ -67,16 +67,16 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="mt-20">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-8">
+        <div className="mt-20 opacity-0 animate-fade-scale" style={{ animationDelay: "0.4s" }}>
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-8 relative">
             {["Consultation", "Planning", "Implementation", "Training", "Support"].map((step, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
+              <div key={index} className="flex flex-col items-center text-center relative">
                 <div className="w-10 h-10 bg-pulse-500 rounded-full flex items-center justify-center text-white font-medium mb-3 text-sm">
                   {index + 1}
                 </div>
                 <span className="text-sm font-medium text-gray-700">{step}</span>
                 {index < 4 && (
-                  <div className="hidden md:block absolute w-full h-px bg-gray-200 top-5 left-1/2 transform -translate-y-1/2 z-0"></div>
+                  <div className="hidden md:block absolute left-full top-5 w-full h-px bg-gray-200 transform -translate-y-1/2"></div>
                 )}
               </div>
             ))}

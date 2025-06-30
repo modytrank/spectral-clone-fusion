@@ -32,7 +32,7 @@ const PlatformCapabilities = () => {
   return (
     <section className="py-24 bg-white" id="platform">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20 opacity-0 animate-on-scroll">
+        <div className="text-center mb-20 opacity-0 animate-slide-up">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium mb-6">
             <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3"></span>
             Platform Capabilities
@@ -50,13 +50,13 @@ const PlatformCapabilities = () => {
           {capabilities.map((capability, index) => (
             <div 
               key={index}
-              className="group opacity-0 animate-on-scroll"
+              className={`group opacity-0 ${index % 2 === 0 ? 'animate-slide-left' : 'animate-slide-right'}`}
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <div className="flex items-start space-x-6">
+              <div className="flex items-start space-x-6 hover:animate-gentle-float">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-gray-100 rounded-2xl flex items-center justify-center group-hover:bg-pulse-50 transition-colors duration-300">
-                    <capability.icon className="w-6 h-6 text-gray-600 group-hover:text-pulse-500 transition-colors duration-300" />
+                  <div className="w-12 h-12 bg-gray-100 rounded-2xl flex items-center justify-center group-hover:bg-pulse-50 transition-all duration-500">
+                    <capability.icon className="w-6 h-6 text-gray-600 group-hover:text-pulse-500 transition-all duration-500" />
                   </div>
                 </div>
                 <div className="flex-1 min-w-0">

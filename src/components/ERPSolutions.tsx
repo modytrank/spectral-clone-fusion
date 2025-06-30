@@ -38,7 +38,7 @@ const ERPSolutions = () => {
   return (
     <section className="py-24 bg-white" id="erp-solutions">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20 opacity-0 animate-on-scroll">
+        <div className="text-center mb-20 opacity-0 animate-slide-up">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium mb-6">
             <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3"></span>
             ERP Solutions
@@ -53,12 +53,12 @@ const ERPSolutions = () => {
           {solutions.map((solution, index) => (
             <div 
               key={index}
-              className="group opacity-0 animate-on-scroll"
+              className="group opacity-0 animate-fade-scale hover:animate-gentle-float"
               style={{ animationDelay: `${0.05 * index}s` }}
             >
-              <div className="text-center p-8 hover:bg-gray-50 rounded-3xl transition-all duration-300">
-                <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-pulse-50 transition-colors duration-300">
-                  <solution.icon className="w-8 h-8 text-gray-600 group-hover:text-pulse-500 transition-colors duration-300" />
+              <div className="text-center p-8 hover:bg-gray-50 rounded-3xl transition-all duration-500">
+                <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-pulse-50 transition-all duration-500">
+                  <solution.icon className="w-8 h-8 text-gray-600 group-hover:text-pulse-500 transition-all duration-500" />
                 </div>
                 <h3 className="text-lg font-medium text-gray-900 mb-3">{solution.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{solution.description}</p>
@@ -67,7 +67,7 @@ const ERPSolutions = () => {
           ))}
         </div>
 
-        <div className="mt-20 text-center">
+        <div className="mt-20 text-center opacity-0 animate-slide-up" style={{ animationDelay: "0.4s" }}>
           <div className="bg-gray-50 rounded-3xl p-12 border border-gray-100">
             <h3 className="text-2xl font-light text-gray-900 mb-4">Ready to streamline your operations?</h3>
             <p className="text-gray-600 mb-8 max-w-2xl mx-auto">Get a personalized demo of our ERP solutions tailored to your industry.</p>

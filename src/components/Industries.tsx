@@ -32,7 +32,7 @@ const Industries = () => {
   return (
     <section className="py-24 bg-gray-50" id="industries">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20 opacity-0 animate-on-scroll">
+        <div className="text-center mb-20 opacity-0 animate-fade-scale">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white text-gray-600 text-sm font-medium mb-6 shadow-sm">
             <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3"></span>
             Industries
@@ -47,13 +47,13 @@ const Industries = () => {
           {industries.map((industry, index) => (
             <div 
               key={index}
-              className="group opacity-0 animate-on-scroll"
+              className="group opacity-0 animate-slide-up hover:animate-gentle-float"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
               <div className="bg-white rounded-3xl p-8 hover:shadow-lg transition-all duration-500 border border-gray-100">
                 <div className="flex items-center mb-6">
-                  <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mr-4 group-hover:bg-pulse-50 transition-colors duration-300">
-                    <industry.icon className="w-7 h-7 text-gray-600 group-hover:text-pulse-500 transition-colors duration-300" />
+                  <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mr-4 group-hover:bg-pulse-50 transition-all duration-500">
+                    <industry.icon className="w-7 h-7 text-gray-600 group-hover:text-pulse-500 transition-all duration-500" />
                   </div>
                   <div>
                     <h3 className="text-xl font-medium text-gray-900">{industry.title}</h3>
@@ -68,7 +68,7 @@ const Industries = () => {
           ))}
         </div>
 
-        <div className="mt-20 text-center">
+        <div className="mt-20 text-center opacity-0 animate-fade-scale" style={{ animationDelay: "0.5s" }}>
           <div className="inline-flex items-center space-x-8 bg-white rounded-full px-8 py-4 shadow-sm border border-gray-100">
             {["Startups", "SMEs", "Enterprises"].map((size, index) => (
               <div key={index} className="flex items-center space-x-2">

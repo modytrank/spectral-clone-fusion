@@ -38,7 +38,7 @@ const ImplementationProcess = () => {
   return (
     <section className="py-24 bg-white" id="implementation">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20 opacity-0 animate-on-scroll">
+        <div className="text-center mb-20 opacity-0 animate-slide-up">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium mb-6">
             <span className="w-2 h-2 bg-pulse-500 rounded-full mr-3"></span>
             Implementation Process
@@ -56,15 +56,15 @@ const ImplementationProcess = () => {
           {phases.map((phase, index) => (
             <div 
               key={index}
-              className={`flex flex-col lg:flex-row items-center gap-12 opacity-0 animate-on-scroll ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+              className={`flex flex-col lg:flex-row items-center gap-12 opacity-0 hover:animate-gentle-float ${
+                index % 2 === 1 ? 'lg:flex-row-reverse animate-slide-right' : 'animate-slide-left'
               }`}
               style={{ animationDelay: `${0.1 * index}s` }}
             >
               <div className="flex-1 text-center lg:text-left">
                 <div className="inline-flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gray-100 rounded-2xl flex items-center justify-center mr-4">
-                    <phase.icon className="w-6 h-6 text-gray-600" />
+                  <div className="w-12 h-12 bg-gray-100 rounded-2xl flex items-center justify-center mr-4 transition-all duration-500 hover:bg-pulse-50">
+                    <phase.icon className="w-6 h-6 text-gray-600 transition-all duration-500 hover:text-pulse-500" />
                   </div>
                   <div>
                     <h3 className="text-xl font-medium text-gray-900">{phase.title}</h3>
@@ -77,8 +77,8 @@ const ImplementationProcess = () => {
               </div>
               
               <div className="flex-1 flex justify-center">
-                <div className="w-32 h-32 bg-gray-50 rounded-3xl flex items-center justify-center">
-                  <phase.icon className="w-16 h-16 text-gray-300" />
+                <div className="w-32 h-32 bg-gray-50 rounded-3xl flex items-center justify-center transition-all duration-500 hover:bg-pulse-50">
+                  <phase.icon className="w-16 h-16 text-gray-300 transition-all duration-500 hover:text-pulse-300" />
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@ const ImplementationProcess = () => {
             { metric: "Zero", label: "Downtime Deployments" },
             { metric: "98%", label: "User Adoption Rate" }
           ].map((stat, index) => (
-            <div key={index} className="bg-gray-50 rounded-3xl p-8 border border-gray-100">
+            <div key={index} className="bg-gray-50 rounded-3xl p-8 border border-gray-100 opacity-0 animate-fade-scale hover:animate-gentle-float" style={{ animationDelay: `${0.6 + 0.1 * index}s` }}>
               <div className="text-3xl font-light text-pulse-500 mb-2">{stat.metric}</div>
               <div className="text-gray-600 text-sm">{stat.label}</div>
             </div>
