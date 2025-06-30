@@ -224,7 +224,7 @@ const ValueSection = () => {
               <div className="relative z-10 p-5 sm:p-6 md:p-8 h-full flex items-center">
                 <div className="max-w-lg">
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-display text-white font-bold leading-tight mb-4">
-                    Built for <span className="text-[#FC4D0A]">MENA businesses</span>
+                    Built for <span className="text-white">MENA businesses</span>
                   </h3>
                   <ul className="text-white/90 space-y-2">
                     <li>• Bilingual Support</li>
@@ -266,7 +266,7 @@ const ValueSection = () => {
               <div className="relative z-10 p-5 sm:p-6 md:p-8 h-full flex items-center">
                 <div className="max-w-lg">
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-display text-white font-bold leading-tight mb-4">
-                    Simple, intuitive, and <span className="text-[#FC4D0A]">user-friendly</span>
+                    Simple, intuitive, and <span className="text-white">user-friendly</span>
                   </h3>
                   <ul className="text-white/90 space-y-2">
                     <li>• Intuitive Design</li>
