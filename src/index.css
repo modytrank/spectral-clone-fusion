@@ -200,6 +200,16 @@
   }
 }
 
+/* Back to top button animations */
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(0, 209, 178, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(0, 209, 178, 0.5);
+  }
+}
+
 .animate-slide-up {
   animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -228,6 +238,10 @@
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
+}
+
+.animate-button-pulse {
+  animation: buttonPulse 2s ease-in-out infinite;
 }
 
 @layer components {
@@ -273,6 +287,21 @@
   
   .nav-link {
     @apply relative text-gray-800 hover:text-pulse-500 py-2 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-pulse-500 after:transition-all hover:after:w-full;
+  }
+
+  /* Back to top button styles */
+  .back-to-top-btn {
+    @apply fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full shadow-lg hover:shadow-xl;
+    @apply flex items-center justify-center transform hover:scale-110 active:scale-95;
+    @apply transition-all duration-300 ease-in-out;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    background-color: #00D1B2;
+    color: white;
+    focus-ring-color: #00D1B2;
+  }
+
+  .back-to-top-btn:hover {
+    animation: buttonPulse 1s ease-in-out;
   }
 }
 
