@@ -39,17 +39,14 @@ const Industries = () => {
     { icon: Building, title: "Enterprises", count: "100+" }
   ];
 
+  const headerBg = {
+    backgroundImage: 'url("/Header-background.webp")',
+    backgroundPosition: 'center 30%'
+  };
+
   return (
     <section className="bg-white" id="industries">
-      {/* Enhanced Header with Background */}
-      <div 
-        className="relative py-32 bg-cover bg-center"
-        style={{
-          backgroundImage: 'url("/Header-background.webp")',
-          backgroundPosition: 'center 30%'
-        }}
-      >
-        {/* Enhanced overlay with better contrast */}
+      <div className="relative py-32 bg-cover bg-center" style={headerBg}>
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 via-green-600/30 to-teal-600/40"></div>
         <div className="absolute inset-0 bg-black/20"></div>
         
@@ -68,9 +65,7 @@ const Industries = () => {
         </div>
       </div>
 
-      {/* Content Section */}
       <div className="py-20 max-w-5xl mx-auto px-6">
-        {/* Industries Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
           {industries.map((industry, index) => (
             <div 
@@ -99,17 +94,12 @@ const Industries = () => {
           ))}
         </div>
 
-        {/* Company sizes */}
         <div className="opacity-0 animate-fade-scale" style={{ animationDelay: "0.5s" }}>
           <div className="bg-gray-50 rounded-3xl p-12 border border-gray-100">
             <h3 className="text-xl font-light text-gray-900 mb-8 text-center">Trusted by companies of all sizes</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {companySizes.map((size, index) => (
-                <div 
-                  key={index} 
-                  className="text-center group"
-                  style={{ animationDelay: `${0.6 + 0.1 * index}s` }}
-                >
+                <div key={index} className="text-center group" style={{ animationDelay: `${0.6 + 0.1 * index}s` }}>
                   <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-100 transition-colors duration-300">
                     <size.icon className="w-6 h-6 text-gray-600" />
                   </div>

@@ -35,17 +35,14 @@ const Packages = () => {
     }
   ];
 
+  const headerBg = {
+    backgroundImage: 'url("/Header-background.webp")',
+    backgroundPosition: 'center 30%'
+  };
+
   return (
     <section className="bg-white" id="packages">
-      {/* Enhanced Header with Background */}
-      <div 
-        className="relative py-32 bg-cover bg-center"
-        style={{
-          backgroundImage: 'url("/Header-background.webp")',
-          backgroundPosition: 'center 30%'
-        }}
-      >
-        {/* Enhanced overlay with better contrast */}
+      <div className="relative py-32 bg-cover bg-center" style={headerBg}>
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/40 via-purple-600/30 to-pink-600/40"></div>
         <div className="absolute inset-0 bg-black/20"></div>
         
@@ -64,9 +61,7 @@ const Packages = () => {
         </div>
       </div>
 
-      {/* Content Section */}
       <div className="py-20 max-w-6xl mx-auto px-6">
-        {/* Pricing Toggle */}
         <div className="text-center mb-12 opacity-0 animate-on-scroll">
           <div className="inline-flex items-center bg-gray-100 rounded-full p-1 mb-8">
             <button className="px-6 py-2 rounded-full bg-white text-gray-900 font-medium shadow-sm">
@@ -110,7 +105,6 @@ const Packages = () => {
                   <h3 className="text-2xl font-medium text-gray-900 mb-2">{pkg.title}</h3>
                   <p className="text-gray-600 mb-6">{pkg.description}</p>
                   
-                  {/* Pricing */}
                   <div className="flex items-center justify-center mb-2">
                     <span className="text-4xl font-light text-gray-900">{pkg.price}</span>
                     <span className="text-gray-500 ml-1">{pkg.period}</span>
@@ -148,7 +142,6 @@ const Packages = () => {
           ))}
         </div>
 
-        {/* Custom solution section */}
         <div className="bg-gray-50 rounded-3xl p-12 text-center border border-gray-100 opacity-0 animate-on-scroll" style={{ animationDelay: "0.4s" }}>
           <div className="max-w-2xl mx-auto">
             <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
@@ -164,7 +157,6 @@ const Packages = () => {
           </div>
         </div>
 
-        {/* Pricing Features Comparison */}
         <div className="mt-20 pt-16 border-t border-gray-200">
           <div className="text-center mb-12">
             <h3 className="text-2xl font-light text-gray-900 mb-4">What's included in every plan</h3>
@@ -188,7 +180,6 @@ const Packages = () => {
           </div>
         </div>
 
-        {/* Money Back Guarantee */}
         <div className="mt-16 text-center opacity-0 animate-on-scroll" style={{ animationDelay: "0.6s" }}>
           <div className="bg-green-50 rounded-2xl p-8 border border-green-200">
             <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">

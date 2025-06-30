@@ -53,17 +53,14 @@ const ImplementationProcess = () => {
     { week: "12+", phase: "Support" }
   ];
 
+  const headerBg = {
+    backgroundImage: 'url("/Header-background.webp")',
+    backgroundPosition: 'center 30%'
+  };
+
   return (
     <section className="bg-white" id="implementation">
-      {/* Enhanced Header with Background */}
-      <div 
-        className="relative py-32 bg-cover bg-center"
-        style={{
-          backgroundImage: 'url("/Header-background.webp")',
-          backgroundPosition: 'center 30%'
-        }}
-      >
-        {/* Enhanced overlay with better contrast */}
+      <div className="relative py-32 bg-cover bg-center" style={headerBg}>
         <div className="absolute inset-0 bg-gradient-to-br from-orange-600/40 via-red-600/30 to-pink-600/40"></div>
         <div className="absolute inset-0 bg-black/25"></div>
         
@@ -82,9 +79,7 @@ const ImplementationProcess = () => {
         </div>
       </div>
 
-      {/* Content Section */}
       <div className="py-20 max-w-7xl mx-auto px-6">
-        {/* Timeline Overview */}
         <div className="mb-20 opacity-0 animate-fade-scale" style={{ animationDelay: "0.2s" }}>
           <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100">
             <h3 className="text-xl font-medium text-gray-900 mb-8 text-center">Implementation Timeline</h3>
@@ -105,7 +100,6 @@ const ImplementationProcess = () => {
           </div>
         </div>
 
-        {/* Detailed Phases */}
         <div className="space-y-12">
           {phases.map((phase, index) => (
             <div 
@@ -116,7 +110,6 @@ const ImplementationProcess = () => {
               <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-500">
                 <div className="p-8 lg:p-12">
                   <div className="flex flex-col lg:flex-row lg:items-center gap-8">
-                    {/* Phase Info */}
                     <div className="flex-1">
                       <div className="flex items-center mb-4">
                         <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mr-4 ${phase.color}`}>
@@ -132,7 +125,6 @@ const ImplementationProcess = () => {
                       </p>
                     </div>
 
-                    {/* Deliverables */}
                     <div className="lg:w-80">
                       <h4 className="text-sm font-medium text-gray-900 mb-4 flex items-center">
                         <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
@@ -154,7 +146,6 @@ const ImplementationProcess = () => {
           ))}
         </div>
 
-        {/* Success Metrics */}
         <div className="mt-20">
           <div className="text-center mb-12 opacity-0 animate-slide-up" style={{ animationDelay: "0.8s" }}>
             <h3 className="text-2xl font-light text-gray-900 mb-4">Why our process works</h3>
@@ -181,7 +172,6 @@ const ImplementationProcess = () => {
           </div>
         </div>
 
-        {/* CTA */}
         <div className="mt-20 text-center opacity-0 animate-slide-up" style={{ animationDelay: "1.3s" }}>
           <div className="bg-gray-50 rounded-3xl p-12 border border-gray-100">
             <Users className="w-12 h-12 text-pulse-500 mx-auto mb-6" />

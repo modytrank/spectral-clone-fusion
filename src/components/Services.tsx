@@ -55,17 +55,14 @@ const Services = () => {
     { step: "Support", description: "Ongoing maintenance & optimization" }
   ];
 
+  const headerBg = {
+    backgroundImage: 'url("/Header-background.webp")',
+    backgroundPosition: 'center 30%'
+  };
+
   return (
     <section className="bg-gray-50" id="services">
-      {/* Enhanced Header with Background */}
-      <div 
-        className="relative py-32 bg-cover bg-center"
-        style={{
-          backgroundImage: 'url("/Header-background.webp")',
-          backgroundPosition: 'center 30%'
-        }}
-      >
-        {/* Enhanced overlay with better contrast */}
+      <div className="relative py-32 bg-cover bg-center" style={headerBg}>
         <div className="absolute inset-0 bg-gradient-to-br from-purple-600/40 via-pink-600/30 to-red-600/40"></div>
         <div className="absolute inset-0 bg-black/20"></div>
         
@@ -84,7 +81,6 @@ const Services = () => {
         </div>
       </div>
 
-      {/* Content Section */}
       <div className="py-20 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
           {services.map((service, index) => (
@@ -133,7 +129,6 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Service Process */}
         <div className="opacity-0 animate-fade-scale" style={{ animationDelay: "0.4s" }}>
           <div className="bg-white rounded-3xl p-12 border border-gray-200 shadow-sm">
             <div className="text-center mb-12">
@@ -160,28 +155,22 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Professional Credentials */}
         <div className="mt-20 opacity-0 animate-slide-up" style={{ animationDelay: "0.6s" }}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center bg-white rounded-3xl p-8 border border-gray-200">
-              <div className="text-3xl font-light text-pulse-500 mb-2">50+</div>
-              <div className="font-medium text-gray-900 mb-1">Certified Professionals</div>
-              <div className="text-sm text-gray-600">Expert consultants and developers</div>
-            </div>
-            <div className="text-center bg-white rounded-3xl p-8 border border-gray-200">
-              <div className="text-3xl font-light text-pulse-500 mb-2">500+</div>
-              <div className="font-medium text-gray-900 mb-1">Successful Projects</div>
-              <div className="text-sm text-gray-600">Across various industries</div>
-            </div>
-            <div className="text-center bg-white rounded-3xl p-8 border border-gray-200">
-              <div className="text-3xl font-light text-pulse-500 mb-2">99%</div>
-              <div className="font-medium text-gray-900 mb-1">Client Satisfaction</div>
-              <div className="text-sm text-gray-600">Based on project completion surveys</div>
-            </div>
+            {[
+              { metric: "50+", label: "Certified Professionals", desc: "Expert consultants and developers" },
+              { metric: "500+", label: "Successful Projects", desc: "Across various industries" },
+              { metric: "99%", label: "Client Satisfaction", desc: "Based on project completion surveys" }
+            ].map((stat, index) => (
+              <div key={index} className="text-center bg-white rounded-3xl p-8 border border-gray-200">
+                <div className="text-3xl font-light text-pulse-500 mb-2">{stat.metric}</div>
+                <div className="font-medium text-gray-900 mb-1">{stat.label}</div>
+                <div className="text-sm text-gray-600">{stat.desc}</div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Professional CTA */}
         <div className="mt-20 text-center opacity-0 animate-slide-up" style={{ animationDelay: "0.8s" }}>
           <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full opacity-5"></div>
