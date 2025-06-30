@@ -1,7 +1,5 @@
-
 import React from "react";
-import { GraduationCap, ShoppingCart, Factory, Truck, Users, Building, TrendingUp } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { GraduationCap, ShoppingCart, Factory, Truck } from "lucide-react";
 
 const Industries = () => {
   const industries = [
@@ -10,54 +8,41 @@ const Industries = () => {
       title: "Education",
       description: "Comprehensive solutions for educational institutions",
       features: ["Student Management", "Academic Planning", "Parent Portal", "Fee Management"],
-      clients: "Schools, Universities, Training Centers, Online Learning"
+      clients: "Schools, Universities, Training Centers",
+      color: "from-blue-500 to-cyan-500",
+      bgColor: "bg-blue-50"
     },
     {
       icon: ShoppingCart,
       title: "Retail",
       description: "Complete retail management and e-commerce solutions",
       features: ["POS Systems", "Inventory Sync", "Loyalty Programs", "Multi-channel Sales"],
-      clients: "Retail Chains, Online Stores, Fashion, Electronics"
+      clients: "Retail Chains, Online Stores, Fashion",
+      color: "from-green-500 to-emerald-500",
+      bgColor: "bg-green-50"
     },
     {
       icon: Factory,
       title: "Manufacturing",
       description: "End-to-end manufacturing and production management",
-      features: ["Production Planning", "Quality Control", "Supply Chain Management", "Preventive Maintenance"],
-      clients: "Manufacturers, Assembly Lines, Food Processing, Textile"
+      features: ["Production Planning", "Quality Control", "Supply Chain", "Maintenance"],
+      clients: "Manufacturers, Assembly Lines, Processing",
+      color: "from-orange-500 to-red-500",
+      bgColor: "bg-orange-50"
     },
     {
       icon: Truck,
       title: "Logistics",
       description: "Advanced logistics and supply chain optimization",
-      features: ["Fleet Management", "Route Optimization", "Inventory Tracking", "Customs Management"],
-      clients: "Shipping Companies, 3PL Providers, Distribution Centers, Freight Companies"
-    }
-  ];
-
-  const companySizes = [
-    {
-      icon: TrendingUp,
-      title: "Startups",
-      description: "Quick Implementation, Scalable, Cost-Effective",
-      color: "bg-green-100 text-green-600"
-    },
-    {
-      icon: Users,
-      title: "SMEs",
-      description: "Feature-Rich, Customizable, Easy Integration, Dedicated Support",
-      color: "bg-blue-100 text-blue-600"
-    },
-    {
-      icon: Building,
-      title: "Enterprises",
-      description: "Advanced Analytics, Multi-Location, Regulatory Compliance, 24/7 Support",
-      color: "bg-purple-100 text-purple-600"
+      features: ["Fleet Management", "Route Optimization", "Tracking", "Customs"],
+      clients: "Shipping Companies, 3PL Providers",
+      color: "from-purple-500 to-pink-500",
+      bgColor: "bg-purple-50"
     }
   ];
 
   return (
-    <section className="py-20 bg-white" id="industries">
+    <section className="py-20 bg-white relative" id="industries">
       <div className="section-container">
         <div className="text-center mb-16 opacity-0 animate-on-scroll">
           <div className="pulse-chip mx-auto mb-4">
@@ -70,67 +55,72 @@ const Industries = () => {
           </p>
         </div>
 
-        {/* Industries Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        {/* Alternating layout */}
+        <div className="space-y-16">
           {industries.map((industry, index) => (
-            <Card 
+            <div 
               key={index}
-              className="hover:shadow-elegant-hover transition-all duration-300 hover:translate-y-[-5px] opacity-0 animate-on-scroll border-gray-200"
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center opacity-0 animate-on-scroll`}
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <CardHeader>
-                <div className="flex items-center mb-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-xl mr-4">
-                    <industry.icon className="w-6 h-6 text-pulse-500" />
+              {/* Content Side */}
+              <div className="flex-1 space-y-6">
+                <div className="flex items-center space-x-4">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${industry.color} flex items-center justify-center shadow-lg`}>
+                    <industry.icon className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl text-gray-900">{industry.title}</CardTitle>
-                    <CardDescription className="text-sm">{industry.description}</CardDescription>
+                    <h3 className="text-2xl font-bold text-gray-900">{industry.title}</h3>
+                    <p className="text-gray-600">{industry.description}</p>
                   </div>
                 </div>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="grid grid-cols-2 gap-3 mb-4">
+                
+                <div className="grid grid-cols-2 gap-3">
                   {industry.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-sm">
-                      <div className="w-2 h-2 bg-pulse-500 rounded-full mr-2"></div>
-                      <span className="text-gray-700">{feature}</span>
+                    <div key={featureIndex} className="flex items-center space-x-2">
+                      <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${industry.color}`}></div>
+                      <span className="text-sm text-gray-700">{feature}</span>
                     </div>
                   ))}
                 </div>
                 
-                <div className="pt-4 border-t border-gray-100">
-                  <p className="text-xs text-gray-500 font-medium">Ideal for:</p>
-                  <p className="text-sm text-gray-700">{industry.clients}</p>
+                <div className={`p-4 rounded-xl ${industry.bgColor} border-l-4 border-gradient-to-b ${industry.color}`}>
+                  <p className="text-sm font-medium text-gray-700">Perfect for:</p>
+                  <p className="text-sm text-gray-600">{industry.clients}</p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+
+              {/* Visual Side */}
+              <div className="flex-1">
+                <div className={`relative h-64 lg:h-80 rounded-3xl bg-gradient-to-br ${industry.color} p-8 overflow-hidden`}>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-xl translate-x-1/2 -translate-y-1/2"></div>
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full blur-lg -translate-x-1/2 translate-y-1/2"></div>
+                  <div className="relative z-10 h-full flex items-center justify-center">
+                    <industry.icon className="w-24 h-24 text-white/80" />
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* Company Sizes */}
-        <div className="text-center mb-8">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-2">Solutions for Every Size</h3>
-          <p className="text-gray-600">From startups to enterprises, we have the right solution for your business size.</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {companySizes.map((size, index) => (
-            <Card 
-              key={index}
-              className="text-center opacity-0 animate-on-scroll bg-gray-50 border-0"
-              style={{ animationDelay: `${0.2 + 0.1 * index}s` }}
-            >
-              <CardContent className="pt-6">
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${size.color}`}>
-                  <size.icon className="w-6 h-6" />
+        {/* Company sizes - horizontal layout */}
+        <div className="mt-20 pt-16 border-t border-gray-200">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Solutions for Every Size</h3>
+            <p className="text-gray-600">From startups to enterprises, we scale with your business.</p>
+          </div>
+          
+          <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+            {["Startups", "SMEs", "Enterprises"].map((size, index) => (
+              <div key={index} className="flex items-center space-x-4 p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
+                <div className="w-12 h-12 bg-pulse-500 rounded-full flex items-center justify-center text-white font-bold">
+                  {index + 1}
                 </div>
-                <CardTitle className="text-lg text-gray-900 mb-2">{size.title}</CardTitle>
-                <CardDescription className="text-sm">{size.description}</CardDescription>
-              </CardContent>
-            </Card>
-          ))}
+                <span className="font-medium text-gray-900">{size}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
