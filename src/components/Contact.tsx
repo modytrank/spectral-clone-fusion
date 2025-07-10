@@ -106,11 +106,27 @@ const Contact = () => {
     }
 
     try {
+      // Create a comprehensive message that includes all form data
+      const fullMessage = `
+Contact Information:
+• Name: ${formData.fullName}
+• Email: ${formData.email}
+• Company: ${formData.company || "Not specified"}
+• Phone: ${formData.phone || "Not provided"}
+• Inquiry Type: ${formData.inquiryType}
+
+Message:
+${formData.message}
+
+---
+This message was sent via the MovinWare contact form on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}.
+      `.trim();
+
       const templateParams = {
         title: `${formData.inquiryType} from ${formData.fullName}`,
         name: formData.fullName,
         time: new Date().toLocaleString(),
-        message: formData.message,
+        message: fullMessage,
         email: formData.email
       };
 
@@ -131,17 +147,18 @@ const Contact = () => {
   const sendEmailViaMailto = () => {
     const subject = `${formData.inquiryType} - Contact Form Submission`;
     const body = `
-Name: ${formData.fullName}
-Email: ${formData.email}
-Company: ${formData.company || "Not specified"}
-Phone: ${formData.phone || "Not provided"}
-Inquiry Type: ${formData.inquiryType}
+Contact Information:
+• Name: ${formData.fullName}
+• Email: ${formData.email}
+• Company: ${formData.company || "Not specified"}
+• Phone: ${formData.phone || "Not provided"}
+• Inquiry Type: ${formData.inquiryType}
 
 Message:
 ${formData.message}
 
 ---
-This message was sent via the MovinWare contact form.
+This message was sent via the MovinWare contact form on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}.
     `.trim();
 
     const mailtoLink = `mailto:info@movinware.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
