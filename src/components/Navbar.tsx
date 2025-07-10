@@ -101,10 +101,22 @@ const Navbar = () => {
         "fixed inset-0 z-40 bg-white flex flex-col pt-16 px-6 md:hidden transition-all duration-300 ease-in-out",
         isMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
       )}>
-        <nav className="flex flex-col space-y-8 items-center mt-8">
+        {/* Mobile Header with Close Button */}
+        <div className="flex items-center justify-between py-4 border-b border-gray-200 mb-8">
+          <h2 className="text-xl font-semibold text-gray-900">Menu</h2>
+          <button 
+            onClick={toggleMenu}
+            className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
+            aria-label="Close menu"
+          >
+            <X size={24} className="text-gray-600" />
+          </button>
+        </div>
+        
+        <nav className="flex flex-col space-y-6">
           <a 
             href="#" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            className="text-lg font-medium py-4 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
             onClick={(e) => {
               e.preventDefault();
               scrollToTop();
@@ -116,7 +128,7 @@ const Navbar = () => {
           </a>
           <a 
             href="#value" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            className="text-lg font-medium py-4 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
             onClick={() => {
               setIsMenuOpen(false);
               document.body.style.overflow = '';
@@ -126,7 +138,7 @@ const Navbar = () => {
           </a>
           <a 
             href="#platform" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            className="text-lg font-medium py-4 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
             onClick={() => {
               setIsMenuOpen(false);
               document.body.style.overflow = '';
@@ -136,7 +148,7 @@ const Navbar = () => {
           </a>
           <a 
             href="#industries" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            className="text-lg font-medium py-4 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
             onClick={() => {
               setIsMenuOpen(false);
               document.body.style.overflow = '';
@@ -146,7 +158,7 @@ const Navbar = () => {
           </a>
           <a 
             href="#erp-solutions" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            className="text-lg font-medium py-4 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
             onClick={() => {
               setIsMenuOpen(false);
               document.body.style.overflow = '';
@@ -156,7 +168,7 @@ const Navbar = () => {
           </a>
           <a 
             href="#services" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            className="text-lg font-medium py-4 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
             onClick={() => {
               setIsMenuOpen(false);
               document.body.style.overflow = '';
@@ -166,7 +178,7 @@ const Navbar = () => {
           </a>
           <a 
             href="#packages" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            className="text-lg font-medium py-4 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
             onClick={() => {
               setIsMenuOpen(false);
               document.body.style.overflow = '';
@@ -176,7 +188,7 @@ const Navbar = () => {
           </a>
           <a 
             href="#contact" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            className="text-lg font-medium py-4 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
             onClick={() => {
               setIsMenuOpen(false);
               document.body.style.overflow = '';
@@ -185,6 +197,13 @@ const Navbar = () => {
             Contact
           </a>
         </nav>
+        
+        {/* Mobile Footer */}
+        <div className="mt-auto pb-8">
+          <div className="text-center text-sm text-gray-500">
+            © 2025 MovinWare
+          </div>
+        </div>
       </div>
     </header>
   );
