@@ -17,9 +17,9 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   // EmailJS configuration - You'll need to set these up in EmailJS dashboard
-  const EMAILJS_SERVICE_ID = "service_movinware"; // Replace with your EmailJS service ID
-  const EMAILJS_TEMPLATE_ID = "template_contact"; // Replace with your EmailJS template ID
-  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ""; // Use environment variable
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_2owengl";
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_fsz5pvq";
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "mvNDcozrdeDRdhgJX";
 
   // Check if EmailJS is properly configured
   const isEmailJSConfigured = EMAILJS_SERVICE_ID && 
