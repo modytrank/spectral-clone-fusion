@@ -19,7 +19,14 @@ const Contact = () => {
   // EmailJS configuration - You'll need to set these up in EmailJS dashboard
   const EMAILJS_SERVICE_ID = "service_movinware"; // Replace with your EmailJS service ID
   const EMAILJS_TEMPLATE_ID = "template_contact"; // Replace with your EmailJS template ID
-  const EMAILJS_PUBLIC_KEY = "your_public_key"; // Replace with your EmailJS public key
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ""; // Use environment variable
+
+  // Check if EmailJS is properly configured
+  const isEmailJSConfigured = EMAILJS_SERVICE_ID && 
+                              EMAILJS_TEMPLATE_ID && 
+                              EMAILJS_PUBLIC_KEY && 
+                              EMAILJS_PUBLIC_KEY !== "your_public_key" &&
+                              EMAILJS_PUBLIC_KEY.length > 0;
 
   const contactInfo = [
     {
@@ -92,6 +99,12 @@ const Contact = () => {
   };
 
   const sendEmailViaEmailJS = async () => {
+    // Skip EmailJS if not properly configured
+    if (!isEmailJSConfigured) {
+      console.log("EmailJS not configured, skipping...");
+      return false;
+    }
+
     try {
       const templateParams = {
         from_name: formData.fullName,
@@ -146,8 +159,12 @@ This message was sent via the MovinWare contact form.
     setSubmitStatus('idle');
 
     try {
-      // Try EmailJS first (if configured)
-      const emailJSSuccess = await sendEmailViaEmailJS();
+      // Try EmailJS first (only if properly configured)
+      let emailJSSuccess = false;
+      
+      if (isEmailJSConfigured) {
+        emailJSSuccess = await sendEmailViaEmailJS();
+      }
       
       if (emailJSSuccess) {
         setSubmitStatus('success');
@@ -166,11 +183,13 @@ This message was sent via the MovinWare contact form.
           message: ""
         });
       } else {
-        // Fallback to mailto
+        // Fallback to mailto (either EmailJS failed or not configured)
         sendEmailViaMailto();
         setSubmitStatus('success');
-        toast.success("Email client opened!", {
-          description: "Please send the email from your email client to complete the process.",
+        toast.success("Opening your email client...", {
+          description: isEmailJSConfigured 
+            ? "EmailJS failed, using your default email client instead."
+            : "Please send the email from your email client to complete the process.",
           duration: 5000,
         });
       }
