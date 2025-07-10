@@ -20,14 +20,16 @@ Your contact form is now fully functional! Here's how to complete the email setu
 3. **Create Email Template**
    - Go to "Email Templates"
    - Click "Create New Template"
-   - Use this template:
+   - **IMPORTANT**: Set the "From Email" field to: `{{user_email}}`
+   - **IMPORTANT**: Set the "Reply To" field to: `{{reply_to}}`
+   - Use this template content:
 
 ```
-Subject: {{inquiry_type}} - New Contact Form Submission
+Subject: {{subject}}
 
-Hello MovinWare Team,
+Hello,
 
-You have received a new contact form submission:
+You have received a new contact form submission from {{from_name}}:
 
 Name: {{from_name}}
 Email: {{from_email}}
@@ -39,18 +41,25 @@ Message:
 {{message}}
 
 ---
-Please respond to {{from_email}} within 24 hours.
+This message was sent via the MovinWare contact form.
+You can reply directly to this email to respond to the sender.
 
 Best regards,
-MovinWare Contact System
+{{from_name}}
 ```
 
-4. **Get Your Credentials**
+4. **Configure Email Template Settings**
+   - **From Name**: `{{from_name}}`
+   - **From Email**: `{{user_email}}` (This makes it appear from the user)
+   - **Reply To**: `{{reply_to}}` (This ensures replies go to the user)
+   - **To Email**: `info@movinware.com` (Your business email)
+
+5. **Get Your Credentials**
    - **Service ID**: From your service settings
    - **Template ID**: From your template settings
    - **Public Key**: From Account > API Keys
 
-5. **Update the Code**
+6. **Update the Code** (Already Done!)
    - Open `src/components/Contact.tsx`
    - Replace these lines (around line 12-14):
    ```javascript

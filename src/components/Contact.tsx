@@ -109,11 +109,14 @@ const Contact = () => {
       const templateParams = {
         from_name: formData.fullName,
         from_email: formData.email,
+        reply_to: formData.email,
+        user_email: formData.email,
         company: formData.company || "Not specified",
         phone: formData.phone || "Not provided",
         inquiry_type: formData.inquiryType,
         message: formData.message,
-        to_email: "info@movinware.com"
+        to_email: "info@movinware.com",
+        subject: `${formData.inquiryType} from ${formData.fullName}`
       };
 
       await emailjs.send(
