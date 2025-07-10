@@ -1,8 +1,26 @@
-
-import React from "react";
-import { Mail, Phone, MapPin, MessageCircle, Calendar, Users } from "lucide-react";
+import React, { useState } from "react";
+import { Mail, Phone, MapPin, MessageCircle, Calendar, Users, Send, CheckCircle, AlertCircle } from "lucide-react";
+import emailjs from '@emailjs/browser';
+import { toast } from "sonner";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    company: "",
+    phone: "",
+    inquiryType: "General Inquiry",
+    message: ""
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // EmailJS configuration - You'll need to set these up in EmailJS dashboard
+  const EMAILJS_SERVICE_ID = "service_movinware"; // Replace with your EmailJS service ID
+  const EMAILJS_TEMPLATE_ID = "template_contact"; // Replace with your EmailJS template ID
+  const EMAILJS_PUBLIC_KEY = "your_public_key"; // Replace with your EmailJS public key
+
   const contactInfo = [
     {
       icon: Mail,
@@ -28,19 +46,144 @@ const Contact = () => {
     {
       icon: Users,
       title: "Talk to Expert",
-      description: "Schedule a call with our experts"
+      description: "Schedule a call with our experts",
+      action: () => window.open("https://calendly.com/movinware", "_blank")
     },
     {
       icon: Calendar,
       title: "Schedule Consultation",
-      description: "Book a free consultation"
+      description: "Book a free consultation",
+      action: () => window.open("https://calendly.com/movinware/consultation", "_blank")
     },
     {
       icon: MessageCircle,
       title: "WhatsApp Support",
-      description: "Get instant support via WhatsApp"
+      description: "Get instant support via WhatsApp",
+      action: () => window.open("https://wa.me/971412345678", "_blank")
     }
   ];
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const validateForm = () => {
+    if (!formData.fullName.trim()) {
+      toast.error("Please enter your full name");
+      return false;
+    }
+    if (!formData.email.trim()) {
+      toast.error("Please enter your email address");
+      return false;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      toast.error("Please enter a valid email address");
+      return false;
+    }
+    if (!formData.message.trim()) {
+      toast.error("Please enter your message");
+      return false;
+    }
+    return true;
+  };
+
+  const sendEmailViaEmailJS = async () => {
+    try {
+      const templateParams = {
+        from_name: formData.fullName,
+        from_email: formData.email,
+        company: formData.company || "Not specified",
+        phone: formData.phone || "Not provided",
+        inquiry_type: formData.inquiryType,
+        message: formData.message,
+        to_email: "info@movinware.com"
+      };
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+      
+      return true;
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      return false;
+    }
+  };
+
+  const sendEmailViaMailto = () => {
+    const subject = `${formData.inquiryType} - Contact Form Submission`;
+    const body = `
+Name: ${formData.fullName}
+Email: ${formData.email}
+Company: ${formData.company || "Not specified"}
+Phone: ${formData.phone || "Not provided"}
+Inquiry Type: ${formData.inquiryType}
+
+Message:
+${formData.message}
+
+---
+This message was sent via the MovinWare contact form.
+    `.trim();
+
+    const mailtoLink = `mailto:info@movinware.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Try EmailJS first (if configured)
+      const emailJSSuccess = await sendEmailViaEmailJS();
+      
+      if (emailJSSuccess) {
+        setSubmitStatus('success');
+        toast.success("Message sent successfully!", {
+          description: "We'll get back to you within 24 hours.",
+          duration: 5000,
+        });
+        
+        // Reset form
+        setFormData({
+          fullName: "",
+          email: "",
+          company: "",
+          phone: "",
+          inquiryType: "General Inquiry",
+          message: ""
+        });
+      } else {
+        // Fallback to mailto
+        sendEmailViaMailto();
+        setSubmitStatus('success');
+        toast.success("Email client opened!", {
+          description: "Please send the email from your email client to complete the process.",
+          duration: 5000,
+        });
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      toast.error("Failed to send message", {
+        description: "Please try again or contact us directly at info@movinware.com",
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className="py-20 bg-white" id="contact">
@@ -60,44 +203,150 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="opacity-0 animate-on-scroll">
             <h3 className="text-2xl font-semibold text-gray-900 mb-6">Send us a message</h3>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                  <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent" />
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Full Name <span className="text-red-500">*</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent transition-all duration-200" 
+                    required
+                  />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                  <input type="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent" />
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email <span className="text-red-500">*</span>
+                  </label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent transition-all duration-200" 
+                    required
+                  />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Company</label>
-                  <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent" />
+                  <input 
+                    type="text" 
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent transition-all duration-200" 
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                  <input type="tel" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent" />
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent transition-all duration-200" 
+                  />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Inquiry Type</label>
-                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent">
+                <select 
+                  name="inquiryType"
+                  value={formData.inquiryType}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent transition-all duration-200"
+                >
                   <option>General Inquiry</option>
                   <option>ERP Implementation</option>
                   <option>Custom Development</option>
                   <option>Support</option>
                   <option>Partnership</option>
+                  <option>Demo Request</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                <textarea rows={4} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent" placeholder="Tell us about your project..."></textarea>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Message <span className="text-red-500">*</span>
+                </label>
+                <textarea 
+                  rows={4} 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent transition-all duration-200" 
+                  placeholder="Tell us about your project..."
+                  required
+                ></textarea>
               </div>
-              <button type="submit" className="w-full bg-pulse-500 text-white px-6 py-3 rounded-lg hover:bg-pulse-600 transition-colors duration-200">
-                Send Message
+              
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className={`w-full flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                  isSubmitting 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : submitStatus === 'success'
+                    ? 'bg-green-500 hover:bg-green-600'
+                    : submitStatus === 'error'
+                    ? 'bg-red-500 hover:bg-red-600'
+                    : 'bg-pulse-500 hover:bg-pulse-600'
+                } text-white`}
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Sending...
+                  </>
+                ) : submitStatus === 'success' ? (
+                  <>
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    Message Sent!
+                  </>
+                ) : submitStatus === 'error' ? (
+                  <>
+                    <AlertCircle className="w-4 h-4 mr-2" />
+                    Try Again
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4 mr-2" />
+                    Send Message
+                  </>
+                )}
               </button>
+              
+              {submitStatus === 'success' && (
+                <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                    <p className="text-green-800 font-medium">Message delivered successfully!</p>
+                  </div>
+                  <p className="text-green-700 text-sm mt-1">
+                    We've received your message and will respond within 24 hours.
+                  </p>
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="flex items-center">
+                    <AlertCircle className="w-5 h-5 text-red-500 mr-2" />
+                    <p className="text-red-800 font-medium">Failed to send message</p>
+                  </div>
+                  <p className="text-red-700 text-sm mt-1">
+                    Please try again or contact us directly at{" "}
+                    <a href="mailto:info@movinware.com" className="underline">
+                      info@movinware.com
+                    </a>
+                  </p>
+                </div>
+              )}
             </form>
           </div>
 
@@ -132,6 +381,7 @@ const Contact = () => {
                 {quickActions.map((action, index) => (
                   <button 
                     key={index}
+                    onClick={action.action}
                     className="w-full flex items-center p-4 bg-white border border-gray-200 rounded-lg hover:shadow-elegant-hover transition-all duration-200"
                   >
                     <div className="flex items-center justify-center w-10 h-10 bg-pulse-100 rounded-lg mr-4">
