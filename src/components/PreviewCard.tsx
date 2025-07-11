@@ -36,11 +36,11 @@ const PreviewCard = ({
         <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mr-4 group-hover:bg-pulse-50 transition-all duration-500">
           <Icon className="w-7 h-7 text-gray-600 group-hover:text-pulse-500 transition-all duration-500" />
         </div>
-        <div className="flex-1">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="text-xl font-medium text-gray-900">{title}</h3>
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+            <h3 className="text-xl font-medium text-gray-900 truncate">{title}</h3>
             {(timeline || metric) && (
-              <span className="text-xs text-pulse-500 font-medium bg-pulse-50 px-3 py-1 rounded-full">
+              <span className="text-xs text-pulse-500 font-medium bg-pulse-50 px-3 py-1 rounded-full whitespace-nowrap self-start sm:self-center">
                 {timeline || metric}
               </span>
             )}
