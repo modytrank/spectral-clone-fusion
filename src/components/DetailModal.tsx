@@ -183,26 +183,6 @@ const DetailModal = ({
               <p className="text-gray-700 leading-relaxed">{additionalInfo}</p>
             </div>
           )}
-          
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-100">
-            {finalCTAButtons.map((button, index) => (
-              <button 
-                key={index}
-                onClick={button.action || undefined}
-                className={`
-                  px-8 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2
-                  ${button.variant === 'primary' 
-                    ? 'bg-pulse-500 text-white hover:bg-pulse-600' 
-                    : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
-                  }
-                `}
-              >
-                {button.text}
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            ))}
-          </div>
         </div>
       </DialogContent>
     </Dialog>
