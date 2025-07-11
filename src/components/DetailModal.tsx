@@ -189,7 +189,7 @@ const DetailModal = ({
             {finalCTAButtons.map((button, index) => (
               <button 
                 key={index}
-                onClick={button.action}
+                onClick={button.action || undefined}
                 className={`
                   px-8 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2
                   ${button.variant === 'primary' 
