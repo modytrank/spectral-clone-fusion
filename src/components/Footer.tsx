@@ -17,8 +17,8 @@ const Footer = () => {
 
   const contactInfo = [
     { icon: Mail, text: "info@movinware.com" },
-    { icon: Phone, text: "+971 4 123 4567" },
-    { icon: MapPin, text: "Dubai, UAE" }
+    { icon: Phone, text: "+966 561820949" },
+    { icon: MapPin, text: "Online" }
   ];
 
   return (

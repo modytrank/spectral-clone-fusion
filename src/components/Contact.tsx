@@ -38,13 +38,13 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      value: "+971 4 123 4567",
-      link: "tel:+97141234567"
+      value: "+966 561820949",
+      link: "tel:+966561820949"
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "Dubai, UAE",
+      value: "Online",
       link: "#"
     }
   ];
