@@ -157,10 +157,10 @@ const ERPSolutions = () => {
                   <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mr-4 group-hover:bg-pulse-50 transition-all duration-500">
                     <solution.icon className="w-7 h-7 text-gray-600 group-hover:text-pulse-500 transition-all duration-500" />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-xl font-medium text-gray-900">{solution.title}</h3>
-                      <span className="text-xs text-pulse-500 font-medium bg-pulse-50 px-3 py-1 rounded-full">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-xl font-medium text-gray-900 mb-2 pr-2">{solution.title}</h3>
+                    <div className="mb-3">
+                      <span className="text-xs text-pulse-500 font-medium bg-pulse-50 px-3 py-1 rounded-full inline-block">
                         {solution.timeline}
                       </span>
                     </div>
