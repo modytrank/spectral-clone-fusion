@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { Mail, Phone, MapPin, MessageCircle, Calendar, Users, Send, CheckCircle, AlertCircle } from "lucide-react";
 import emailjs from '@emailjs/browser';
 import { toast } from "sonner";
+import { useTranslation } from "@/lib/translations";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     company: "",
     phone: "",
-    inquiryType: "General Inquiry",
+    inquiryType: t.generalInquiry,
     message: ""
   });
   
@@ -31,20 +33,20 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email",
+      title: t.email,
       value: "info@movinware.com",
       link: "mailto:info@movinware.com"
     },
     {
       icon: Phone,
-      title: "Phone",
+      title: t.phone,
       value: "+966 561820949",
       link: "tel:+966561820949"
     },
     {
       icon: MapPin,
-      title: "Location",
-      value: "Online",
+      title: t.location,
+      value: t.online,
       link: "#"
     }
   ];
@@ -52,20 +54,20 @@ const Contact = () => {
   const quickActions = [
     {
       icon: Users,
-      title: "Talk to Expert",
-      description: "Schedule a call with our experts",
+      title: t.talkToExpert,
+      description: t.scheduleExpert,
       action: () => window.open("https://calendly.com/movinware", "_blank")
     },
     {
       icon: Calendar,
-      title: "Schedule Consultation",
-      description: "Book a free consultation",
+      title: t.scheduleConsultation,
+      description: t.bookFreeConsultation,
       action: () => window.open("https://calendly.com/movinware/consultation", "_blank")
     },
     {
       icon: MessageCircle,
-      title: "WhatsApp Support",
-      description: "Get instant support via WhatsApp",
+      title: t.whatsappSupport,
+      description: t.instantWhatsappSupport,
       action: () => window.open("https://wa.me/971412345678", "_blank")
     }
   ];
@@ -194,7 +196,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
           email: "",
           company: "",
           phone: "",
-          inquiryType: "General Inquiry",
+          inquiryType: t.generalInquiry,
           message: ""
         });
       } else {
@@ -225,23 +227,23 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
         <div className="text-center mb-16 opacity-0 animate-on-scroll">
           <div className="pulse-chip mx-auto mb-4">
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">10</span>
-            <span>Contact Us</span>
+            <span>{t.contactUs}</span>
           </div>
-          <h2 className="section-title mb-4">Get In Touch</h2>
+          <h2 className="section-title mb-4">{t.getInTouch}</h2>
           <p className="section-subtitle mx-auto">
-            Ready to transform your business? Contact us today to get started.
+            {t.readyToTransform}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div className="opacity-0 animate-on-scroll">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Send us a message</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6">{t.sendMessage}</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name <span className="text-red-500">*</span>
+                    {t.fullName} <span className="text-red-500">*</span>
                   </label>
                   <input 
                     type="text" 
@@ -254,7 +256,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email <span className="text-red-500">*</span>
+                    {t.email} <span className="text-red-500">*</span>
                   </label>
                   <input 
                     type="email" 
@@ -268,7 +270,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t.company}</label>
                   <input 
                     type="text" 
                     name="company"
@@ -278,7 +280,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t.phone}</label>
                   <input 
                     type="tel" 
                     name="phone"
@@ -289,24 +291,24 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Inquiry Type</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t.inquiryType}</label>
                 <select 
                   name="inquiryType"
                   value={formData.inquiryType}
                   onChange={handleInputChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent transition-all duration-200"
                 >
-                  <option>General Inquiry</option>
-                  <option>ERP Implementation</option>
-                  <option>Custom Development</option>
-                  <option>Support</option>
-                  <option>Partnership</option>
-                  <option>Demo Request</option>
+                  <option>{t.generalInquiry}</option>
+                  <option>{t.erpImplementation}</option>
+                  <option>{t.customDevelopment}</option>
+                  <option>{t.support}</option>
+                  <option>{t.partnership}</option>
+                  <option>{t.demoRequest}</option>
                 </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Message <span className="text-red-500">*</span>
+                  {t.message} <span className="text-red-500">*</span>
                 </label>
                 <textarea 
                   rows={4} 
@@ -314,7 +316,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                   value={formData.message}
                   onChange={handleInputChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent transition-all duration-200" 
-                  placeholder="Tell us about your project..."
+                  placeholder={t.tellUsAboutProject}
                   required
                 ></textarea>
               </div>
@@ -335,22 +337,22 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                 {isSubmitting ? (
                   <>
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Sending...
+                    {t.sending}
                   </>
                 ) : submitStatus === 'success' ? (
                   <>
                     <CheckCircle className="w-4 h-4 mr-2" />
-                    Message Sent!
+                    {t.messageSent}
                   </>
                 ) : submitStatus === 'error' ? (
                   <>
                     <AlertCircle className="w-4 h-4 mr-2" />
-                    Try Again
+                    {t.tryAgain}
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4 mr-2" />
-                    Send Message
+                    {t.sendMessageBtn}
                   </>
                 )}
               </button>
@@ -359,10 +361,10 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                 <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
                   <div className="flex items-center">
                     <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    <p className="text-green-800 font-medium">Message delivered successfully!</p>
+                    <p className="text-green-800 font-medium">{t.messageDelivered}</p>
                   </div>
                   <p className="text-green-700 text-sm mt-1">
-                    We've received your message and will respond within 24 hours.
+                    {t.messageDeliveredDesc}
                   </p>
                 </div>
               )}
@@ -371,10 +373,10 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                 <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
                   <div className="flex items-center">
                     <AlertCircle className="w-5 h-5 text-red-500 mr-2" />
-                    <p className="text-red-800 font-medium">Failed to send message</p>
+                    <p className="text-red-800 font-medium">{t.messageFailed}</p>
                   </div>
                   <p className="text-red-700 text-sm mt-1">
-                    Please try again or contact us directly at{" "}
+                    {t.messageFailedDesc}{" "}
                     <a href="mailto:info@movinware.com" className="underline">
                       info@movinware.com
                     </a>
@@ -388,7 +390,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
           <div className="space-y-8">
             {/* Contact Information */}
             <div className="opacity-0 animate-on-scroll" style={{ animationDelay: "0.2s" }}>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">{t.contactInformation}</h3>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <a 
@@ -410,7 +412,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
 
             {/* Quick Actions */}
             <div className="opacity-0 animate-on-scroll" style={{ animationDelay: "0.4s" }}>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Quick Actions</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">{t.quickActions}</h3>
               <div className="space-y-4">
                 {quickActions.map((action, index) => (
                   <button 

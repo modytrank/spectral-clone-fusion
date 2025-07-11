@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "@/lib/translations";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,15 +78,15 @@ const Navbar = () => {
               scrollToTop();
             }}
           >
-            Home
+            {t.home}
           </a>
-          <a href="#value" className="nav-link">360° Value</a>
-          <a href="#platform" className="nav-link">Platform</a>
-          <a href="#industries" className="nav-link">Industries</a>
-          <a href="#erp-solutions" className="nav-link">Solutions</a>
-          <a href="#services" className="nav-link">Services</a>
-          <a href="#packages" className="nav-link">Packages</a>
-          <a href="#contact" className="nav-link">Contact</a>
+          <a href="#value" className="nav-link">{t.value360}</a>
+          <a href="#platform" className="nav-link">{t.platform}</a>
+          <a href="#industries" className="nav-link">{t.industries}</a>
+          <a href="#erp-solutions" className="nav-link">{t.solutions}</a>
+          <a href="#services" className="nav-link">{t.services}</a>
+          <a href="#packages" className="nav-link">{t.packages}</a>
+          <a href="#contact" className="nav-link">{t.contact}</a>
         </nav>
 
         {/* Language Switcher - Desktop */}
@@ -107,7 +109,7 @@ const Navbar = () => {
       )}>
         {/* Mobile Header with Close Button */}
         <div className="flex items-center justify-between py-4 border-b border-gray-200 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900">Menu</h2>
+          <h2 className="text-xl font-semibold text-gray-900">{t.menu}</h2>
           <button 
             onClick={toggleMenu}
             className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
@@ -128,7 +130,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            Home
+            {t.home}
           </a>
           <a 
             href="#value" 
@@ -138,7 +140,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            360° Value
+            {t.value360}
           </a>
           <a 
             href="#platform" 
@@ -148,7 +150,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            Platform
+            {t.platform}
           </a>
           <a 
             href="#industries" 
@@ -158,7 +160,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            Industries
+            {t.industries}
           </a>
           <a 
             href="#erp-solutions" 
@@ -168,7 +170,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            Solutions
+            {t.solutions}
           </a>
           <a 
             href="#services" 
@@ -178,7 +180,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            Services
+            {t.services}
           </a>
           <a 
             href="#packages" 
@@ -188,7 +190,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            Packages
+            {t.packages}
           </a>
           <a 
             href="#contact" 
@@ -198,7 +200,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            Contact
+            {t.contact}
           </a>
         </nav>
         
