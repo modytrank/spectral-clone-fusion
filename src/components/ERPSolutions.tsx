@@ -1,50 +1,113 @@
 
-import React from "react";
-import { Calculator, Users, ShoppingCart, Package, Factory, Wrench, ArrowRight, CheckCircle } from "lucide-react";
+import React, { useState } from "react";
+import { Calculator, Users, ShoppingCart, Package, Factory, Wrench, ArrowRight } from "lucide-react";
+import DetailModal from "./DetailModal";
 
 const ERPSolutions = () => {
+  const [selectedSolution, setSelectedSolution] = useState<any>(null);
+  
   const solutions = [
     {
       icon: Calculator,
       title: "Accounting & Finance",
-      description: "Complete financial management and reporting system with real-time insights and automated processes for comprehensive business control.",
-      capabilities: ["Real-time Financial Reporting", "Multi-currency Support & Conversion", "Tax Compliance & Regulatory Reporting", "Automated AP/AR Management"],
-      timeline: "Full Integration"
+      description: "Complete financial management with real-time insights.",
+      capabilities: [
+        "Real-time Financial Reporting & Analytics",
+        "Multi-currency Support & Conversion",
+        "Tax Compliance & Regulatory Reporting",
+        "Automated Accounts Payable/Receivable",
+        "Budget Planning & Forecasting",
+        "Cash Flow Management & Optimization",
+        "Financial Audit Trail & Controls",
+        "Integration with Banking & Payment Systems"
+      ],
+      timeline: "Full Integration",
+      fullDescription: "Complete financial management and reporting system with real-time insights and automated processes for comprehensive business control. Our accounting suite provides complete visibility into your financial operations with automated workflows, intelligent reporting, and seamless integration with banking and payment systems."
     },
     {
       icon: Users,
       title: "Human Resources",
-      description: "Comprehensive HR management system covering the entire employee lifecycle from recruitment to retirement with advanced analytics.",
-      capabilities: ["Employee Self-service Portal", "Automated Payroll & Tax Calculations", "Performance Tracking & Goal Management", "Time & Attendance with Biometrics"],
-      timeline: "Complete HR Suite"
+      description: "End-to-end HR management for the complete employee lifecycle.",
+      capabilities: [
+        "Employee Self-service Portal & Mobile App",
+        "Automated Payroll & Tax Calculations",
+        "Performance Management & Goal Tracking",
+        "Time & Attendance with Biometric Integration",
+        "Recruitment & Applicant Tracking System",
+        "Employee Benefits & Leave Management",
+        "Training & Development Programs",
+        "HR Analytics & Workforce Planning"
+      ],
+      timeline: "Complete HR Suite",
+      fullDescription: "Comprehensive HR management system covering the entire employee lifecycle from recruitment to retirement with advanced analytics. Our HR suite transforms people management with automated workflows, self-service capabilities, and data-driven insights that help you attract, retain, and develop top talent."
     },
     {
       icon: ShoppingCart,
       title: "Sales & CRM",
-      description: "End-to-end sales and customer relationship management with AI-powered insights and automation for maximum conversion rates.",
-      capabilities: ["Lead Tracking & Opportunity Management", "Advanced Sales Pipeline & Forecasting", "Customer Insights & Behavior Analytics", "Automated Marketing Campaigns"],
-      timeline: "Sales Optimization"
+      description: "AI-powered sales and customer relationship management.",
+      capabilities: [
+        "Lead Tracking & Opportunity Management",
+        "Advanced Sales Pipeline & Forecasting",
+        "Customer 360-degree View & Analytics",
+        "Automated Marketing Campaign Management",
+        "Quote & Proposal Generation",
+        "Customer Support & Ticket Management",
+        "Sales Team Performance Analytics",
+        "Mobile CRM & Field Sales Tools"
+      ],
+      timeline: "Sales Optimization",
+      fullDescription: "End-to-end sales and customer relationship management with AI-powered insights and automation for maximum conversion rates. Our CRM platform provides complete customer visibility, automated sales processes, and intelligent insights that help you close more deals and build stronger customer relationships."
     },
     {
       icon: Package,
       title: "Inventory Management",
-      description: "Advanced inventory and warehouse management with real-time tracking and optimization capabilities for maximum efficiency.",
-      capabilities: ["Smart Stock Optimization & Forecasting", "Barcode & RFID Scanning Integration", "Automated Reordering & Supplier Alerts", "Multi-location Inventory Tracking"],
-      timeline: "Smart Inventory"
+      description: "Smart inventory optimization with real-time tracking.",
+      capabilities: [
+        "AI-powered Stock Optimization & Forecasting",
+        "Barcode & RFID Scanning Integration",
+        "Automated Reordering & Supplier Alerts",
+        "Multi-location & Multi-warehouse Tracking",
+        "Batch & Serial Number Management",
+        "Cycle Counting & Physical Inventory",
+        "Warehouse Layout & Pick Path Optimization",
+        "Supplier Performance & Vendor Management"
+      ],
+      timeline: "Smart Inventory",
+      fullDescription: "Advanced inventory and warehouse management with real-time tracking and optimization capabilities for maximum efficiency. Our inventory system uses AI to predict demand, optimize stock levels, and automate reordering processes while providing complete visibility across all locations and warehouses."
     },
     {
       icon: Factory,
       title: "Manufacturing",
-      description: "Complete production management solution that optimizes manufacturing processes and quality control with real-time monitoring.",
-      capabilities: ["Production Planning & Capacity Optimization", "Quality Control Workflows & Compliance", "Resource Allocation & Equipment Scheduling", "Bill of Materials Management & Costing"],
-      timeline: "Production Excellence"
+      description: "Intelligent production management and quality control.",
+      capabilities: [
+        "Production Planning & Capacity Optimization",
+        "Quality Control Workflows & Compliance",
+        "Resource Allocation & Equipment Scheduling",
+        "Bill of Materials Management & Costing",
+        "Shop Floor Control & Work Order Management",
+        "Machine Integration & IoT Connectivity",
+        "Lean Manufacturing & Waste Reduction",
+        "Product Lifecycle & Engineering Change Management"
+      ],
+      timeline: "Production Excellence",
+      fullDescription: "Complete production management solution that optimizes manufacturing processes and quality control with real-time monitoring. Our manufacturing module enables digital transformation with IoT integration, automated workflows, and real-time production tracking that maximizes efficiency and ensures consistent quality."
     },
     {
       icon: Wrench,
       title: "Asset Management",
-      description: "Comprehensive asset tracking and maintenance management to maximize equipment uptime and ROI with predictive analytics.",
-      capabilities: ["Preventive Maintenance Scheduling", "Asset Lifecycle Tracking & Depreciation", "Work Order Management & Dispatch", "Equipment Performance Analytics"],
-      timeline: "Asset Optimization"
+      description: "Predictive asset management and maintenance optimization.",
+      capabilities: [
+        "Preventive & Predictive Maintenance Scheduling",
+        "Asset Lifecycle Tracking & Depreciation",
+        "Work Order Management & Technician Dispatch",
+        "Equipment Performance & IoT Analytics",
+        "Spare Parts Inventory & Procurement",
+        "Compliance Management & Safety Tracking",
+        "Mobile Maintenance & Field Service",
+        "Asset ROI & Cost Analysis"
+      ],
+      timeline: "Asset Optimization",
+      fullDescription: "Comprehensive asset tracking and maintenance management to maximize equipment uptime and ROI with predictive analytics. Our asset management solution uses IoT sensors and machine learning to predict failures before they occur, optimize maintenance schedules, and ensure maximum equipment availability and performance."
     }
   ];
 
@@ -106,22 +169,10 @@ const ERPSolutions = () => {
                 
                 <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">{solution.description}</p>
                 
-                <div className="mb-6">
-                  <h4 className="text-sm font-medium text-gray-900 mb-3 flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Key Capabilities
-                  </h4>
-                  <div className="space-y-2">
-                    {solution.capabilities.map((capability, capIndex) => (
-                      <div key={capIndex} className="flex items-start text-xs text-gray-600">
-                        <div className="w-1.5 h-1.5 bg-pulse-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                        <span className="leading-relaxed">{capability}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="flex items-center text-pulse-500 font-medium text-sm group-hover:text-pulse-600 transition-colors duration-300 cursor-pointer mt-auto">
+                <div 
+                  className="flex items-center text-pulse-500 font-medium text-sm group-hover:text-pulse-600 transition-colors duration-300 cursor-pointer mt-auto"
+                  onClick={() => setSelectedSolution(solution)}
+                >
                   Explore module details
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
@@ -173,6 +224,16 @@ const ERPSolutions = () => {
           </div>
         </div>
       </div>
+      
+      <DetailModal
+        isOpen={selectedSolution !== null}
+        onClose={() => setSelectedSolution(null)}
+        title={selectedSolution?.title || ""}
+        description={selectedSolution?.fullDescription || selectedSolution?.description || ""}
+        capabilities={selectedSolution?.capabilities || []}
+        timeline={selectedSolution?.timeline}
+        icon={selectedSolution?.icon || Calculator}
+      />
     </section>
   );
 };
