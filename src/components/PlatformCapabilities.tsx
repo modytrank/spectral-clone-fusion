@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Cpu, Zap, Link, Smartphone, ArrowRight } from "lucide-react";
 
@@ -6,26 +7,46 @@ const PlatformCapabilities = () => {
     {
       icon: Cpu,
       title: "Core Modules",
-      description: "Comprehensive business modules covering all aspects of your operations",
-      features: ["Accounting & Finance", "Human Resources", "Sales & CRM", "Inventory Management"]
+      description: "Comprehensive business modules covering all aspects of your operations, designed to streamline processes and boost productivity across your entire organization.",
+      features: [
+        "Accounting & Finance - Complete financial management with real-time reporting",
+        "Human Resources - Employee lifecycle management and payroll automation", 
+        "Sales & CRM - Lead tracking, pipeline management, and customer insights",
+        "Inventory Management - Stock optimization with automated reordering"
+      ]
     },
     {
       icon: Zap,
       title: "AI Features", 
-      description: "Intelligent automation and insights powered by advanced AI",
-      features: ["Predictive Analytics", "Smart Workflows", "Automated Reporting", "Decision Support"]
+      description: "Intelligent automation and insights powered by advanced AI technology that learns from your business patterns to provide actionable recommendations and streamline operations.",
+      features: [
+        "Predictive Analytics - Forecast trends and identify opportunities",
+        "Smart Workflows - Automated processes that adapt to your business",
+        "Automated Reporting - Generate insights without manual intervention",
+        "Decision Support - AI-powered recommendations for better choices"
+      ]
     },
     {
       icon: Link,
       title: "Integration",
-      description: "Seamless connectivity with your existing tools and systems",
-      features: ["API Integration", "Third-party Connectors", "Data Synchronization", "Legacy Migration"]
+      description: "Seamless connectivity with your existing tools and systems, ensuring data flows smoothly across your entire technology stack without disrupting current workflows.",
+      features: [
+        "API Integration - Connect with 500+ popular business applications",
+        "Third-party Connectors - Pre-built integrations for major platforms",
+        "Data Synchronization - Real-time data sync across all systems",
+        "Legacy Migration - Smooth transition from your current systems"
+      ]
     },
     {
       icon: Smartphone,
       title: "Mobile & Cloud",
-      description: "Access your business data anywhere, anytime, on any device",
-      features: ["Mobile Apps", "Cloud Hosting", "Offline Capabilities", "Real-time Sync"]
+      description: "Access your business data anywhere, anytime, on any device with our cloud-native platform that ensures your team stays productive whether in office or on the go.",
+      features: [
+        "Mobile Apps - Native iOS and Android applications",
+        "Cloud Hosting - 99.9% uptime with enterprise-grade security",
+        "Offline Capabilities - Work seamlessly without internet connection",
+        "Real-time Sync - Instant updates across all devices and platforms"
+      ]
     }
   ];
 
@@ -50,7 +71,7 @@ const PlatformCapabilities = () => {
             <span className="font-medium">beautifully integrated</span>
           </h2>
           <p className="section-header-subtitle">
-            A comprehensive platform designed for modern businesses
+            A comprehensive platform designed for modern businesses with advanced features that grow with you
           </p>
         </div>
       </div>
@@ -73,11 +94,11 @@ const PlatformCapabilities = () => {
                 
                 <p className="text-gray-500 leading-relaxed mb-8">{capability.description}</p>
                 
-                <div className="space-y-3 mb-8">
+                <div className="space-y-4 mb-8">
                   {capability.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-sm text-gray-400">
-                      <div className="w-1.5 h-1.5 bg-gray-300 rounded-full mr-4"></div>
-                      {feature}
+                    <div key={featureIndex} className="flex items-start text-sm text-gray-600">
+                      <div className="w-1.5 h-1.5 bg-gray-300 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                      <span className="leading-relaxed">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -93,9 +114,9 @@ const PlatformCapabilities = () => {
 
         <div className="mt-24 text-center opacity-0 animate-slide-up" style={{ animationDelay: "0.5s" }}>
           <div className="bg-white rounded-3xl p-16 border border-gray-200 shadow-sm">
-            <h3 className="text-2xl font-light text-gray-900 mb-4">Ready to explore?</h3>
+            <h3 className="text-2xl font-light text-gray-900 mb-4">Ready to transform your business?</h3>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto leading-relaxed">
-              See how our platform capabilities can transform your business operations.
+              Discover how our integrated platform capabilities can streamline your operations and accelerate growth across every aspect of your business.
             </p>
             <button className="bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors duration-300">
               Request Demo
