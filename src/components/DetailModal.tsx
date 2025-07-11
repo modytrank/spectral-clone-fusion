@@ -53,8 +53,8 @@ const DetailModal = ({
   icon: Icon 
 }: DetailModalProps) => {
   const defaultCTAButtons = [
-    { text: "Get Started", variant: "primary" as const },
-    { text: "Schedule Demo", variant: "secondary" as const }
+    { text: "Get Started", variant: "primary" as const, action: undefined },
+    { text: "Schedule Demo", variant: "secondary" as const, action: undefined }
   ];
 
   const finalCTAButtons = ctaButtons || defaultCTAButtons;
