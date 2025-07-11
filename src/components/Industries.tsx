@@ -1,7 +1,8 @@
 
 import React, { useState } from "react";
-import { GraduationCap, ShoppingCart, Factory, Truck, Users, Building, TrendingUp, ArrowRight } from "lucide-react";
+import { GraduationCap, ShoppingCart, Factory, Truck, Users, Building, TrendingUp } from "lucide-react";
 import DetailModal from "./DetailModal";
+import PreviewCard from "./PreviewCard";
 
 const Industries = () => {
   const [selectedIndustry, setSelectedIndustry] = useState<any>(null);
@@ -10,7 +11,7 @@ const Industries = () => {
     {
       icon: GraduationCap,
       title: "Education",
-      description: "Complete educational management solutions for modern institutions.",
+      description: "Complete educational management solutions for modern institutions and learning environments.",
       capabilities: [
         "Student Information Management System",
         "Advanced Learning Management Platform",
@@ -23,12 +24,18 @@ const Industries = () => {
       ],
       timeline: "500+ Institutions",
       clients: "Schools, Universities, Training Centers, Online Learning Platforms",
-      fullDescription: "Comprehensive solutions for educational institutions, from student management to curriculum planning and administrative efficiency. Our education suite transforms traditional learning environments with digital tools that enhance student engagement, streamline administrative processes, and provide deep insights into academic performance."
+      fullDescription: "Comprehensive solutions for educational institutions, from student management to curriculum planning and administrative efficiency. Our education suite transforms traditional learning environments with digital tools that enhance student engagement, streamline administrative processes, and provide deep insights into academic performance and institutional effectiveness.",
+      benefits: [
+        "Streamlined administrative processes reduce workload by 60%",
+        "Enhanced student engagement through digital tools",
+        "Comprehensive analytics improve academic outcomes",
+        "Integrated communication platforms connect all stakeholders"
+      ]
     },
     {
       icon: ShoppingCart,
       title: "Retail",
-      description: "End-to-end retail management for omnichannel success.",
+      description: "End-to-end retail management for omnichannel success and customer satisfaction.",
       capabilities: [
         "Advanced Point of Sale (POS) Systems",
         "Omnichannel E-commerce Integration",
@@ -41,12 +48,18 @@ const Industries = () => {
       ],
       timeline: "1,000+ Stores",
       clients: "Retail Chains, Online Stores, Fashion Brands, Specialty Retailers",
-      fullDescription: "Complete retail management and e-commerce solutions designed to optimize sales, inventory, and customer experience across all channels. Our retail platform unifies online and offline operations, providing real-time visibility into customer behavior, inventory levels, and sales performance across all touchpoints."
+      fullDescription: "Complete retail management and e-commerce solutions designed to optimize sales, inventory, and customer experience across all channels. Our retail platform unifies online and offline operations, providing real-time visibility into customer behavior, inventory levels, and sales performance across all touchpoints for maximum profitability.",
+      benefits: [
+        "Omnichannel integration increases sales by 40%",
+        "Real-time inventory management reduces stockouts",
+        "Customer analytics drive personalized experiences",
+        "Automated processes improve operational efficiency"
+      ]
     },
     {
       icon: Factory,
       title: "Manufacturing",
-      description: "Smart manufacturing solutions for Industry 4.0 transformation.",
+      description: "Smart manufacturing solutions for Industry 4.0 transformation and operational excellence.",
       capabilities: [
         "Production Planning & Capacity Optimization",
         "Quality Management & Compliance Systems",
@@ -59,12 +72,18 @@ const Industries = () => {
       ],
       timeline: "200+ Factories",
       clients: "Manufacturers, Assembly Lines, Processing Plants, Industrial Equipment",
-      fullDescription: "End-to-end manufacturing and production management solutions that optimize efficiency, quality control, and supply chain operations. Our manufacturing suite enables digital transformation with IoT integration, predictive analytics, and automated workflows that reduce waste, improve quality, and maximize operational efficiency."
+      fullDescription: "End-to-end manufacturing and production management solutions that optimize efficiency, quality control, and supply chain operations. Our manufacturing suite enables digital transformation with IoT integration, predictive analytics, and automated workflows that reduce waste, improve quality, and maximize operational efficiency while ensuring compliance.",
+      benefits: [
+        "Predictive maintenance reduces downtime by 45%",
+        "Quality management systems ensure compliance",
+        "Real-time monitoring optimizes production efficiency",
+        "Supply chain integration reduces costs and delays"
+      ]
     },
     {
       icon: Truck,
       title: "Logistics",
-      description: "Intelligent logistics and supply chain optimization platform.",
+      description: "Intelligent logistics and supply chain optimization platform for seamless operations.",
       capabilities: [
         "AI-Powered Route Optimization",
         "Fleet Management & Vehicle Tracking",
@@ -77,7 +96,13 @@ const Industries = () => {
       ],
       timeline: "300+ Companies",
       clients: "Shipping Companies, 3PL Providers, Freight Forwarders, Distribution Centers",
-      fullDescription: "Advanced logistics and supply chain optimization tools that ensure timely delivery, cost efficiency, and complete visibility across operations. Our logistics platform leverages AI and machine learning to optimize routes, reduce costs, and provide real-time visibility throughout the entire supply chain ecosystem."
+      fullDescription: "Advanced logistics and supply chain optimization tools that ensure timely delivery, cost efficiency, and complete visibility across operations. Our logistics platform leverages AI and machine learning to optimize routes, reduce costs, and provide real-time visibility throughout the entire supply chain ecosystem for maximum efficiency.",
+      benefits: [
+        "AI-powered route optimization reduces fuel costs by 30%",
+        "Real-time tracking improves customer satisfaction",
+        "Automated load planning maximizes efficiency",
+        "Comprehensive analytics drive continuous improvement"
+      ]
     }
   ];
 
@@ -134,36 +159,15 @@ const Industries = () => {
       <div className="py-20 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
           {industries.map((industry, index) => (
-            <div 
+            <PreviewCard
               key={index}
-              className="group opacity-0 animate-slide-up"
-              style={{ animationDelay: `${0.05 * index}s` }}
-            >
-              <div className="bg-white rounded-3xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-500 hover:shadow-xl h-full">
-                <div className="flex items-start mb-6">
-                  <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mr-4 group-hover:bg-pulse-50 transition-all duration-500">
-                    <industry.icon className="w-7 h-7 text-gray-600 group-hover:text-pulse-500 transition-all duration-500" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-xl font-medium text-gray-900">{industry.title}</h3>
-                      <span className="text-xs text-pulse-500 font-medium bg-pulse-50 px-3 py-1 rounded-full">
-                        {industry.timeline}
-                      </span>
-                    </div>
-                    <p className="text-gray-600 text-sm leading-relaxed">{industry.description}</p>
-                  </div>
-                </div>
-                
-                <div 
-                  className="flex items-center text-pulse-500 font-medium text-sm group-hover:text-pulse-600 transition-colors duration-300 cursor-pointer"
-                  onClick={() => setSelectedIndustry(industry)}
-                >
-                  Explore industry solutions
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </div>
-              </div>
-            </div>
+              icon={industry.icon}
+              title={industry.title}
+              description={industry.description}
+              timeline={industry.timeline}
+              onLearnMore={() => setSelectedIndustry(industry)}
+              index={index}
+            />
           ))}
         </div>
 
@@ -221,6 +225,7 @@ const Industries = () => {
         title={selectedIndustry?.title || ""}
         description={selectedIndustry?.fullDescription || selectedIndustry?.description || ""}
         capabilities={selectedIndustry?.capabilities || []}
+        benefits={selectedIndustry?.benefits || []}
         timeline={selectedIndustry?.timeline}
         clients={selectedIndustry?.clients}
         icon={selectedIndustry?.icon || GraduationCap}

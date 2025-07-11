@@ -1,7 +1,8 @@
 
 import React, { useState } from "react";
-import { Cpu, Zap, Link, Smartphone, ArrowRight } from "lucide-react";
+import { Cpu, Zap, Link, Smartphone } from "lucide-react";
 import DetailModal from "./DetailModal";
+import PreviewCard from "./PreviewCard";
 
 const PlatformCapabilities = () => {
   const [selectedCapability, setSelectedCapability] = useState<any>(null);
@@ -10,10 +11,10 @@ const PlatformCapabilities = () => {
     {
       icon: Cpu,
       title: "Core Modules",
-      description: "Essential business modules for complete operations management.",
+      description: "Essential business modules for complete operations management and workflow automation.",
       capabilities: [
         "Advanced Accounting & Financial Reporting",
-        "Comprehensive Human Resources Management",
+        "Comprehensive Human Resources Management", 
         "Sales CRM with Pipeline Automation",
         "Smart Inventory & Supply Chain Control",
         "Project Management & Resource Planning",
@@ -22,12 +23,18 @@ const PlatformCapabilities = () => {
         "Real-time Business Intelligence Dashboard"
       ],
       timeline: "Core Foundation",
-      fullDescription: "Comprehensive business modules covering all aspects of your operations, designed to streamline processes and boost productivity across your entire organization. Our core modules provide the foundation for digital transformation with integrated workflows, automated processes, and real-time data synchronization."
+      fullDescription: "Comprehensive business modules covering all aspects of your operations, designed to streamline processes and boost productivity across your entire organization. Our core modules provide the foundation for digital transformation with integrated workflows, automated processes, and real-time data synchronization across all business functions.",
+      benefits: [
+        "Integrated workflow automation reduces manual tasks by 70%",
+        "Real-time data synchronization across all departments",
+        "Comprehensive reporting and analytics dashboard",
+        "Multi-location support with centralized control"
+      ]
     },
     {
       icon: Zap,
       title: "AI Features", 
-      description: "Advanced AI technology that learns and optimizes your business.",
+      description: "Advanced AI technology that learns and optimizes your business processes automatically.",
       capabilities: [
         "Machine Learning Predictive Analytics",
         "Intelligent Process Automation Workflows",
@@ -39,12 +46,18 @@ const PlatformCapabilities = () => {
         "Voice-to-Data Input Processing"
       ],
       timeline: "Smart Enhancement",
-      fullDescription: "Intelligent automation and insights powered by advanced AI technology that learns from your business patterns to provide actionable recommendations. Our AI features continuously evolve with your business, identifying opportunities for optimization and automating complex decision-making processes."
+      fullDescription: "Intelligent automation and insights powered by advanced AI technology that learns from your business patterns to provide actionable recommendations. Our AI features continuously evolve with your business, identifying opportunities for optimization and automating complex decision-making processes to drive growth and efficiency.",
+      benefits: [
+        "Predictive analytics improve decision-making accuracy by 85%",
+        "Automated workflows reduce processing time by 60%",
+        "AI-powered insights drive revenue growth",
+        "Continuous learning adapts to your business evolution"
+      ]
     },
     {
       icon: Link,
       title: "Integration Hub",
-      description: "Connect with 500+ platforms and systems seamlessly.",
+      description: "Connect with 500+ platforms and systems seamlessly for unified data flow.",
       capabilities: [
         "Enterprise API Gateway Management",
         "Real-time Data Synchronization Engine",
@@ -56,12 +69,18 @@ const PlatformCapabilities = () => {
         "Security & Authentication Management"
       ],
       timeline: "Seamless Connection",
-      fullDescription: "Seamless connectivity with your existing tools and systems, ensuring data flows smoothly across your entire technology stack without disruption. Our integration hub supports both modern APIs and legacy systems, providing a unified data ecosystem for your business."
+      fullDescription: "Seamless connectivity with your existing tools and systems, ensuring data flows smoothly across your entire technology stack without disruption. Our integration hub supports both modern APIs and legacy systems, providing a unified data ecosystem that eliminates silos and enables comprehensive business intelligence.",
+      benefits: [
+        "Connect 500+ third-party applications instantly",
+        "Eliminate data silos with unified integration",
+        "Legacy system support ensures smooth migration",
+        "Real-time synchronization keeps data current"
+      ]
     },
     {
       icon: Smartphone,
       title: "Mobile & Cloud Platform",
-      description: "Access your business data anywhere with 99.9% uptime guarantee.",
+      description: "Access your business data anywhere with 99.9% uptime guarantee and offline capabilities.",
       capabilities: [
         "Progressive Web Application (PWA)",
         "Native iOS & Android Applications",
@@ -73,7 +92,13 @@ const PlatformCapabilities = () => {
         "Global CDN for Optimal Performance"
       ],
       timeline: "Anywhere Access",
-      fullDescription: "Access your business data anywhere, anytime, on any device with our cloud-native platform that ensures maximum uptime and security. Built with modern cloud architecture, our platform provides seamless mobile experiences with robust offline capabilities and enterprise-grade security."
+      fullDescription: "Access your business data anywhere, anytime, on any device with our cloud-native platform that ensures maximum uptime and security. Built with modern cloud architecture, our platform provides seamless mobile experiences with robust offline capabilities and enterprise-grade security that scales with your business needs.",
+      benefits: [
+        "99.9% uptime SLA with automatic failover",
+        "Offline functionality ensures continuous productivity",
+        "Enterprise-grade security protects your data",
+        "Global CDN provides optimal performance worldwide"
+      ]
     }
   ];
 
@@ -106,36 +131,15 @@ const PlatformCapabilities = () => {
       <div className="py-20 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
           {capabilities.map((capability, index) => (
-            <div 
+            <PreviewCard
               key={index}
-              className="group opacity-0 animate-slide-up"
-              style={{ animationDelay: `${0.05 * index}s` }}
-            >
-              <div className="bg-white rounded-3xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-500 hover:shadow-xl h-full">
-                <div className="flex items-start mb-6">
-                  <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mr-4 group-hover:bg-pulse-50 transition-all duration-500">
-                    <capability.icon className="w-7 h-7 text-gray-600 group-hover:text-pulse-500 transition-all duration-500" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-xl font-medium text-gray-900">{capability.title}</h3>
-                      <span className="text-xs text-pulse-500 font-medium bg-pulse-50 px-3 py-1 rounded-full">
-                        {capability.timeline}
-                      </span>
-                    </div>
-                    <p className="text-gray-600 text-sm leading-relaxed">{capability.description}</p>
-                  </div>
-                </div>
-                
-                <div 
-                  className="flex items-center text-pulse-500 font-medium text-sm group-hover:text-pulse-600 transition-colors duration-300 cursor-pointer"
-                  onClick={() => setSelectedCapability(capability)}
-                >
-                  Learn more about this capability
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </div>
-              </div>
-            </div>
+              icon={capability.icon}
+              title={capability.title}
+              description={capability.description}
+              timeline={capability.timeline}
+              onLearnMore={() => setSelectedCapability(capability)}
+              index={index}
+            />
           ))}
         </div>
 
@@ -194,6 +198,7 @@ const PlatformCapabilities = () => {
         title={selectedCapability?.title || ""}
         description={selectedCapability?.fullDescription || selectedCapability?.description || ""}
         capabilities={selectedCapability?.capabilities || []}
+        benefits={selectedCapability?.benefits || []}
         timeline={selectedCapability?.timeline}
         icon={selectedCapability?.icon || Cpu}
       />

@@ -1,37 +1,106 @@
-import React from "react";
+import React, { useState } from "react";
 import { Zap, Building, Building2, MessageSquare, Check } from "lucide-react";
+import DetailModal from "./DetailModal";
+import PreviewCard from "./PreviewCard";
 
 const Packages = () => {
+  const [selectedPackage, setSelectedPackage] = useState<any>(null);
+  
   const packages = [
     {
       icon: Zap,
       title: "Startup",
-      description: "Perfect for growing businesses",
+      description: "Perfect for growing businesses ready to scale their operations efficiently.",
       price: "$299",
       period: "/month",
       originalPrice: "$399",
       features: ["Quick Implementation", "Core Modules", "Basic Support", "Cloud Hosting", "Up to 10 Users", "Mobile Access"],
-      popular: false
+      popular: false,
+      fullDescription: "Our Startup package is designed for growing businesses that need powerful ERP capabilities without the complexity. Perfect for companies with 5-50 employees who want to streamline operations, improve efficiency, and scale sustainably with integrated business management tools.",
+      detailedFeatures: [
+        "Quick Implementation (2-4 weeks setup)",
+        "Core Business Modules (Accounting, CRM, Inventory)",
+        "Email & Chat Support (Business Hours)",
+        "Secure Cloud Hosting with 99.5% uptime",
+        "Up to 10 Active Users",
+        "Mobile Apps for iOS & Android",
+        "Basic Reporting & Analytics",
+        "Standard Security Features",
+        "Monthly Data Backups",
+        "Online Training Resources"
+      ],
+      benefits: [
+        "Rapid deployment gets you operational quickly",
+        "Cost-effective solution for growing businesses",
+        "Scalable architecture grows with your business",
+        "Mobile access ensures productivity anywhere"
+      ],
+      idealFor: "Startups, small businesses, growing companies with basic ERP needs"
     },
     {
       icon: Building,
       title: "Professional",
-      description: "Comprehensive solution for established companies",
+      description: "Comprehensive solution for established companies with complex operational needs.",
       price: "$599",
       period: "/month",
       originalPrice: "$799",
       features: ["Advanced Features", "Custom Workflows", "Priority Support", "Multi-location", "Advanced Analytics", "API Access", "Up to 50 Users", "Custom Reports"],
-      popular: true
+      popular: true,
+      fullDescription: "The Professional package offers comprehensive ERP functionality for established businesses with complex operations. Ideal for companies with 50-200 employees requiring advanced features, custom workflows, and multi-location support with priority technical assistance.",
+      detailedFeatures: [
+        "Advanced Feature Set (All Modules Included)",
+        "Custom Workflow Design & Implementation",
+        "Priority Support (24/5, 4-hour response)",
+        "Multi-location & Multi-currency Support",
+        "Advanced Analytics & Business Intelligence",
+        "Full API Access for Integrations",
+        "Up to 50 Active Users",
+        "Custom Report Builder",
+        "Advanced Security & Permissions",
+        "Weekly Data Backups",
+        "Dedicated Account Manager",
+        "Custom Training Sessions"
+      ],
+      benefits: [
+        "Comprehensive functionality covers all business needs",
+        "Custom workflows optimize your specific processes",
+        "Priority support ensures minimal downtime",
+        "Multi-location support enables business expansion"
+      ],
+      idealFor: "Mid-market companies, multi-location businesses, established enterprises"
     },
     {
       icon: Building2,
       title: "Enterprise",
-      description: "Advanced solution for large organizations",
+      description: "Advanced solution for large organizations with complex compliance and customization requirements.",
       price: "$1,299",
       period: "/month",
       originalPrice: "$1,599",
       features: ["White-label Options", "Dedicated Support", "Custom Development", "Compliance Tools", "Advanced Security", "SLA Guarantee", "Unlimited Users", "On-premise Option"],
-      popular: false
+      popular: false,
+      fullDescription: "Our Enterprise package delivers maximum flexibility and customization for large organizations with complex requirements. Perfect for companies with 200+ employees requiring white-label solutions, custom development, and enterprise-grade security with guaranteed service levels.",
+      detailedFeatures: [
+        "White-label & Custom Branding Options",
+        "Dedicated Support Team (24/7, 1-hour response)",
+        "Custom Development & Feature Building",
+        "Industry-specific Compliance Tools",
+        "Enterprise Security & Audit Trails",
+        "99.9% Uptime SLA Guarantee",
+        "Unlimited Users & Concurrent Sessions",
+        "On-premise Deployment Option",
+        "Advanced Integration Capabilities",
+        "Daily Data Backups & Disaster Recovery",
+        "Executive Dashboards & Reporting",
+        "Dedicated Implementation Team",
+        "Custom Training & Change Management"
+      ],
+      benefits: [
+        "Complete customization meets unique requirements",
+        "Dedicated support team ensures optimal performance",
+        "Enterprise security protects sensitive data",
+        "SLA guarantee provides business continuity assurance"
+      ],
+      idealFor: "Large enterprises, regulated industries, organizations with complex compliance needs"
     }
   ];
 
@@ -95,34 +164,46 @@ const Packages = () => {
                 relative h-full bg-white rounded-3xl p-8 transition-all duration-500 group-hover:-translate-y-2
                 ${pkg.popular ? 'border-2 border-pulse-500 shadow-lg' : 'border border-gray-200 hover:shadow-lg'}
               `}>
-                <div className="text-center mb-8">
+                <div className="text-center mb-6">
                   <div className={`
-                    inline-flex items-center justify-center w-12 h-12 rounded-2xl mb-6
+                    inline-flex items-center justify-center w-12 h-12 rounded-2xl mb-4
                     ${pkg.popular ? 'bg-pulse-500 text-white' : 'bg-gray-100 text-gray-600'}
                   `}>
                     <pkg.icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-2xl font-medium text-gray-900 mb-2">{pkg.title}</h3>
-                  <p className="text-gray-600 mb-6">{pkg.description}</p>
+                  <h3 className="text-xl font-medium text-gray-900 mb-2">{pkg.title}</h3>
+                  <p className="text-gray-600 text-sm mb-4">{pkg.description}</p>
                   
                   <div className="flex items-center justify-center mb-2">
-                    <span className="text-4xl font-light text-gray-900">{pkg.price}</span>
+                    <span className="text-3xl font-light text-gray-900">{pkg.price}</span>
                     <span className="text-gray-500 ml-1">{pkg.period}</span>
                   </div>
-                  <div className="flex items-center justify-center">
+                  <div className="flex items-center justify-center mb-4">
                     <span className="text-sm text-gray-400 line-through mr-2">{pkg.originalPrice}</span>
                     <span className="text-sm text-green-600 font-medium">Save 25%</span>
                   </div>
                 </div>
                 
-                <ul className="space-y-4 mb-8">
-                  {pkg.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center">
-                      <Check className="w-4 h-4 text-pulse-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">{feature}</span>
+                <ul className="space-y-2 mb-6">
+                  {pkg.features.slice(0, 4).map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center text-sm">
+                      <Check className="w-4 h-4 text-pulse-500 mr-2 flex-shrink-0" />
+                      <span className="text-gray-700">{feature}</span>
                     </li>
                   ))}
+                  {pkg.features.length > 4 && (
+                    <li className="text-sm text-gray-500 pl-6">
+                      +{pkg.features.length - 4} more features
+                    </li>
+                  )}
                 </ul>
+                
+                <button 
+                  onClick={() => setSelectedPackage(pkg)}
+                  className="w-full py-2 px-4 rounded-xl text-sm font-medium mb-4 border border-gray-300 text-gray-700 hover:bg-gray-50 transition-all duration-300"
+                >
+                  View Details
+                </button>
                 
                 <button className={`
                   w-full py-3 px-6 rounded-full font-medium transition-all duration-300
@@ -190,6 +271,23 @@ const Packages = () => {
           </div>
         </div>
       </div>
+      
+      <DetailModal
+        isOpen={selectedPackage !== null}
+        onClose={() => setSelectedPackage(null)}
+        title={selectedPackage?.title || ""}
+        description={selectedPackage?.fullDescription || selectedPackage?.description || ""}
+        capabilities={selectedPackage?.detailedFeatures || []}
+        benefits={selectedPackage?.benefits || []}
+        pricing={selectedPackage ? {
+          price: selectedPackage.price,
+          period: selectedPackage.period,
+          originalPrice: selectedPackage.originalPrice,
+          features: selectedPackage.features
+        } : undefined}
+        additionalInfo={selectedPackage?.idealFor}
+        icon={selectedPackage?.icon || Zap}
+      />
     </section>
   );
 };
