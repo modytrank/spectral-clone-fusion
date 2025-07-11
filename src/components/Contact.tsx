@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Mail, Phone, MapPin, MessageCircle, Calendar, Users, Send, CheckCircle, AlertCircle } from "lucide-react";
 import emailjs from '@emailjs/browser';
 import { toast } from "sonner";
+import { getTranslation, getCurrentLanguage } from "@/lib/translations";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const Contact = () => {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [currentLang, setCurrentLang] = useState('en');
 
   // EmailJS configuration - You'll need to set these up in EmailJS dashboard
   const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_2owengl";
@@ -28,23 +30,27 @@ const Contact = () => {
                               EMAILJS_PUBLIC_KEY !== "your_public_key" &&
                               EMAILJS_PUBLIC_KEY.length > 0;
 
+  useEffect(() => {
+    setCurrentLang(getCurrentLanguage());
+  }, []);
+
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email",
+      title: getTranslation('email', currentLang),
       value: "info@movinware.com",
       link: "mailto:info@movinware.com"
     },
     {
       icon: Phone,
-      title: "Phone",
+      title: getTranslation('phone', currentLang),
       value: "+966 561820949",
       link: "tel:+966561820949"
     },
     {
       icon: MapPin,
-      title: "Location",
-      value: "Online",
+      title: getTranslation('location', currentLang),
+      value: getTranslation('online', currentLang),
       link: "#"
     }
   ];
@@ -227,9 +233,9 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">10</span>
             <span>Contact Us</span>
           </div>
-          <h2 className="section-title mb-4">Get In Touch</h2>
+          <h2 className="section-title mb-4">{getTranslation('contactTitle', currentLang)}</h2>
           <p className="section-subtitle mx-auto">
-            Ready to transform your business? Contact us today to get started.
+            {getTranslation('contactSubtitle', currentLang)}
           </p>
         </div>
 

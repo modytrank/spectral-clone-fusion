@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { getTranslation, getCurrentLanguage } from "@/lib/translations";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState('en');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,17 @@ const Navbar = () => {
     
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setCurrentLang(getCurrentLanguage());
+    
+    const handleLanguageChange = () => {
+      setCurrentLang(getCurrentLanguage());
+    };
+    
+    window.addEventListener('languagechange', handleLanguageChange);
+    return () => window.removeEventListener('languagechange', handleLanguageChange);
   }, []);
 
   const toggleMenu = () => {
@@ -76,7 +89,7 @@ const Navbar = () => {
               scrollToTop();
             }}
           >
-            Home
+            {getTranslation('home', currentLang)}
           </a>
           <a href="#value" className="nav-link">360° Value</a>
           <a href="#platform" className="nav-link">Platform</a>
@@ -128,7 +141,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            Home
+            {getTranslation('home', currentLang)}
           </a>
           <a 
             href="#value" 
