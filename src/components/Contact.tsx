@@ -3,9 +3,10 @@ import { Mail, Phone, MapPin, MessageCircle, Calendar, Users, Send, CheckCircle,
 import emailjs from '@emailjs/browser';
 import { toast } from "sonner";
 import { useTranslation } from "@/lib/translations";
+import { cn } from "@/lib/utils";
 
 const Contact = () => {
-  const { t } = useTranslation();
+  const { t, getFontClass } = useTranslation();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -222,7 +223,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
   };
 
   return (
-    <section className="py-20 bg-white" id="contact">
+    <section className={cn("py-20 bg-white", getFontClass())} id="contact">
       <div className="section-container">
         <div className="text-center mb-16 opacity-0 animate-on-scroll">
           <div className="pulse-chip mx-auto mb-4">

@@ -9,7 +9,7 @@ const Hero = () => {
   const imageRef = useRef<HTMLImageElement>(null);
   const [lottieData, setLottieData] = useState<any>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const { t } = useTranslation();
+  const { t, getFontClass } = useTranslation();
 
   useEffect(() => {
     // Check if mobile on mount and when window resizes
@@ -105,7 +105,10 @@ const Hero = () => {
   
   return (
     <section 
-      className="overflow-hidden relative bg-cover" 
+      className={cn(
+        "overflow-hidden relative bg-cover",
+        getFontClass()
+      )}
       id="hero" 
       style={{
         backgroundImage: 'url("/new-Header-background.png")',

@@ -7,7 +7,7 @@ import { useTranslation } from "@/lib/translations";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { t } = useTranslation();
+  const { t, getFontClass } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +41,7 @@ const Navbar = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 py-2 sm:py-3 md:py-4 transition-all duration-300",
+        getFontClass(),
         isScrolled 
           ? "bg-white/80 backdrop-blur-md shadow-sm" 
           : "bg-transparent"

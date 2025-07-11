@@ -194,10 +194,13 @@ export const useTranslation = () => {
 
   const currentLanguage = getCurrentLanguage();
   const t = translations[currentLanguage] || translations.en;
+  const isRTL = currentLanguage === 'ar';
 
   return {
     t,
     currentLanguage,
-    isRTL: currentLanguage === 'ar'
+    isRTL,
+    // Helper function to get font class for current language
+    getFontClass: () => isRTL ? 'font-arabic' : 'font-sans'
   };
 };

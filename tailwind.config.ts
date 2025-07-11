@@ -159,6 +159,7 @@ export default {
 				'display': ['Brockmann', 'SF Pro Display', 'Inter', 'sans-serif'],
 				'brockmann': ['Brockmann', 'serif'],
 				'playfair': ['"Playfair Display"', 'serif'],
+				'arabic': ['"Noto Sans Arabic"', 'Arial', 'sans-serif'],
 			},
 			boxShadow: {
 				'elegant': '0 4px 20px rgba(0, 0, 0, 0.08)',
