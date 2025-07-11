@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { useTranslation } from "@/lib/translations";
+import { getTranslation, getCurrentLanguage } from "@/lib/translations";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { t, getFontClass } = useTranslation();
+  const [currentLang, setCurrentLang] = useState('en');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +16,17 @@ const Navbar = () => {
     
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setCurrentLang(getCurrentLanguage());
+    
+    const handleLanguageChange = () => {
+      setCurrentLang(getCurrentLanguage());
+    };
+    
+    window.addEventListener('languagechange', handleLanguageChange);
+    return () => window.removeEventListener('languagechange', handleLanguageChange);
   }, []);
 
   const toggleMenu = () => {
@@ -41,7 +52,6 @@ const Navbar = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 py-2 sm:py-3 md:py-4 transition-all duration-300",
-        getFontClass(),
         isScrolled 
           ? "bg-white/80 backdrop-blur-md shadow-sm" 
           : "bg-transparent"
@@ -79,15 +89,15 @@ const Navbar = () => {
               scrollToTop();
             }}
           >
-            {t.home}
+            {getTranslation('home', currentLang)}
           </a>
-          <a href="#value" className="nav-link">{t.value360}</a>
-          <a href="#platform" className="nav-link">{t.platform}</a>
-          <a href="#industries" className="nav-link">{t.industries}</a>
-          <a href="#erp-solutions" className="nav-link">{t.solutions}</a>
-          <a href="#services" className="nav-link">{t.services}</a>
-          <a href="#packages" className="nav-link">{t.packages}</a>
-          <a href="#contact" className="nav-link">{t.contact}</a>
+          <a href="#value" className="nav-link">360° Value</a>
+          <a href="#platform" className="nav-link">Platform</a>
+          <a href="#industries" className="nav-link">Industries</a>
+          <a href="#erp-solutions" className="nav-link">Solutions</a>
+          <a href="#services" className="nav-link">Services</a>
+          <a href="#packages" className="nav-link">Packages</a>
+          <a href="#contact" className="nav-link">Contact</a>
         </nav>
 
         {/* Language Switcher - Desktop */}
@@ -110,7 +120,7 @@ const Navbar = () => {
       )}>
         {/* Mobile Header with Close Button */}
         <div className="flex items-center justify-between py-4 border-b border-gray-200 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900">{t.menu}</h2>
+          <h2 className="text-xl font-semibold text-gray-900">Menu</h2>
           <button 
             onClick={toggleMenu}
             className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
@@ -131,7 +141,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t.home}
+            {getTranslation('home', currentLang)}
           </a>
           <a 
             href="#value" 
@@ -141,7 +151,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t.value360}
+            360° Value
           </a>
           <a 
             href="#platform" 
@@ -151,7 +161,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t.platform}
+            Platform
           </a>
           <a 
             href="#industries" 
@@ -161,7 +171,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t.industries}
+            Industries
           </a>
           <a 
             href="#erp-solutions" 
@@ -171,7 +181,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t.solutions}
+            Solutions
           </a>
           <a 
             href="#services" 
@@ -181,7 +191,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t.services}
+            Services
           </a>
           <a 
             href="#packages" 
@@ -191,7 +201,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t.packages}
+            Packages
           </a>
           <a 
             href="#contact" 
@@ -201,7 +211,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t.contact}
+            Contact
           </a>
         </nav>
         
