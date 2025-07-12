@@ -427,9 +427,8 @@
   .card-modern::before {
     content: '';
     @apply absolute inset-0 rounded-xl;
-    @apply bg-gradient-to-br from-primary/5 to-accent/5;
+    @apply bg-gradient-to-br from-primary/5 to-secondary/5;
     @apply opacity-0 transition-opacity duration-500;
-    @apply group-hover:opacity-100;
   }
 
   .input-modern {
