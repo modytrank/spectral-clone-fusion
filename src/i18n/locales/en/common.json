@@ -1,0 +1,136 @@
+{
+  "navigation": {
+    "home": "Home",
+    "value": "360° Value",
+    "platform": "Platform",
+    "industries": "Industries",
+    "solutions": "Solutions",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "ERP Solutions",
+    "title": "Intelligent Operations.<br/>Seamless Transformation",
+    "subtitle": "AI-powered ERP system designed for your workflow. Streamline operations, boost efficiency, and future-proof your business with MovinWare's intelligent solutions.",
+    "cta": "Start Your Journey"
+  },
+  "value": {
+    "badge": "360° VALUE",
+    "title": "We don't just build software",
+    "subtitle": "We build your business future",
+    "aiFeatures": {
+      "title": "Intelligent automation that learns from your business",
+      "features": [
+        "Automatic Forecasting",
+        "Decision Automation", 
+        "Smart Workflows",
+        "Advanced Analytics"
+      ]
+    },
+    "speed": {
+      "title": "From setup to results in record time",
+      "features": [
+        "Rapid Deployment",
+        "Immediate ROI",
+        "Instant Benefits",
+        "Proven Methodology"
+      ]
+    },
+    "cultural": {
+      "title": "Built for <span class=\"text-white\">MENA businesses</span>",
+      "features": [
+        "Bilingual Support",
+        "Native RTL Interfaces",
+        "Local Compliance",
+        "Cultural Alignment"
+      ]
+    },
+    "adoption": {
+      "title": "Simple, intuitive, and <span class=\"text-white\">user-friendly</span>",
+      "features": [
+        "Intuitive Design",
+        "Simplified Training",
+        "User-Friendly Interface",
+        "Ongoing Support"
+      ]
+    }
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "title": "Get In Touch",
+    "subtitle": "Ready to transform your business? Contact us today to get started.",
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "company": "Company",
+      "phone": "Phone",
+      "inquiryType": "Inquiry Type",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message Sent!",
+      "tryAgain": "Try Again"
+    },
+    "info": {
+      "title": "Contact Information",
+      "email": "info@movinware.com",
+      "phone": "+966 561820949",
+      "location": "Online"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "expert": {
+        "title": "Talk to Expert",
+        "description": "Schedule a call with our experts"
+      },
+      "consultation": {
+        "title": "Schedule Consultation", 
+        "description": "Book a free consultation"
+      },
+      "whatsapp": {
+        "title": "WhatsApp Support",
+        "description": "Get instant support via WhatsApp"
+      }
+    }
+  },
+  "footer": {
+    "description": "AI-powered ERP solutions designed for modern businesses. Streamline operations, boost efficiency, and future-proof your business with intelligent automation.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "copyright": "© 2025 MovinWare. All rights reserved.",
+    "builtBy": "Built entirely by Muhammad Al-Duais"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "getStarted": "Get Started",
+    "scheduleDemo": "Schedule Demo",
+    "requestAccess": "Request access",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "next": "Next",
+    "previous": "Previous",
+    "required": "Required"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "phone": "Please enter a valid phone number",
+    "minLength": "Minimum {{count}} characters required",
+    "maxLength": "Maximum {{count}} characters allowed"
+  },
+  "dates": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "tomorrow": "Tomorrow",
+    "thisWeek": "This week",
+    "lastWeek": "Last week",
+    "thisMonth": "This month",
+    "lastMonth": "Last month"
+  }
+}

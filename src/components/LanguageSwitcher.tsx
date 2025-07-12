@@ -1,54 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Globe } from 'lucide-react';
+import { useI18n } from '@/hooks/useI18n';
+
 interface LanguageSwitcherProps {
   className?: string;
 }
+
 const LanguageSwitcher = ({
   className = ""
 }: LanguageSwitcherProps) => {
-  const [currentLanguage, setCurrentLanguage] = useState('en');
   const [isOpen, setIsOpen] = useState(false);
-  const languages = [{
-    code: 'en',
-    name: 'English',
-    nativeName: 'English'
-  }, {
-    code: 'ar',
-    name: 'Arabic',
-    nativeName: 'العربية'
-  }];
-  useEffect(() => {
-    // Get language from localStorage or default to 'en'
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    setCurrentLanguage(savedLanguage);
-
-    // Apply RTL for Arabic
-    if (savedLanguage === 'ar') {
-      document.documentElement.dir = 'rtl';
-      document.documentElement.lang = 'ar';
-    } else {
-      document.documentElement.dir = 'ltr';
-      document.documentElement.lang = 'en';
-    }
-  }, []);
+  const { currentLanguage, changeLanguage, languages } = useI18n();
+  
   const handleLanguageChange = (langCode: string) => {
-    setCurrentLanguage(langCode);
-    localStorage.setItem('language', langCode);
-
-    // Apply RTL for Arabic
-    if (langCode === 'ar') {
-      document.documentElement.dir = 'rtl';
-      document.documentElement.lang = 'ar';
-    } else {
-      document.documentElement.dir = 'ltr';
-      document.documentElement.lang = 'en';
-    }
+    changeLanguage(langCode);
     setIsOpen(false);
-
-    // Reload page to apply language changes
-    window.location.reload();
   };
+  
   const currentLang = languages.find(lang => lang.code === currentLanguage) || languages[0];
+  
   return <div className={`relative ${className}`}>
       <button onClick={() => setIsOpen(!isOpen)} aria-label="Switch language" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 text-[e] text-pulse-500">
         <Globe className="w-4 h-4" />
