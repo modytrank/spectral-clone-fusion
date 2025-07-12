@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { useI18n } from "@/hooks/useI18n";
 
 const Navbar = () => {
-  const { t } = useI18n();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -78,15 +76,15 @@ const Navbar = () => {
               scrollToTop();
             }}
           >
-            {t('navigation.home')}
+            Home
           </a>
-          <a href="#value" className="nav-link">{t('navigation.value')}</a>
-          <a href="#platform" className="nav-link">{t('navigation.platform')}</a>
-          <a href="#industries" className="nav-link">{t('navigation.industries')}</a>
-          <a href="#erp-solutions" className="nav-link">{t('navigation.solutions')}</a>
-          <a href="#services" className="nav-link">{t('navigation.services')}</a>
+          <a href="#value" className="nav-link">360° Value</a>
+          <a href="#platform" className="nav-link">Platform</a>
+          <a href="#industries" className="nav-link">Industries</a>
+          <a href="#erp-solutions" className="nav-link">Solutions</a>
+          <a href="#services" className="nav-link">Services</a>
           
-          <a href="#contact" className="nav-link">{t('navigation.contact')}</a>
+          <a href="#contact" className="nav-link">Contact</a>
         </nav>
 
         {/* Language Switcher - Desktop */}
@@ -130,7 +128,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t('navigation.home')}
+            Home
           </a>
           <a 
             href="#value" 
@@ -140,7 +138,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t('navigation.value')}
+            360° Value
           </a>
           <a 
             href="#platform" 
@@ -150,7 +148,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t('navigation.platform')}
+            Platform
           </a>
           <a 
             href="#industries" 
@@ -160,7 +158,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t('navigation.industries')}
+            Industries
           </a>
           <a 
             href="#erp-solutions" 
@@ -170,7 +168,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t('navigation.solutions')}
+            Solutions
           </a>
           <a 
             href="#services" 
@@ -180,7 +178,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t('navigation.services')}
+            Services
           </a>
           <a 
             href="#contact" 
@@ -190,7 +188,7 @@ const Navbar = () => {
               document.body.style.overflow = '';
             }}
           >
-            {t('navigation.contact')}
+            Contact
           </a>
         </nav>
         

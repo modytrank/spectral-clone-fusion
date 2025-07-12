@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { Mail, Phone, MapPin, MessageCircle, Calendar, Users, Send, CheckCircle, AlertCircle } from "lucide-react";
 import emailjs from '@emailjs/browser';
 import { toast } from "sonner";
-import { useI18n } from "@/hooks/useI18n";
 
 const Contact = () => {
-  const { t } = useI18n();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -33,20 +31,20 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: t('contact.info.email'),
-      value: t('contact.info.email'),
+      title: "Email",
+      value: "info@movinware.com",
       link: "mailto:info@movinware.com"
     },
     {
       icon: Phone,
-      title: t('contact.info.phone'),
-      value: t('contact.info.phone'),
+      title: "Phone",
+      value: "+966 561820949",
       link: "tel:+966561820949"
     },
     {
       icon: MapPin,
-      title: t('contact.info.location'),
-      value: t('contact.info.location'),
+      title: "Location",
+      value: "Online",
       link: "#"
     }
   ];
@@ -54,20 +52,20 @@ const Contact = () => {
   const quickActions = [
     {
       icon: Users,
-      title: t('contact.quickActions.expert.title'),
-      description: t('contact.quickActions.expert.description'),
+      title: "Talk to Expert",
+      description: "Schedule a call with our experts",
       action: () => window.open("https://calendly.com/movinware", "_blank")
     },
     {
       icon: Calendar,
-      title: t('contact.quickActions.consultation.title'),
-      description: t('contact.quickActions.consultation.description'),
+      title: "Schedule Consultation",
+      description: "Book a free consultation",
       action: () => window.open("https://calendly.com/movinware/consultation", "_blank")
     },
     {
       icon: MessageCircle,
-      title: t('contact.quickActions.whatsapp.title'),
-      description: t('contact.quickActions.whatsapp.description'),
+      title: "WhatsApp Support",
+      description: "Get instant support via WhatsApp",
       action: () => window.open("https://wa.me/971412345678", "_blank")
     }
   ];
@@ -82,19 +80,19 @@ const Contact = () => {
 
   const validateForm = () => {
     if (!formData.fullName.trim()) {
-      toast.error(t('validation.required'));
+      toast.error("Please enter your full name");
       return false;
     }
     if (!formData.email.trim()) {
-      toast.error(t('validation.required'));
+      toast.error("Please enter your email address");
       return false;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      toast.error(t('validation.email'));
+      toast.error("Please enter a valid email address");
       return false;
     }
     if (!formData.message.trim()) {
-      toast.error(t('validation.required'));
+      toast.error("Please enter your message");
       return false;
     }
     return true;
@@ -185,7 +183,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
       
       if (emailJSSuccess) {
         setSubmitStatus('success');
-        toast.success(t('contact.form.success'), {
+        toast.success("Message sent successfully!", {
           description: "We'll get back to you within 24 hours.",
           duration: 5000,
         });
@@ -227,11 +225,11 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
         <div className="text-center mb-16 opacity-0 animate-on-scroll">
           <div className="pulse-chip mx-auto mb-4">
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">10</span>
-            <span>{t('contact.badge')}</span>
+            <span>Contact Us</span>
           </div>
-          <h2 className="section-title mb-4">{t('contact.title')}</h2>
+          <h2 className="section-title mb-4">Get In Touch</h2>
           <p className="section-subtitle mx-auto">
-            {t('contact.subtitle')}
+            Ready to transform your business? Contact us today to get started.
           </p>
         </div>
 
@@ -243,7 +241,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('contact.form.fullName')} <span className="text-red-500">*</span>
+                    Full Name <span className="text-red-500">*</span>
                   </label>
                   <input 
                     type="text" 
@@ -256,7 +254,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('contact.form.email')} <span className="text-red-500">*</span>
+                    Email <span className="text-red-500">*</span>
                   </label>
                   <input 
                     type="email" 
@@ -270,7 +268,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">{t('contact.form.company')}</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Company</label>
                   <input 
                     type="text" 
                     name="company"
@@ -280,7 +278,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">{t('contact.form.phone')}</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
                   <input 
                     type="tel" 
                     name="phone"
@@ -291,7 +289,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">{t('contact.form.inquiryType')}</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Inquiry Type</label>
                 <select 
                   name="inquiryType"
                   value={formData.inquiryType}
@@ -308,7 +306,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('contact.form.message')} <span className="text-red-500">*</span>
+                  Message <span className="text-red-500">*</span>
                 </label>
                 <textarea 
                   rows={4} 
@@ -316,7 +314,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                   value={formData.message}
                   onChange={handleInputChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pulse-500 focus:border-transparent transition-all duration-200" 
-                  placeholder={t('contact.form.messagePlaceholder')}
+                  placeholder="Tell us about your project..."
                   required
                 ></textarea>
               </div>
@@ -337,22 +335,22 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
                 {isSubmitting ? (
                   <>
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    {t('contact.form.sending')}
+                    Sending...
                   </>
                 ) : submitStatus === 'success' ? (
                   <>
                     <CheckCircle className="w-4 h-4 mr-2" />
-                    {t('contact.form.success')}
+                    Message Sent!
                   </>
                 ) : submitStatus === 'error' ? (
                   <>
                     <AlertCircle className="w-4 h-4 mr-2" />
-                    {t('contact.form.tryAgain')}
+                    Try Again
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4 mr-2" />
-                    {t('contact.form.submit')}
+                    Send Message
                   </>
                 )}
               </button>
@@ -390,7 +388,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
           <div className="space-y-8">
             {/* Contact Information */}
             <div className="opacity-0 animate-on-scroll" style={{ animationDelay: "0.2s" }}>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">{t('contact.info.title')}</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <a 
@@ -412,7 +410,7 @@ This message was sent via the MovinWare contact form on ${new Date().toLocaleDat
 
             {/* Quick Actions */}
             <div className="opacity-0 animate-on-scroll" style={{ animationDelay: "0.4s" }}>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">{t('contact.quickActions.title')}</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Quick Actions</h3>
               <div className="space-y-4">
                 {quickActions.map((action, index) => (
                   <button 
