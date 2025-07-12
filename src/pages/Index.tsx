@@ -7,7 +7,7 @@ import Industries from "@/components/Industries";
 import ERPSolutions from "@/components/ERPSolutions";
 import Services from "@/components/Services";
 import ImplementationProcess from "@/components/ImplementationProcess";
-import Packages from "@/components/Packages";
+
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -70,7 +70,7 @@ const Index = () => {
         <ERPSolutions />
         <Services />
         <ImplementationProcess />
-        <Packages />
+        
         <Testimonials />
         <Contact />
       </main>
