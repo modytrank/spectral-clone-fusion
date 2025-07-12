@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { OptimizedBackground } from "./ui/optimized-background";
 
 interface TestimonialProps {
   content: string;
@@ -39,11 +40,9 @@ const TestimonialCard = ({
   backgroundImage = "/background-section1.png"
 }: TestimonialProps) => {
   return (
-    <div 
-      className="bg-cover bg-center rounded-lg p-8 h-full flex flex-col justify-between text-white transform transition-transform duration-300 hover:-translate-y-2 relative overflow-hidden" 
-      style={{
-        backgroundImage: `url('${backgroundImage}')`
-      }}
+    <OptimizedBackground
+      src={backgroundImage}
+      className="rounded-lg p-8 h-full flex flex-col justify-between text-white transform transition-transform duration-300 hover:-translate-y-2 relative overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-24 h-24 bg-white z-10"></div>
       
@@ -54,7 +53,7 @@ const TestimonialCard = ({
           <p className="text-white/80">{role}</p>
         </div>
       </div>
-    </div>
+    </OptimizedBackground>
   );
 };
 

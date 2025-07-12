@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import { toast } from "sonner";
+import { OptimizedBackground } from "./ui/optimized-background";
 const DetailsSection = () => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -42,15 +43,15 @@ const DetailsSection = () => {
           {/* Left Card - The Details */}
           <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant">
             {/* Card Header with background image instead of gradient */}
-            <div className="relative h-48 sm:h-64 p-6 sm:p-8 flex items-end" style={{
-            backgroundImage: "url('/background-section3.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center"
-          }}>
+            <OptimizedBackground
+              src="/background-section3.png"
+              className="relative h-48 sm:h-64 p-6 sm:p-8 flex items-end"
+              style={{ backgroundPosition: "center" }}
+            >
               <h2 className="text-2xl sm:text-3xl font-display text-white font-bold">
                 The details
               </h2>
-            </div>
+            </OptimizedBackground>
             
             {/* Card Content */}
             <div className="bg-white p-4 sm:p-8" style={{
@@ -133,18 +134,18 @@ const DetailsSection = () => {
           {/* Right Card - Contact Form */}
           <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant">
             {/* Card Header with background image instead of gradient */}
-            <div className="relative h-48 sm:h-64 p-6 sm:p-8 flex flex-col items-start" style={{
-            backgroundImage: "url('/background-section1.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center"
-          }}>
+            <OptimizedBackground
+              src="/background-section1.png"
+              className="relative h-48 sm:h-64 p-6 sm:p-8 flex flex-col items-start"
+              style={{ backgroundPosition: "center" }}
+            >
               <div className="inline-block px-4 sm:px-6 py-2 border border-white text-white rounded-full text-xs mb-4">
                 Request a demo
               </div>
               <h2 className="text-2xl sm:text-3xl font-display text-white font-bold mt-auto">
                 See it for yourself
               </h2>
-            </div>
+            </OptimizedBackground>
             
             {/* Card Content - Form */}
             <div className="bg-white p-4 sm:p-8" style={{

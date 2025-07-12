@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { OptimizedBackground } from "./ui/optimized-background";
 
 const ValueSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -121,15 +122,11 @@ const ValueSection = () => {
                 opacity: isFirstCardVisible ? 0.9 : 0
               }}
             >
-              <div
+              <OptimizedBackground
+                src="/background-section1.png"
                 className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
-                style={{
-                  backgroundImage: "url('/background-section1.png')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "top center",
-                  backgroundBlendMode: "overlay"
-                }}
-              ></div>
+                style={{ backgroundPosition: "top center", backgroundBlendMode: "overlay" }}
+              />
               
               <div className="absolute top-4 right-4 z-20">
                 <div className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white">
@@ -163,15 +160,11 @@ const ValueSection = () => {
                 pointerEvents: isSecondCardVisible ? 'auto' : 'none'
               }}
             >
-              <div
+              <OptimizedBackground
+                src="/background-section2.png"
                 className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
-                style={{
-                  backgroundImage: "url('/background-section2.png')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundBlendMode: "overlay"
-                }}
-              ></div>
+                style={{ backgroundPosition: "center", backgroundBlendMode: "overlay" }}
+              />
               
               <div className="absolute top-4 right-4 z-20">
                 <div className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white">
@@ -205,15 +198,11 @@ const ValueSection = () => {
                 pointerEvents: isThirdCardVisible ? 'auto' : 'none'
               }}
             >
-              <div
+              <OptimizedBackground
+                src="/new-update1-background-section3.png"
                 className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
-                style={{
-                  backgroundImage: "url('/new-update1-background-section3.png')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "bottom center",
-                  backgroundBlendMode: "overlay"
-                }}
-              ></div>
+                style={{ backgroundPosition: "bottom center", backgroundBlendMode: "overlay" }}
+              />
               
               <div className="absolute top-4 right-4 z-20">
                 <div className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white">
@@ -247,15 +236,11 @@ const ValueSection = () => {
                 pointerEvents: isFourthCardVisible ? 'auto' : 'none'
               }}
             >
-              <div
+              <OptimizedBackground
+                src="/background-section1.png"
                 className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
-                style={{
-                  backgroundImage: "url('/background-section1.png')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundBlendMode: "overlay"
-                }}
-              ></div>
+                style={{ backgroundPosition: "center", backgroundBlendMode: "overlay" }}
+              />
               
               <div className="absolute top-4 right-4 z-20">
                 <div className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white">
