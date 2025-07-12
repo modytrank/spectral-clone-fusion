@@ -57,8 +57,9 @@ export const MotionWrapper: React.FC<MotionWrapperProps> = ({
     <motion.div
       className={cn(className)}
       initial="hidden"
+      animate="visible"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-50px" }}
       variants={variants[variant]}
       transition={{
         duration,

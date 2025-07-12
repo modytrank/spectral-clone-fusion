@@ -117,64 +117,55 @@ const Hero = () => {
       <div className="container px-4 sm:px-6 lg:px-8" ref={containerRef}>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
           <div className="w-full lg:w-1/2">
-            <MotionWrapper variant="fadeIn" delay={0.1}>
-              <div className="pulse-chip mb-3 sm:mb-6">
-                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">01</span>
-                <span>ERP Solutions</span>
-              </div>
-            </MotionWrapper>
+            <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">01</span>
+              <span>ERP Solutions</span>
+            </div>
             
-            <MotionWrapper variant="slideUp" delay={0.3}>
-              <h1 className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight">
-                Intelligent Operations.<br className="hidden sm:inline" />Seamless Transformation
-              </h1>
-            </MotionWrapper>
+            <h1 className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              Intelligent Operations.<br className="hidden sm:inline" />Seamless Transformation
+            </h1>
             
-            <MotionWrapper variant="fadeIn" delay={0.5}>
-              <p className="section-subtitle mt-3 sm:mt-6 mb-4 sm:mb-8 leading-relaxed text-gray-950 font-normal text-base sm:text-lg text-left">
-                AI-powered ERP system designed for your workflow. Streamline operations, boost efficiency, and future-proof your business with MovinWare's intelligent solutions.
-              </p>
-            </MotionWrapper>
+            <p className="section-subtitle mt-3 sm:mt-6 mb-4 sm:mb-8 leading-relaxed text-gray-950 font-normal text-base sm:text-lg text-left opacity-0 animate-fade-in" style={{ animationDelay: "0.5s" }}>
+              AI-powered ERP system designed for your workflow. Streamline operations, boost efficiency, and future-proof your business with MovinWare's intelligent solutions.
+            </p>
             
-            <MotionWrapper variant="slideUp" delay={0.7}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <MotionButton
-                  as="a"
-                  href="#contact"
-                  className="flex items-center justify-center group w-full sm:w-auto text-center button-magnetic"
-                  style={{
-                    backgroundColor: '#4942E4',
-                    borderRadius: '1440px',
-                    boxSizing: 'border-box',
-                    color: '#FFFFFF',
-                    cursor: 'pointer',
-                    fontSize: '14px',
-                    lineHeight: '20px',
-                    padding: '16px 24px',
-                    border: '1px solid white',
-                  }}
-                >
-                  Start Your Journey
-                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </MotionButton>
-              </div>
-            </MotionWrapper>
+            <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" style={{ animationDelay: "0.7s" }}>
+              <a 
+                href="#contact" 
+                className="flex items-center justify-center group w-full sm:w-auto text-center button-magnetic"
+                style={{
+                  backgroundColor: '#4942E4',
+                  borderRadius: '1440px',
+                  boxSizing: 'border-box',
+                  color: '#FFFFFF',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  lineHeight: '20px',
+                  padding: '16px 24px',
+                  border: '1px solid white',
+                }}
+              >
+                Start Your Journey
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
           </div>
           
           <div className="w-full lg:w-1/2 relative mt-6 lg:mt-0">
             {lottieData ? (
-              <MotionWrapper variant="scale" delay={0.9} className="relative z-10">
+              <div className="relative z-10 animate-fade-in animate-float" style={{ animationDelay: "0.9s" }}>
                 <LottieAnimation 
                   animationPath={lottieData} 
-                  className="w-full h-auto max-w-lg mx-auto animate-float"
+                  className="w-full h-auto max-w-lg mx-auto"
                   loop={true}
                   autoplay={true}
                 />
-              </MotionWrapper>
+              </div>
             ) : (
-              <MotionWrapper variant="scale" delay={0.9}>
+              <>
                 <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
-                <div className="relative transition-all duration-500 ease-spring overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl glow-on-hover">
+                <div className="relative transition-all duration-500 ease-spring overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl glow-on-hover animate-fade-in" style={{ animationDelay: "0.9s" }}>
                   <OptimizedImage 
                     ref={imageRef} 
                     src="/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png" 
@@ -184,7 +175,7 @@ const Hero = () => {
                     priority={true}
                   />
                 </div>
-              </MotionWrapper>
+              </>
             )}
           </div>
         </div>
