@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import LottieAnimation from "./LottieAnimation";
-import { OptimizedImage, OptimizedBackground } from "./ui";
+import { OptimizedImage, OptimizedBackground, MotionWrapper, MotionButton } from "./ui";
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -117,77 +117,74 @@ const Hero = () => {
       <div className="container px-4 sm:px-6 lg:px-8" ref={containerRef}>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
           <div className="w-full lg:w-1/2">
-            <div 
-              className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-fade-in" 
-              style={{ animationDelay: "0.1s" }}
-            >
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">01</span>
-              <span>ERP Solutions</span>
-            </div>
+            <MotionWrapper variant="fadeIn" delay={0.1}>
+              <div className="pulse-chip mb-3 sm:mb-6">
+                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">01</span>
+                <span>ERP Solutions</span>
+              </div>
+            </MotionWrapper>
             
-            <h1 
-              className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in" 
-              style={{ animationDelay: "0.3s" }}
-            >
-              Intelligent Operations.<br className="hidden sm:inline" />Seamless Transformation
-            </h1>
+            <MotionWrapper variant="slideUp" delay={0.3}>
+              <h1 className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight">
+                Intelligent Operations.<br className="hidden sm:inline" />Seamless Transformation
+              </h1>
+            </MotionWrapper>
             
-            <p 
-              style={{ animationDelay: "0.5s" }} 
-              className="section-subtitle mt-3 sm:mt-6 mb-4 sm:mb-8 leading-relaxed opacity-0 animate-fade-in text-gray-950 font-normal text-base sm:text-lg text-left"
-            >
-              AI-powered ERP system designed for your workflow. Streamline operations, boost efficiency, and future-proof your business with MovinWare's intelligent solutions.
-            </p>
+            <MotionWrapper variant="fadeIn" delay={0.5}>
+              <p className="section-subtitle mt-3 sm:mt-6 mb-4 sm:mb-8 leading-relaxed text-gray-950 font-normal text-base sm:text-lg text-left">
+                AI-powered ERP system designed for your workflow. Streamline operations, boost efficiency, and future-proof your business with MovinWare's intelligent solutions.
+              </p>
+            </MotionWrapper>
             
-            <div 
-              className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" 
-              style={{ animationDelay: "0.7s" }}
-            >
-              <a 
-                href="#contact" 
-                className="flex items-center justify-center group w-full sm:w-auto text-center" 
-                style={{
-                  backgroundColor: '#4942E4',
-                  borderRadius: '1440px',
-                  boxSizing: 'border-box',
-                  color: '#FFFFFF',
-                  cursor: 'pointer',
-                  fontSize: '14px',
-                  lineHeight: '20px',
-                  padding: '16px 24px',
-                  border: '1px solid white',
-                }}
-              >
-                Start Your Journey
-                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
-            </div>
+            <MotionWrapper variant="slideUp" delay={0.7}>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <MotionButton
+                  as="a"
+                  href="#contact"
+                  className="flex items-center justify-center group w-full sm:w-auto text-center button-magnetic"
+                  style={{
+                    backgroundColor: '#4942E4',
+                    borderRadius: '1440px',
+                    boxSizing: 'border-box',
+                    color: '#FFFFFF',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    padding: '16px 24px',
+                    border: '1px solid white',
+                  }}
+                >
+                  Start Your Journey
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </MotionButton>
+              </div>
+            </MotionWrapper>
           </div>
           
           <div className="w-full lg:w-1/2 relative mt-6 lg:mt-0">
             {lottieData ? (
-              <div className="relative z-10 animate-fade-in" style={{ animationDelay: "0.9s" }}>
+              <MotionWrapper variant="scale" delay={0.9} className="relative z-10">
                 <LottieAnimation 
                   animationPath={lottieData} 
-                  className="w-full h-auto max-w-lg mx-auto"
+                  className="w-full h-auto max-w-lg mx-auto animate-float"
                   loop={true}
                   autoplay={true}
                 />
-              </div>
+              </MotionWrapper>
             ) : (
-              <>
-              <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
-              <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl animate-fade-in" style={{ animationDelay: "0.9s" }}>
-                <OptimizedImage 
-                  ref={imageRef} 
-                  src="/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png" 
-                  alt="MovinWare ERP Dashboard" 
-                  className="w-full h-auto object-cover transition-transform duration-500 ease-out" 
-                  style={{ transformStyle: 'preserve-3d' }} 
-                  priority={true}
-                />
-              </div>
-              </>
+              <MotionWrapper variant="scale" delay={0.9}>
+                <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
+                <div className="relative transition-all duration-500 ease-spring overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl glow-on-hover">
+                  <OptimizedImage 
+                    ref={imageRef} 
+                    src="/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png" 
+                    alt="MovinWare ERP Dashboard" 
+                    className="w-full h-auto object-cover transition-transform duration-500 ease-spring" 
+                    style={{ transformStyle: 'preserve-3d' }} 
+                    priority={true}
+                  />
+                </div>
+              </MotionWrapper>
             )}
           </div>
         </div>
