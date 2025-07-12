@@ -403,7 +403,7 @@
     @apply transition-all duration-300 ease-spring;
     @apply hover:scale-105 hover:-translate-y-1;
     @apply hover:shadow-2xl hover:shadow-primary/30;
-    @apply active:scale-98 active:translate-y-0;
+    @apply active:scale-95 active:translate-y-0;
     @apply group;
   }
 
