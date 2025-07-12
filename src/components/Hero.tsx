@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import LottieAnimation from "./LottieAnimation";
-import { OptimizedImage } from "./ui/optimized-image";
-import { OptimizedBackground } from "./ui/optimized-background";
+import { OptimizedImage, OptimizedBackground } from "./ui";
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);

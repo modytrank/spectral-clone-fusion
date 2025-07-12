@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { OptimizedBackground } from "./ui/optimized-background";
+import { OptimizedBackground } from "./ui";
 
 interface TestimonialProps {
   content: string;

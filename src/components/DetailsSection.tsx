@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { toast } from "sonner";
-import { OptimizedBackground } from "./ui/optimized-background";
+import { OptimizedBackground } from "./ui";
 const DetailsSection = () => {
   const [formData, setFormData] = useState({
     fullName: "",

@@ -1,6 +1,5 @@
 import React from "react";
-import { OptimizedBackground } from "./ui/optimized-background";
-import { OptimizedImage } from "./ui/optimized-image";
+import { OptimizedBackground, OptimizedImage } from "./ui";
 
 const MadeByHumans = () => {
   return (

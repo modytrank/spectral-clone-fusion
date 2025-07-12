@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
-import { OptimizedBackground } from "./ui/optimized-background";
+import { OptimizedBackground } from "./ui";
 
 const HumanoidSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

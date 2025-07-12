@@ -1,6 +1,6 @@
 
 import React from "react";
-import { OptimizedImage } from "./ui/optimized-image";
+import { OptimizedImage } from "./ui";
 
 const ImageShowcaseSection = () => {
   return (
