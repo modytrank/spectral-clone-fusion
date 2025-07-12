@@ -163,8 +163,57 @@ export default {
 			boxShadow: {
 				'elegant': '0 4px 20px rgba(0, 0, 0, 0.08)',
 				'elegant-hover': '0 8px 30px rgba(0, 0, 0, 0.12)',
+			},
+			// RTL support utilities
+			spacing: {
+				'safe-top': 'env(safe-area-inset-top)',
+				'safe-bottom': 'env(safe-area-inset-bottom)',
+				'safe-left': 'env(safe-area-inset-left)',
+				'safe-right': 'env(safe-area-inset-right)',
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		// RTL plugin
+		function({ addUtilities, theme, e }) {
+			const rtlUtilities = {
+				'.rtl-flip': {
+					'[dir="rtl"] &': {
+						transform: 'scaleX(-1)',
+					},
+				},
+				'.rtl-rotate-180': {
+					'[dir="rtl"] &': {
+						transform: 'rotate(180deg)',
+					},
+				},
+				'.start-0': {
+					'inset-inline-start': '0px',
+				},
+				'.end-0': {
+					'inset-inline-end': '0px',
+				},
+				'.ms-auto': {
+					'margin-inline-start': 'auto',
+				},
+				'.me-auto': {
+					'margin-inline-end': 'auto',
+				},
+				'.ps-4': {
+					'padding-inline-start': theme('spacing.4'),
+				},
+				'.pe-4': {
+					'padding-inline-end': theme('spacing.4'),
+				},
+				'.border-s': {
+					'border-inline-start-width': '1px',
+				},
+				'.border-e': {
+					'border-inline-end-width': '1px',
+				},
+			};
+			addUtilities(rtlUtilities);
+		}
+	],
 } satisfies Config;
